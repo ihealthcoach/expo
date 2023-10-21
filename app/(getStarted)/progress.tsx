@@ -9,8 +9,8 @@ const GSmealsAndDiet = () => {
 
   return (
     <View className="flex flex-1 items-center justify-center bg-[#66eed1]">
-      <View className="flex items-center">
-        <Text className="mb-2 text-xl italic leading-tight text-primary-700">
+      <View className="mb-24 flex items-center">
+        <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
           Track your workouts and
         </Text>
         <Text className="-mt-1 font-interExtraBold text-5xl leading-tight text-primary-900">
