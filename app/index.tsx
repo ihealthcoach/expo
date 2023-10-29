@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Text, View } from "react-native";
-import Logo from "../assets/images/svg/logo";
+import Logo from "@/assets/images/svg/logo";
 import { useRouter } from "expo-router";
 
 export default function Page() {
@@ -10,7 +10,7 @@ export default function Page() {
     const timeout = setTimeout(() => {
       // console.log("timeout");
       router.push("/(getStarted)/mealsAndDiet");
-    }, 3000);
+    }, 300);
     return () => {
       clearTimeout(timeout);
     };
