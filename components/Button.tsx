@@ -1,13 +1,12 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import React from "react";
 import { Link } from "expo-router";
 
 const Button = ({ text, path }) => {
   return (
     <View className="mb-8 flex-row border-primary-700">
-      {/* <View className="flex-row justify-end border border-t-2 border-primary-700"> */}
       <Link
-        className="flex-1 rounded-md bg-primary-800 px-6 py-4 font-interSemiBold text-base text-white hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+        className="flex-1 rounded-md bg-primary-800 px-6 py-4 font-interMedium text-base text-white hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
         href={path}
         asChild
       >
