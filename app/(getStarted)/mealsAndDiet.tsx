@@ -1,14 +1,15 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { useRouter } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 
-import Button from "../../components/Button";
+import Button from "@/components/Button";
 
 const GSmealsAndDiet = () => {
   const router = useRouter();
 
   return (
     <View className="flex flex-1 items-center justify-center bg-[#66eed1]">
+      {/* <Stack.Screen options={{ headerShown: false }} /> */}
       <View className="mb-24 flex items-center">
         <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
           Track your
@@ -21,7 +22,7 @@ const GSmealsAndDiet = () => {
         </Text>
       </View>
       <View className="absolute bottom-0 w-full px-4 pb-12">
-        <Button text={"Continue"} path={"/(getStarted)/progress"} />
+        <Button text={"Continue"} path={"progress"} />
         <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
           Already have an account?
           <Text className="font-interBold"> Sign in</Text>{" "}

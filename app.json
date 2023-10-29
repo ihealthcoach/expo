@@ -22,7 +22,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.ihealth.ihealth"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,7 +32,17 @@
       "expo-router"
     ],
     "experiments": {
-      "typedRoutes": true
-    }
+      "typedRoutes": true,
+      "tsconfigPaths": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "3f5eb1c9-caab-4aa7-a6fb-1a72987b8abd"
+      }
+    },
+    "owner": "ihealth"
   }
 }
