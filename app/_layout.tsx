@@ -34,10 +34,10 @@ export default function Layout() {
           name="(questionnaire)/mainGoal"
           options={{ headerShown: false }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="(questionnaire)/workout"
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="(questionnaire)/fitness"
           options={{ headerShown: false }}

@@ -2,7 +2,8 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 
 import Button from "@/components/Button";
-import RadioBox from "@/components/RadioBox";
+import CardRadioButton from "@/components/CardRadioButton";
+import RadioButton from "@/components/RadioButton";
 
 const QMainGail = () => {
   const [value, setValue] = useState("");
@@ -22,21 +23,21 @@ const QMainGail = () => {
         <Text className="mb-6 font-interMedium text-sm text-primary-700">
           You can always change this later
         </Text>
-        <RadioBox
+        <CardRadioButton
           headline={"Look Muscular & Toned"}
           body={"Muscle size & visibility"}
           name={"1"}
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Get Stronger, Faster"}
           body={"Lift more weight"}
           name={"2"}
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Lose Fat"}
           body={"Burn a lot of calories"}
           name={"3"}
@@ -45,7 +46,7 @@ const QMainGail = () => {
         />
       </View>
       <View className="absolute bottom-0 w-full px-4 pb-12">
-        <Button text={"Continue"} path={"fitness"} />
+        <Button text={"Continue"} path={"workout"} />
         <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
           Back
         </Text>

@@ -2,7 +2,8 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 
 import Button from "@/components/Button";
-import RadioBox from "@/components/RadioBox";
+import CardRadioButton from "@/components/CardRadioButton";
+import RadioButton from "@/components/RadioButton";
 
 const QGender = () => {
   const [value, setValue] = useState("");
@@ -21,21 +22,21 @@ const QGender = () => {
             Gender?
           </Text>
           {/* <RadioButton /> */}
-          <RadioBox
+          <CardRadioButton
             headline={"Male"}
             body={null}
             name={"male"}
             value={value}
             setValue={setValue}
           />
-          <RadioBox
+          <CardRadioButton
             headline={"Female"}
             body={null}
             name={"female"}
             value={value}
             setValue={setValue}
           />
-          <RadioBox
+          <CardRadioButton
             headline={"I'd rather not say"}
             body={null}
             name={"unknown"}

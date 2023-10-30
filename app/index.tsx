@@ -10,7 +10,7 @@ export default function Page() {
     const timeout = setTimeout(() => {
       // console.log("timeout");
       router.push("/(getStarted)/mealsAndDiet");
-    }, 300);
+    }, 3000);
     return () => {
       clearTimeout(timeout);
     };
