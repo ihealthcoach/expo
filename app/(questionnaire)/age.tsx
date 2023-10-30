@@ -37,7 +37,7 @@ const QHeight = () => {
         </View>
       </View>
       <View className="absolute bottom-0 w-full px-4 pb-12">
-        <Button text={"Continue"} path={"mainGoal"} />
+        <Button text={"Continue"} path={"bodytype"} />
         <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
           Back
         </Text>
