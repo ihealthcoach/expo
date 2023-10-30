@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 
 import Button from "@/components/Button";
-import RadioBox from "@/components/RadioBox";
+import CardRadioButton from "@/components/CardRadioButton";
 
 const QFitness = () => {
   const [value, setValue] = useState("");
@@ -22,21 +22,21 @@ const QFitness = () => {
         <Text className="mb-6 font-interMedium text-sm text-primary-700">
           You can always change this later
         </Text>
-        <RadioBox
+        <CardRadioButton
           headline={"Yes"}
           body={"I'm a beginner"}
           name={"1"}
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Not really"}
           body={"I'm intermediate"}
           name={"2"}
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"No"}
           body={"I'm advanced, bro"}
           name={"3"}

@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useState } from "react";
 
 import Button from "@/components/Button";
-import RadioBox from "@/components/RadioBox";
+import CardRadioButton from "@/components/CardRadioButton";
 
 const QFitness = () => {
   const [value, setValue] = useState("");
@@ -19,7 +19,7 @@ const QFitness = () => {
         <Text className="-mt-1 mb-4 font-interExtraBold text-5xl text-primary-900">
           Bodytype?
         </Text>
-        <RadioBox
+        <CardRadioButton
           headline={"Ectomorph"}
           body={
             "Lean and slender body type with a fast metabolism and difficulty gaining weight or muscle mass."
@@ -28,7 +28,7 @@ const QFitness = () => {
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Endomorph"}
           body={
             "Higher body fat percentage, rounder shape, slower metabolism, and a tendency to gain weight easily."
@@ -37,7 +37,7 @@ const QFitness = () => {
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Mesomorph"}
           body={
             "Athletic and well-proportioned body type, with a moderate metabolism, easy muscle building, and fat burning."
@@ -46,7 +46,7 @@ const QFitness = () => {
           value={value}
           setValue={setValue}
         />
-        <RadioBox
+        <CardRadioButton
           headline={"Combination type"}
           body={"Individuals who display a combination of multiple body types"}
           name={"4"}
