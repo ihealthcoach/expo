@@ -42,7 +42,7 @@ export default function Layout() {
           name="(questionnaire)/fitness"
           options={{ headerShown: false }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="(questionnaire)/weight"
           options={{ headerShown: false }}
         />
@@ -53,7 +53,7 @@ export default function Layout() {
         <Stack.Screen
           name="(questionnaire)/age"
           options={{ headerShown: false }}
-        /> */}
+        />
         <Stack.Screen
           name="(questionnaire)/bodytype"
           options={{ headerShown: false }}
