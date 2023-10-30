@@ -45,7 +45,7 @@ const QFitness = () => {
         />
       </View>
       <View className="absolute bottom-0 w-full px-4 pb-12">
-        <Button text={"Continue"} path={"bodytype"} />
+        <Button text={"Continue"} path={"weight"} />
         <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
           Back
         </Text>
