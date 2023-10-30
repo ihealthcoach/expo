@@ -1,0 +1,25 @@
+import { useState } from "react";
+import { Pressable, View } from "react-native";
+import Svg, { Path } from "react-native-svg";
+
+const CheckBox = ({ checked }) => {
+  return (
+    <View className="flex h-5 w-5 items-center justify-center rounded border-[1px] border-primary-600">
+      {checked && (
+        <View className="flex h-5 w-5 items-center justify-center rounded border-[1px] border-primary-600 bg-primary-600">
+          <Svg width={16} height={16} viewBox="0 0 16 16" fill="none">
+            <Path
+              d="M13.3636 3.32277C13.6272 3.5236 13.6781 3.90008 13.4773 4.16366L7.07725 12.5637C6.97232 12.7014 6.81301 12.7871 6.64026 12.7987C6.46751 12.8103 6.29816 12.7467 6.17573 12.6243L2.57573 9.0243C2.34142 8.78998 2.34142 8.41008 2.57573 8.17577C2.81004 7.94145 3.18994 7.94145 3.42426 8.17577L6.5388 11.2903L12.5227 3.43641C12.7236 3.17282 13.1 3.12195 13.3636 3.32277Z"
+              stroke="#FCFEFE"
+              fill="#FCFEFE"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </Svg>
+        </View>
+      )}
+    </View>
+  );
+};
+
+export default CheckBox;
