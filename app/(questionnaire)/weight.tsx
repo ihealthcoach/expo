@@ -28,6 +28,7 @@ const QWeight = () => {
             )}
             <TextInput
               className="w-full text-center font-interRegular text-3xl leading-tight text-primary-800"
+              autoFocus={true}
               onChangeText={(numberString) => setValue(numberString)}
               value={value}
               placeholderTextColor={"#5ad9c0"}
