@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { SvgProps, G, Path, Defs } from "react-native-svg";
-/* SVGR has dropped some elements not supported by react-native-svg: filter */
+
 const Logo = (props: SvgProps) => (
   <Svg width={117} height={132} fill="none" {...props}>
     <G filter="url(#a)">
