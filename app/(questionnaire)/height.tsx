@@ -1,11 +1,13 @@
-import { View, Text, TextInput, ImageBackground } from "react-native";
 import React, { useState } from "react";
+import { View, Text, TextInput, ImageBackground } from "react-native";
+import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import Toggle from "@/components/Toggle";
 
 const QHeight = () => {
   const [value, setValue] = useState("");
+  const [unit, setUnit] = useState(true);
 
   return (
     <ImageBackground
@@ -27,7 +29,7 @@ const QHeight = () => {
             <View className="mb-9  flex items-center justify-center">
               {value === "" && (
                 <Text className="absolute ml-2 font-interRegular text-3xl leading-tight text-[#5ad9c0]">
-                  Your height in cm
+                  {unit ? "Your height in cm" : "Your height in inches"}
                 </Text>
               )}
               <TextInput
@@ -40,12 +42,20 @@ const QHeight = () => {
                 keyboardType="numeric"
               />
             </View>
-            <Toggle valueLeft={"Centimeters"} valueRight={"Inches"} />
+            <Toggle
+              valueLeft={"Centimeters"}
+              valueRight={"Inches"}
+              unit={unit}
+              setUnit={setUnit}
+            />
           </View>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
           <Button text={"Continue"} path={"age"} />
-          <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
+          <Text
+            onPress={() => router.back()}
+            className="mb-4 text-center font-interMedium text-base text-primary-700"
+          >
             Back
           </Text>
         </View>

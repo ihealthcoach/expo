@@ -1,5 +1,6 @@
-import { View, Text, ImageBackground } from "react-native";
 import React, { useState } from "react";
+import { View, Text, ImageBackground } from "react-native";
+import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
@@ -50,7 +51,10 @@ const QFitness = () => {
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
           <Button text={"Continue"} path={"weight"} />
-          <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
+          <Text
+            onPress={() => router.back()}
+            className="mb-4 text-center font-interMedium text-base text-primary-700"
+          >
             Back
           </Text>
         </View>
