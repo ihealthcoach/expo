@@ -13,7 +13,6 @@ const GSmealsAndDiet = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <View className="flex flex-1 items-center justify-center">
-        {/* <Stack.Screen options={{ headerShown: false }} /> */}
         <View className="mb-24 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             Track your

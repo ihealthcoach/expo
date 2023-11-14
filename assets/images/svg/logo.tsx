@@ -1,5 +1,5 @@
 import * as React from "react";
-import Svg, { SvgProps, G, Path, Defs } from "react-native-svg";
+import Svg, { SvgProps, G, Path } from "react-native-svg";
 
 const Logo = (props: SvgProps) => (
   <Svg width={117} height={132} fill="none" {...props}>
@@ -11,7 +11,6 @@ const Logo = (props: SvgProps) => (
         clipRule="evenodd"
       />
     </G>
-    <Defs></Defs>
   </Svg>
 );
 export default Logo;
