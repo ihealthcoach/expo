@@ -1,6 +1,6 @@
 import { Slot, Stack } from "expo-router";
-// import { SafeAreaView } from "react-native-safe-area-context";
 import loadFonts from "@/lib/loadFonts";
+import { ImageBackground } from "react-native";
 // import { useFonts } from "expo-font";
 
 export default function Layout() {
@@ -11,10 +11,11 @@ export default function Layout() {
   }
 
   return (
-    <Stack>
-      <Stack.Screen name="mealsAndDiet" options={{ headerShown: false }} />
-      <Stack.Screen name="progress" options={{ headerShown: false }} />
-      <Stack.Screen name="goals" options={{ headerShown: false }} />
-    </Stack>
+    <ImageBackground
+      className="h-full w-full flex-1"
+      source={require("@/assets/images/imageBg.png")}
+    >
+      <Slot />
+    </ImageBackground>
   );
 }
