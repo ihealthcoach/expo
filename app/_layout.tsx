@@ -1,8 +1,7 @@
 import { Dimensions, ImageBackground, View } from "react-native";
-import { Stack } from "expo-router";
+import { Slot, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import loadFonts from "@/lib/loadFonts";
-import ImageBgIH from "@/assets/images/svg/imageBackground";
 // import { useFonts } from "expo-font";
 
 export default function Layout() {
@@ -17,29 +16,31 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaView className="flex-1">
-      {/* <SafeAreaView className="flex-1 bg-[#66eed1]"> */}
-      {/* <ImageBgIH width={width} height={height} /> */}
-      {/* <ImageBackground
-          className="h-full w-full flex-1"
-          source={require("@/assets/images/android-q-beta-3-wallpaper-1.png")}
-        > */}
-      <Stack>
-        <Stack.Screen
-          name="index"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen
-          name="(getStarted)"
-          options={{
-            headerShown: false,
-          }}
-        />
-        <Stack.Screen name="(questionnaire)" options={{ headerShown: false }} />
-      </Stack>
-      {/* </ImageBackground> */}
-    </SafeAreaView>
+    <ImageBackground
+      className="h-full w-full flex-1"
+      source={require("@/assets/images/imageBg.png")}
+    >
+      <SafeAreaView className="flex-1">
+        <Slot />
+        {/* <Stack>
+          <Stack.Screen
+            name="index"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="(getStarted)"
+            options={{
+              headerShown: false,
+            }}
+          />
+          <Stack.Screen
+            name="(questionnaire)"
+            options={{ headerShown: false }}
+          />
+        </Stack> */}
+      </SafeAreaView>
+    </ImageBackground>
   );
 }
