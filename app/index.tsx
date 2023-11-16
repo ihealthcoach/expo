@@ -2,9 +2,7 @@ import { useEffect } from "react";
 import { Dimensions, ImageBackground, Text, View } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
 
-// import { Dimensions, Text, View } from "react-native";
 import { useRouter } from "expo-router";
-// import ImageBgIH from "@/assets/images/svg/imageBackground";
 
 export default function Page() {
   const router = useRouter();

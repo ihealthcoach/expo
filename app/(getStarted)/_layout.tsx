@@ -15,7 +15,21 @@ export default function Layout() {
       className="h-full w-full flex-1"
       source={require("@/assets/images/imageBg.png")}
     >
-      <Slot />
+      {/* <Slot /> */}
+      <Stack>
+        <Stack.Screen
+          name="goals"
+          options={{ headerShown: false, animation: "fade" }}
+        />
+        <Stack.Screen
+          name="mealsAndDiet"
+          options={{ headerShown: false, animation: "fade" }}
+        />
+        <Stack.Screen
+          name="progress"
+          options={{ headerShown: false, animation: "fade" }}
+        />
+      </Stack>
     </ImageBackground>
   );
 }

@@ -13,17 +13,41 @@ export default function Layout() {
 
   return (
     // <SafeAreaView className="flex-1">
-    <Slot />
-    // <Stack>
-    //   <Stack.Screen name="age" options={{ headerShown: false }} />
-    //   <Stack.Screen name="bodytype" options={{ headerShown: false }} />
-    //   <Stack.Screen name="fitness" options={{ headerShown: false }} />
-    //   <Stack.Screen name="gender" options={{ headerShown: false }} />
-    //   <Stack.Screen name="height" options={{ headerShown: false }} />
-    //   <Stack.Screen name="weight" options={{ headerShown: false }} />
-    //   <Stack.Screen name="mainGoal" options={{ headerShown: false }} />
-    //   <Stack.Screen name="workout" options={{ headerShown: false }} />
-    // </Stack>
+    // <Slot />
+    <Stack>
+      <Stack.Screen
+        name="age"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="bodytype"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="fitness"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="gender"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="height"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="weight"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="mainGoal"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+      <Stack.Screen
+        name="workout"
+        options={{ headerShown: false, animation: "fade" }}
+      />
+    </Stack>
     // </SafeAreaView>
   );
 }
