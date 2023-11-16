@@ -22,24 +22,6 @@ export default function Layout() {
     >
       <SafeAreaView className="flex-1">
         <Slot />
-        {/* <Stack>
-          <Stack.Screen
-            name="index"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="(getStarted)"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="(questionnaire)"
-            options={{ headerShown: false }}
-          />
-        </Stack> */}
       </SafeAreaView>
     </ImageBackground>
   );
