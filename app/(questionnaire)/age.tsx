@@ -20,7 +20,7 @@ const QHeight = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        behavior={Platform.OS === "ios" ? "padding" : null}
         style={{ flex: 1 }}
       >
         <View className="flex-1 items-center justify-center">
