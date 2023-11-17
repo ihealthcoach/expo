@@ -25,7 +25,7 @@ const GSmealsAndDiet = () => {
           </Text>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button text={"Continue"} path={"progress"} />
+          <Button text={"Continue"} path={"/progress"} />
           <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
             Already have an account?
             <Text className="font-interBold"> Sign in</Text>{" "}
