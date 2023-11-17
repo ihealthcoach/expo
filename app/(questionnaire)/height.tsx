@@ -11,6 +11,7 @@ import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import Toggle from "@/components/Toggle";
+import ProgressBar from "@/components/ProgressBar";
 
 const QHeight = () => {
   const [value, setValue] = useState("");
@@ -26,9 +27,9 @@ const QHeight = () => {
         style={{ flex: 1 }}
       >
         <View className="flex-1 items-center justify-center">
-          <View className="absolute top-0 w-full items-center py-3">
-            <Text className="h-5">Progress Bar</Text>
-          </View>
+          {/* <View className="absolute top-0 w-full items-start px-4 py-3">
+            <ProgressBar />
+          </View> */}
           <View className="mb-36 w-full">
             <View className="items-center">
               <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
@@ -62,7 +63,7 @@ const QHeight = () => {
             </View>
           </View>
           <View className="absolute bottom-0 w-full px-4 pb-12">
-            <Button text={"Continue"} path={"age"} />
+            <Button progress={0.875} text={"Continue"} path={"/age"} />
             <Text
               onPress={() => router.back()}
               className="mb-4 text-center font-interMedium text-base text-primary-700"

@@ -4,8 +4,9 @@ import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
+import ProgressBar from "@/components/ProgressBar";
 
-const QMainGail = () => {
+const QMainGoal = () => {
   const [value, setValue] = useState("");
 
   return (
@@ -13,10 +14,10 @@ const QMainGail = () => {
       className="h-full w-full flex-1"
       source={require("@/assets/images/imageBg.png")}
     >
-      <View className="flex flex-1 items-center">
-        <View className="w-full items-center justify-center py-3">
-          <Text className="h-5">Progress Bar</Text>
-        </View>
+      <View className="mt-6 flex flex-1 items-center">
+        {/* <View className="w-full items-start justify-center px-4 py-3">
+          <ProgressBar />
+        </View> */}
         <View className="mt-4 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             What is your
@@ -50,7 +51,7 @@ const QMainGail = () => {
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button text={"Continue"} path={"workout"} />
+          <Button progress={0.375} text={"Continue"} path={"/workout"} />
           <Text
             onPress={() => router.back()}
             className="mb-4 text-center font-interMedium text-base text-primary-700"
@@ -62,4 +63,4 @@ const QMainGail = () => {
     </ImageBackground>
   );
 };
-export default QMainGail;
+export default QMainGoal;

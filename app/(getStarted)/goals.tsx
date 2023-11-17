@@ -22,7 +22,7 @@ const GSmealsAndDiet = () => {
           </Text>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button text={"Start questionnaire"} path={"gender"} />
+          <Button text={"Start questionnaire"} path={"/gender"} />
           <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
             Already have an account?
             <Text className="font-interBold"> Sign in</Text>{" "}

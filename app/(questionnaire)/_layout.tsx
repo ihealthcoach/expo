@@ -1,8 +1,10 @@
 import { Slot, Stack } from "expo-router";
-// import { SafeAreaView } from "react-native-safe-area-context";
 import loadFonts from "@/lib/loadFonts";
-import { SafeAreaView } from "react-native-safe-area-context";
-// import { useFonts } from "expo-font";
+
+// Contexts
+import { ProgressBarProvider } from "@/context/useProgressBar";
+import ProgressBar from "@/components/ProgressBar";
+import { View } from "react-native";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
@@ -13,41 +15,46 @@ export default function Layout() {
 
   return (
     // <SafeAreaView className="flex-1">
-    // <Slot />
-    <Stack>
-      <Stack.Screen
-        name="age"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="bodytype"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="fitness"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="gender"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="height"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="weight"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="mainGoal"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-      <Stack.Screen
-        name="workout"
-        options={{ headerShown: false, animation: "fade" }}
-      />
-    </Stack>
+    <ProgressBarProvider>
+      <View className="px-16 pt-8">
+        <ProgressBar />
+      </View>
+      <Slot />
+    </ProgressBarProvider>
+    // <Stack>
+    //   <Stack.Screen
+    //     name="age"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="bodytype"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="fitness"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="gender"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="height"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="weight"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="mainGoal"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    //   <Stack.Screen
+    //     name="workout"
+    //     options={{ headerShown: false, animation: "none" }}
+    //   />
+    // </Stack>
     // </SafeAreaView>
   );
 }
