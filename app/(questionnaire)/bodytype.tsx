@@ -4,10 +4,26 @@ import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
-import ProgressBar from "@/components/ProgressBar";
+import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
 
-const QFitness = () => {
-  const [value, setValue] = useState("");
+const QBodytype = () => {
+  const questionnaireContext = useQuestionnaire(); // Get the entire context
+  const { bodytype, setQuestionnaire } = useQuestionnaire(); // Destructure 'bodytype' and 'setQuestionnaire'
+  const [value, setValue] = useState(bodytype || "");
+
+  const handleBodyTypeChange = (newValue) => {
+    setValue(newValue);
+    // Map the radio button names to your bodytype values
+    const bodyTypeValue =
+      newValue === "1"
+        ? "ectomorph"
+        : newValue === "2"
+        ? "endomorph"
+        : newValue === "3"
+        ? "mesomorph"
+        : "combination";
+    setQuestionnaire({ bodytype: bodyTypeValue }); // Update the bodytype in the context
+  };
 
   return (
     <ImageBackground
@@ -15,9 +31,6 @@ const QFitness = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <View className="mt-6 flex flex-1 items-center">
-        {/* <View className="w-full items-start justify-center px-4 py-3">
-          <ProgressBar />
-        </View> */}
         <View className="mt-4 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             What is your
@@ -32,7 +45,7 @@ const QFitness = () => {
             }
             name={"1"}
             value={value}
-            setValue={setValue}
+            setValue={handleBodyTypeChange}
           />
           <CardRadioButton
             headline={"Endomorph"}
@@ -41,7 +54,7 @@ const QFitness = () => {
             }
             name={"2"}
             value={value}
-            setValue={setValue}
+            setValue={handleBodyTypeChange}
           />
           <CardRadioButton
             headline={"Mesomorph"}
@@ -50,7 +63,7 @@ const QFitness = () => {
             }
             name={"3"}
             value={value}
-            setValue={setValue}
+            setValue={handleBodyTypeChange}
           />
           <CardRadioButton
             headline={"Combination type"}
@@ -59,7 +72,7 @@ const QFitness = () => {
             }
             name={"4"}
             value={value}
-            setValue={setValue}
+            setValue={handleBodyTypeChange}
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
@@ -75,4 +88,4 @@ const QFitness = () => {
     </ImageBackground>
   );
 };
-export default QFitness;
+export default QBodytype;

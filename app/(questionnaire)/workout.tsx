@@ -1,30 +1,38 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { View, Text, ImageBackground } from "react-native";
 import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardCheckBox from "@/components/CardCheckBox";
-import ProgressBar from "@/components/ProgressBar";
+import { useQuestionnaire } from "@/context/useQuestionnaire";
 
-const Qworkout = () => {
-  const [checkedState, dispatch] = useReducer(
-    (
-      state: { [x: string]: any },
-      action: { type: any; payload: string | number },
-    ) => {
-      switch (action.type) {
-        case "toggle":
-          return { ...state, [action.payload]: !state[action.payload] };
-        default:
-          throw new Error();
-      }
-    },
+const QWorkout = () => {
+  const questionnaireContext = useQuestionnaire();
+  const { workoutDays, setQuestionnaire } = useQuestionnaire();
+  const initialCheckboxState = workoutDays.reduce(
+    (acc, cur) => ({ ...acc, [`${cur}x per week`]: true }),
     {},
   );
 
-  const toggleChecked = (name: string) => {
+  const [checkedState, dispatch] = useReducer((state, action) => {
+    switch (action.type) {
+      case "toggle":
+        return { ...state, [action.payload]: !state[action.payload] };
+      default:
+        throw new Error();
+    }
+  }, initialCheckboxState);
+
+  const toggleChecked = (name) => {
     dispatch({ type: "toggle", payload: name });
   };
+
+  useEffect(() => {
+    const selectedWorkoutDays = Object.keys(checkedState)
+      .filter((key) => checkedState[key])
+      .map((day) => parseInt(day));
+    setQuestionnaire({ workoutDays: selectedWorkoutDays });
+  }, [checkedState]);
 
   return (
     <ImageBackground
@@ -32,9 +40,6 @@ const Qworkout = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <View className="mt-6 flex flex-1 items-center">
-        {/* <View className="w-full items-start justify-center px-4 py-3">
-          <ProgressBar />
-        </View> */}
         <View className="mt-4 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             How often would you like to
@@ -95,4 +100,4 @@ const Qworkout = () => {
     </ImageBackground>
   );
 };
-export default Qworkout;
+export default QWorkout;

@@ -4,10 +4,22 @@ import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
-import ProgressBar from "@/components/ProgressBar";
+import { useQuestionnaire } from "@/context/useQuestionnaire";
 
 const QFitness = () => {
-  const [value, setValue] = useState("");
+  const { level, setQuestionnaire } = useQuestionnaire();
+  const [value, setValue] = useState(level || "");
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+    const levelValue =
+      newValue === "1"
+        ? "beginner"
+        : newValue === "2"
+        ? "intermediate"
+        : "advanced";
+    setQuestionnaire({ level: levelValue });
+  };
 
   return (
     <ImageBackground
@@ -15,9 +27,6 @@ const QFitness = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <View className="mt-6 flex flex-1 items-center">
-        {/* <View className="w-full items-start justify-center px-4 py-3">
-          <ProgressBar />
-        </View> */}
         <View className="mt-4 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             Are you new to
@@ -33,21 +42,21 @@ const QFitness = () => {
             body={"I'm a beginner"}
             name={"1"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Not really"}
             body={"I'm intermediate"}
             name={"2"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"No"}
             body={"I'm advanced, bro"}
             name={"3"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
