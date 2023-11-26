@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "ihealth",
+    "name": "iHealth Coach",
     "slug": "ihealth",
     "scheme": "ihealth",
     "version": "1.0.0",
@@ -19,7 +19,7 @@
       "supportsTablet": true,
       "backgroundColor": "#66eed2",
       "bundleIdentifier": "com.ihealthcoach.io",
-      "buildNumber": "1.0.2"
+      "buildNumber": "1.0.3"
     },
     "android": {
       "adaptiveIcon": {
