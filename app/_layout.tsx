@@ -6,23 +6,21 @@ import loadFonts from "@/lib/loadFonts";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
-  const { width, height } = Dimensions.get("window");
-
-  // console.log("width", width);
-  // console.log("height", height);
 
   if (!fontsLoaded && !fontError) {
     return null;
   }
 
   return (
-    <ImageBackground
-      className="h-full w-full flex-1"
-      source={require("@/assets/images/imageBg.png")}
-    >
-      <SafeAreaView className="flex-1">
-        <Slot />
-      </SafeAreaView>
-    </ImageBackground>
+    <View className="h-full w-full flex-1 bg-[#66eed2]">
+      <ImageBackground
+        className="h-full w-full flex-1"
+        source={require("@/assets/images/imageBg.png")}
+      >
+        <SafeAreaView className="flex-1">
+          <Slot />
+        </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 }
