@@ -10,10 +10,16 @@ import {
 import { router } from "expo-router";
 
 import Button from "@/components/Button";
-import ProgressBar from "@/components/ProgressBar";
+import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
 
-const QHeight = () => {
-  const [value, setValue] = useState("");
+const QAge = () => {
+  const { age, setQuestionnaire } = useQuestionnaire(); // Destructure 'age' and 'setQuestionnaire'
+  const [value, setValue] = useState(age?.toString() || "");
+
+  const handleAgeChange = (newValue) => {
+    setValue(newValue);
+    setQuestionnaire({ age: parseInt(newValue, 10) || null }); // Update the age in the context
+  };
 
   return (
     <ImageBackground
@@ -43,7 +49,7 @@ const QHeight = () => {
                 <TextInput
                   className="w-full text-center font-interRegular text-3xl leading-tight text-primary-800"
                   autoFocus={true}
-                  onChangeText={(numberString) => setValue(numberString)}
+                  onChangeText={(numberString) => handleAgeChange(numberString)}
                   value={value}
                   placeholderTextColor={"#5ad9c0"}
                   selectionColor={"#134E48"}
@@ -66,4 +72,4 @@ const QHeight = () => {
     </ImageBackground>
   );
 };
-export default QHeight;
+export default QAge;

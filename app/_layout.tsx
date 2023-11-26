@@ -6,10 +6,6 @@ import loadFonts from "@/lib/loadFonts";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
-  const { width, height } = Dimensions.get("window");
-
-  // console.log("width", width);
-  // console.log("height", height);
 
   if (!fontsLoaded && !fontError) {
     return null;
@@ -22,9 +18,7 @@ export default function Layout() {
         source={require("@/assets/images/imageBg.png")}
       >
         <SafeAreaView className="flex-1">
-          {/* <View className="bg-red-600"> */}
           <Slot />
-          {/* </View> */}
         </SafeAreaView>
       </ImageBackground>
     </View>

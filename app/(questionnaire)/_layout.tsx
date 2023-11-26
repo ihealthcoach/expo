@@ -5,6 +5,7 @@ import loadFonts from "@/lib/loadFonts";
 import { ProgressBarProvider } from "@/context/useProgressBar";
 import ProgressBar from "@/components/ProgressBar";
 import { ImageBackground, View } from "react-native";
+import { QuestionnaireProvider } from "@/context/useQuestionnaire";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
@@ -12,15 +13,6 @@ export default function Layout() {
   if (!fontsLoaded && !fontError) {
     return null;
   }
-
-  // return (
-  //   <ProgressBarProvider>
-  //     <View className="px-16 pt-8">
-  //       <ProgressBar />
-  //     </View>
-  //     <Slot />
-  //   </ProgressBarProvider>
-  // );
 
   return (
     <ImageBackground
@@ -32,40 +24,42 @@ export default function Layout() {
         <View className="px-16 pt-8">
           <ProgressBar />
         </View>
-        <Stack>
-          <Stack.Screen
-            name="age"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="bodytype"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="fitness"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="gender"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="height"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="weight"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="mainGoal"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="workout"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-        </Stack>
+        <QuestionnaireProvider>
+          <Stack>
+            <Stack.Screen
+              name="age"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="bodytype"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="fitness"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="gender"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="height"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="weight"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="mainGoal"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="workout"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+          </Stack>
+        </QuestionnaireProvider>
       </ProgressBarProvider>
     </ImageBackground>
   );

@@ -1,13 +1,22 @@
+// Next component is 'Workout'
+
 import React, { useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
 import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
-import ProgressBar from "@/components/ProgressBar";
+import { useQuestionnaire } from "@/context/useQuestionnaire";
 
 const QMainGoal = () => {
-  const [value, setValue] = useState("");
+  const questionnaireContext = useQuestionnaire();
+  const { goal, setQuestionnaire } = useQuestionnaire();
+  const [value, setValue] = useState(goal || "");
+
+  const handleValueChange = (newValue) => {
+    setValue(newValue);
+    setQuestionnaire({ goal: newValue });
+  };
 
   return (
     <ImageBackground
@@ -15,9 +24,6 @@ const QMainGoal = () => {
       source={require("@/assets/images/imageBg.png")}
     >
       <View className="mt-6 flex flex-1 items-center">
-        {/* <View className="w-full items-start justify-center px-4 py-3">
-          <ProgressBar />
-        </View> */}
         <View className="mt-4 flex items-center">
           <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
             What is your
@@ -33,21 +39,21 @@ const QMainGoal = () => {
             body={"Muscle size & visibility"}
             name={"1"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Get Stronger, Faster"}
             body={"Lift more weight"}
             name={"2"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Lose Fat"}
             body={"Burn a lot of calories"}
             name={"3"}
             value={value}
-            setValue={setValue}
+            setValue={handleValueChange}
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
