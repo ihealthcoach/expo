@@ -16,13 +16,17 @@ export default function Layout() {
   }
 
   return (
-    <ImageBackground
-      className="h-full w-full flex-1"
-      source={require("@/assets/images/imageBg.png")}
-    >
-      <SafeAreaView className="flex-1">
-        <Slot />
-      </SafeAreaView>
-    </ImageBackground>
+    <View className="h-full w-full flex-1 bg-[#66eed2]">
+      <ImageBackground
+        className="h-full w-full flex-1"
+        source={require("@/assets/images/imageBg.png")}
+      >
+        <SafeAreaView className="flex-1">
+          {/* <View className="bg-red-600"> */}
+          <Slot />
+          {/* </View> */}
+        </SafeAreaView>
+      </ImageBackground>
+    </View>
   );
 }

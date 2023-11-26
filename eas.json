@@ -19,6 +19,13 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "casper@ihealthcoach.io",
+        "ascAppId": "6472663456"
+        
+        // "appleTeamId": "AB12XYZ34S"
+      }
+    }
   }
 }
