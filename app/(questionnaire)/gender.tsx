@@ -60,7 +60,8 @@ const QGender = () => {
           </View>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button progress={0.25} text={"Continue"} path={"/mainGoal"} />
+          <Button progress={0.25} text={"Continue"} path={"/createAccount"} />
+          {/* <Button progress={0.25} text={"Continue"} path={"/mainGoal"} /> */}
           <Text
             onPress={() => router.back()}
             className="mb-4 text-center font-interMedium text-base text-primary-700"

@@ -23,7 +23,8 @@ type StaticRoutes =
   | "/height"
   | "/weight"
   | "/bodytype"
-  | "/fitness";
+  | "/fitness"
+  | "/continueWithEmail";
 
 const Button: React.FC<ButtonProps> = ({ text, path, progress }) => {
   const { setProgress } = useProgressBar();

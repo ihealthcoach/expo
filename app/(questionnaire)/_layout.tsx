@@ -58,11 +58,14 @@ export default function Layout() {
               options={{ headerShown: false, animation: "fade" }}
             />
             <Stack.Screen
+              name="continueWithEmail"
+              options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
               name="createAccount"
               options={{
                 headerShown: false,
                 animation: "fade",
-                presentation: "transparentModal",
               }}
             />
           </Stack>

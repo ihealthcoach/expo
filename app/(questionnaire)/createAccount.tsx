@@ -65,7 +65,7 @@ const QCreateAccount = () => {
             </Text>
           </View>
           <View className="mx-auto w-full items-center">
-            <View className="mb-2 flex-row overflow-hidden rounded-md border-2 border-gray-200">
+            {/* <View className="mb-2 flex-row overflow-hidden rounded-md border-2 border-gray-200">
               <Link
                 // onPress={handlePress}
                 className="flex-1 rounded-md border-gray-200 bg-white-ih px-6 py-4 font-interMedium text-base hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
@@ -90,8 +90,8 @@ const QCreateAccount = () => {
                   Sign in with Facebook
                 </Text>
               </Link>
-            </View>
-            <View className="mb-2 flex-row overflow-hidden rounded-md border-2 border-gray-200">
+            </View> */}
+            {/* <View className="mb-2 flex-row overflow-hidden rounded-md border-2 border-gray-200">
               <Link
                 // onPress={handlePress}
                 className="flex-1 rounded-md border-gray-200 bg-white-ih px-6 py-4 font-interMedium text-base hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
@@ -103,13 +103,13 @@ const QCreateAccount = () => {
                   Sign in with Apple
                 </Text>
               </Link>
-            </View>
+            </View> */}
             <View className="mb-2 flex-row overflow-hidden rounded-md border-2 border-gray-200">
               <Link
-                // onPress={handlePress}
+                // onPress={() => console.log("clicked")}
                 className="flex-1 rounded-md border-gray-200 bg-white-ih px-6 py-4 font-interMedium text-base hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
                 // href={path as StaticRoutes}
-                href="/createAccount"
+                href="/continueWithEmail"
                 asChild
               >
                 <Text className="text-center text-gray-900">
