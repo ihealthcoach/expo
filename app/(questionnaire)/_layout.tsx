@@ -4,7 +4,7 @@ import loadFonts from "@/lib/loadFonts";
 // Contexts
 import { ProgressBarProvider } from "@/context/useProgressBar";
 import ProgressBar from "@/components/ProgressBar";
-import { ImageBackground, View } from "react-native";
+import { ImageBackground, SafeAreaView, View } from "react-native";
 import { QuestionnaireProvider } from "@/context/useQuestionnaire";
 
 export default function Layout() {
@@ -17,7 +17,6 @@ export default function Layout() {
   return (
     <ImageBackground
       className="h-full w-full flex-1"
-      // className="h-full w-full flex-1 bg-[#66eed2]"
       source={require("@/assets/images/imageBg.png")}
     >
       <ProgressBarProvider>
@@ -57,6 +56,14 @@ export default function Layout() {
             <Stack.Screen
               name="workout"
               options={{ headerShown: false, animation: "fade" }}
+            />
+            <Stack.Screen
+              name="createAccount"
+              options={{
+                headerShown: false,
+                animation: "fade",
+                presentation: "transparentModal",
+              }}
             />
           </Stack>
         </QuestionnaireProvider>

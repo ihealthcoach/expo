@@ -12,13 +12,7 @@ const QFitness = () => {
 
   const handleValueChange = (newValue) => {
     setValue(newValue);
-    const levelValue =
-      newValue === "1"
-        ? "beginner"
-        : newValue === "2"
-        ? "intermediate"
-        : "advanced";
-    setQuestionnaire({ level: levelValue });
+    setQuestionnaire({ level: newValue });
   };
 
   return (
@@ -40,21 +34,21 @@ const QFitness = () => {
           <CardRadioButton
             headline={"Yes"}
             body={"I'm a beginner"}
-            name={"1"}
+            name={"beginner"}
             value={value}
             setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Not really"}
             body={"I'm intermediate"}
-            name={"2"}
+            name={"intermediate"}
             value={value}
             setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"No"}
             body={"I'm advanced, bro"}
-            name={"3"}
+            name={"advanced"}
             value={value}
             setValue={handleValueChange}
           />
