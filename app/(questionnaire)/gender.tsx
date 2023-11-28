@@ -14,7 +14,6 @@ import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 
 const QGender = () => {
-  const questionnaireContext = useQuestionnaire();
   const { gender, setQuestionnaire } = useQuestionnaire();
   const [value, setValue] = useState(gender || "");
 
