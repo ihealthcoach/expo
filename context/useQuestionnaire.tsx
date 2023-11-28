@@ -6,7 +6,6 @@ import React, {
   useEffect,
 } from "react";
 
-// Interface for the state properties
 interface QuestionnaireState {
   gender: "male" | "female" | "other" | null;
   goal: "muscles" | "weight-loss" | "strength" | null;
@@ -18,7 +17,6 @@ interface QuestionnaireState {
   bodytype: "ectomorph" | "mesomorph" | "endomorph" | "combination" | null;
 }
 
-// Updated interface including the state and function
 interface QuestionnaireContextData extends QuestionnaireState {
   setQuestionnaire: (data: Partial<QuestionnaireState>) => void;
 }
