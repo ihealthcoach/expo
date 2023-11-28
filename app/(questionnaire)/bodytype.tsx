@@ -7,7 +7,6 @@ import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
 
 const QBodytype = () => {
-  const questionnaireContext = useQuestionnaire(); // Get the entire context
   const { bodytype, setQuestionnaire } = useQuestionnaire(); // Destructure 'bodytype' and 'setQuestionnaire'
   const [value, setValue] = useState(bodytype || "");
 
@@ -76,7 +75,7 @@ const QBodytype = () => {
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button progress={1} text={"Continue"} path={"/mealsAndDiet"} />
+          <Button progress={1} text={"Continue"} path={"/createAccount"} />
           <Text
             onPress={() => router.back()}
             className="mb-4 text-center font-interMedium text-base text-primary-700"

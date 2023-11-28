@@ -1,32 +1,52 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
-// Define the shape of the context data
+// Interfaces
 interface ProgressBarContextData {
   progress: number;
   setProgress: (progress: number) => void;
+  showProgressBar: () => void;
+  hideProgressBar: () => void;
+  isVisible: boolean;
 }
 
-// Create the context with a default value
-const ProgressBarContext = createContext<ProgressBarContextData>({
-  progress: 0,
-  setProgress: (progress) => {}, // Implement this function to update the progress
-});
-
-export const useProgressBar = () => useContext(ProgressBarContext);
-
-// Define the type for the props of ProgressBarProvider
 interface ProgressBarProviderProps {
   children: ReactNode;
 }
 
+const ProgressBarContext = createContext<ProgressBarContextData>({
+  progress: 0,
+  setProgress: (progress) => {},
+  showProgressBar: () => {},
+  hideProgressBar: () => {},
+  isVisible: true,
+});
+
+export const useProgressBar = () => useContext(ProgressBarContext);
+
+export const useProgressBarVisibility = () => {
+  const { showProgressBar, hideProgressBar } = useProgressBar();
+  return { showProgressBar, hideProgressBar };
+};
+
 export const ProgressBarProvider: React.FC<ProgressBarProviderProps> = ({
   children,
 }) => {
+  const [isVisible, setIsVisible] = useState<boolean>(true);
   const [progress, setProgress] = useState<number>(0.125);
 
-  // Provide the context value with the state and updater function
+  const showProgressBar = () => setIsVisible(true);
+  const hideProgressBar = () => setIsVisible(false);
+
   return (
-    <ProgressBarContext.Provider value={{ progress, setProgress }}>
+    <ProgressBarContext.Provider
+      value={{
+        progress,
+        setProgress,
+        isVisible,
+        showProgressBar,
+        hideProgressBar,
+      }}
+    >
       {children}
     </ProgressBarContext.Provider>
   );
