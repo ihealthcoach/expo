@@ -9,7 +9,6 @@ import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 
 const QMainGoal = () => {
-  const questionnaireContext = useQuestionnaire();
   const { goal, setQuestionnaire } = useQuestionnaire();
   const [value, setValue] = useState(goal || "");
 
@@ -37,21 +36,21 @@ const QMainGoal = () => {
           <CardRadioButton
             headline={"Look Muscular & Toned"}
             body={"Muscle size & visibility"}
-            name={"1"}
+            name={"tone"}
             value={value}
             setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Get Stronger, Faster"}
             body={"Lift more weight"}
-            name={"2"}
+            name={"strength"}
             value={value}
             setValue={handleValueChange}
           />
           <CardRadioButton
             headline={"Lose Fat"}
             body={"Burn a lot of calories"}
-            name={"3"}
+            name={"weight-loss"}
             value={value}
             setValue={handleValueChange}
           />

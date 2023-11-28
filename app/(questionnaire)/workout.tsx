@@ -7,7 +7,6 @@ import CardCheckBox from "@/components/CardCheckBox";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 
 const QWorkout = () => {
-  const questionnaireContext = useQuestionnaire();
   const { workoutDays, setQuestionnaire } = useQuestionnaire();
   const initialCheckboxState = workoutDays.reduce(
     (acc, cur) => ({ ...acc, [`${cur}x per week`]: true }),
