@@ -4,6 +4,8 @@ import React, { createContext, useState, useContext, ReactNode } from "react";
 interface ProgressBarContextData {
   progress: number;
   setProgress: (progress: number) => void;
+  incrementProgress: (incrementValue: number) => void;
+  decrementProgress: (decrementValue: number) => void;
   showProgressBar: () => void;
   hideProgressBar: () => void;
   isVisible: boolean;
@@ -16,6 +18,8 @@ interface ProgressBarProviderProps {
 const ProgressBarContext = createContext<ProgressBarContextData>({
   progress: 0,
   setProgress: (progress) => {},
+  incrementProgress: (incrementValue) => {},
+  decrementProgress: (decrementValue) => {},
   showProgressBar: () => {},
   hideProgressBar: () => {},
   isVisible: true,
@@ -32,7 +36,19 @@ export const ProgressBarProvider: React.FC<ProgressBarProviderProps> = ({
   children,
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(true);
-  const [progress, setProgress] = useState<number>(0.125);
+  const [progress, setProgress] = useState<number>(12.5);
+  const [, setUpdateTrigger] = useState({});
+  // console.log("ProgressBarProvider", progress);
+
+  const incrementProgress = (incrementValue: number) => {
+    setProgress((prevProgress) => prevProgress + incrementValue);
+    setUpdateTrigger({});
+  };
+
+  const decrementProgress = (decrementValue: number) => {
+    setProgress((prevProgress) => Math.max(0, prevProgress - decrementValue));
+    setUpdateTrigger({});
+  };
 
   const showProgressBar = () => setIsVisible(true);
   const hideProgressBar = () => setIsVisible(false);
@@ -42,6 +58,8 @@ export const ProgressBarProvider: React.FC<ProgressBarProviderProps> = ({
       value={{
         progress,
         setProgress,
+        incrementProgress,
+        decrementProgress,
         isVisible,
         showProgressBar,
         hideProgressBar,

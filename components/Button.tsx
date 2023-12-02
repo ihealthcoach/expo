@@ -1,6 +1,6 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
-import { Link, router } from "expo-router";
+import { router } from "expo-router";
 
 // Contexts
 import { useProgressBar } from "@/context/useProgressBar";
@@ -27,12 +27,13 @@ type StaticRoutes =
   | "/continueWithEmail";
 
 const Button: React.FC<ButtonProps> = ({ text, path, progress }) => {
-  const { setProgress } = useProgressBar();
+  // console.log("Button1", progress);
+  // const { setProgress } = useProgressBar();
+  const { incrementProgress } = useProgressBar();
 
   const handlePress = () => {
-    if (progress !== undefined) {
-      setProgress(progress);
-    }
+    const incrementValue = progress !== undefined ? progress : 5; // Default increment value is 5 if none is provided
+    incrementProgress(incrementValue);
     router.push(path as StaticRoutes);
   };
 
@@ -53,16 +54,3 @@ const Button: React.FC<ButtonProps> = ({ text, path, progress }) => {
 };
 
 export default Button;
-
-{
-  /* <View className="mb-8 flex-row overflow-hidden rounded-md border-primary-700">
-      <Pressable
-        onPress={handlePress}
-        className="flex-1 rounded-md bg-primary-800 px-6 py-4 font-interMedium text-base text-white hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
-        // href={path as StaticRoutes}
-        // asChild
-      >
-        <Text className="text-center">{text}</Text>
-      </Pressable>
-    </View> */
-}
