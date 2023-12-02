@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
+import ButtonBack from "@/components/ButtonBack";
 
 const QBodytype = () => {
   const { bodytype, setQuestionnaire } = useQuestionnaire(); // Destructure 'bodytype' and 'setQuestionnaire'
@@ -76,12 +77,7 @@ const QBodytype = () => {
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
           <Button progress={1} text={"Continue"} path={"/createAccount"} />
-          <Text
-            onPress={() => router.back()}
-            className="mb-4 text-center font-interMedium text-base text-primary-700"
-          >
-            Back
-          </Text>
+          <ButtonBack />
         </View>
       </View>
     </ImageBackground>

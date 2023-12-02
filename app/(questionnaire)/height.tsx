@@ -12,6 +12,7 @@ import { router } from "expo-router";
 import Button from "@/components/Button";
 import Toggle from "@/components/Toggle";
 import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
+import ButtonBack from "@/components/ButtonBack";
 
 const QHeight = () => {
   const { height, setQuestionnaire } = useQuestionnaire(); // Destructure 'height' and 'setQuestionnaire'
@@ -69,12 +70,7 @@ const QHeight = () => {
           </View>
           <View className="absolute bottom-0 w-full px-4 pb-12">
             <Button progress={0.875} text={"Continue"} path={"/age"} />
-            <Text
-              onPress={() => router.back()}
-              className="mb-4 text-center font-interMedium text-base text-primary-700"
-            >
-              Back
-            </Text>
+            <ButtonBack />
           </View>
         </View>
       </KeyboardAvoidingView>

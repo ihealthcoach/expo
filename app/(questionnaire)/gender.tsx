@@ -1,7 +1,7 @@
 // Next component is 'Main Goal'
 
 import React, { useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, Pressable } from "react-native";
 
 // Expo
 import { router } from "expo-router";
@@ -12,6 +12,7 @@ import CardRadioButton from "@/components/CardRadioButton";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
+import ButtonBack from "@/components/ButtonBack";
 
 const QGender = () => {
   const { gender, setQuestionnaire } = useQuestionnaire();
@@ -60,14 +61,11 @@ const QGender = () => {
           </View>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          {/* <Button progress={0.25} text={"Continue"} path={"/createAccount"} /> */}
+          {/* Continue */}
           <Button progress={0.25} text={"Continue"} path={"/mainGoal"} />
-          <Text
-            onPress={() => router.back()}
-            className="mb-4 text-center font-interMedium text-base text-primary-700"
-          >
-            Back
-          </Text>
+          {/* Back button */}
+
+          <ButtonBack />
         </View>
       </View>
     </ImageBackground>
