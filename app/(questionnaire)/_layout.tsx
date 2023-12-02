@@ -27,39 +27,75 @@ export default function Layout() {
           <Stack>
             <Stack.Screen
               name="age"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="bodytype"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="fitness"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="gender"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="height"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="weight"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="mainGoal"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="workout"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="continueWithEmail"
-              options={{ headerShown: false, animation: "fade" }}
+              options={{
+                headerShown: false,
+                animation: "fade",
+                gestureEnabled: false,
+              }}
             />
             <Stack.Screen
               name="createAccount"
