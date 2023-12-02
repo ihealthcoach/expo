@@ -5,6 +5,7 @@ import { router } from "expo-router";
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
+import ButtonBack from "@/components/ButtonBack";
 
 const QFitness = () => {
   const { level, setQuestionnaire } = useQuestionnaire();
@@ -55,12 +56,7 @@ const QFitness = () => {
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
           <Button progress={0.625} text={"Continue"} path={"/weight"} />
-          <Text
-            onPress={() => router.back()}
-            className="mb-4 text-center font-interMedium text-base text-primary-700"
-          >
-            Back
-          </Text>
+          <ButtonBack />
         </View>
       </View>
     </ImageBackground>
