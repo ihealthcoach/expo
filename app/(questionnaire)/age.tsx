@@ -11,6 +11,7 @@ import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import { useQuestionnaire } from "@/context/useQuestionnaire"; // Import the context hook
+import ButtonBack from "@/components/ButtonBack";
 
 const QAge = () => {
   const { age, setQuestionnaire } = useQuestionnaire(); // Destructure 'age' and 'setQuestionnaire'
@@ -60,12 +61,7 @@ const QAge = () => {
           </View>
           <View className="absolute bottom-0 w-full px-4 pb-12">
             <Button progress={1} text={"Continue"} path={"/bodytype"} />
-            <Text
-              onPress={() => router.back()}
-              className="mb-4 text-center font-interMedium text-base text-primary-700"
-            >
-              Back
-            </Text>
+            <ButtonBack />
           </View>
         </View>
       </KeyboardAvoidingView>

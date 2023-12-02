@@ -1,12 +1,13 @@
 // Next component is 'Workout'
 
 import React, { useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, Pressable } from "react-native";
 import { router } from "expo-router";
 
 import Button from "@/components/Button";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
+import ButtonBack from "@/components/ButtonBack";
 
 const QMainGoal = () => {
   const { goal, setQuestionnaire } = useQuestionnaire();
@@ -56,13 +57,10 @@ const QMainGoal = () => {
           />
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-12">
-          <Button progress={0.375} text={"Continue"} path={"/workout"} />
-          <Text
-            onPress={() => router.back()}
-            className="mb-4 text-center font-interMedium text-base text-primary-700"
-          >
-            Back
-          </Text>
+          {/* Continue */}
+          <Button progress={0.25} text={"Continue"} path={"/workout"} />
+          {/* Back button */}
+          <ButtonBack />
         </View>
       </View>
     </ImageBackground>
