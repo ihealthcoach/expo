@@ -12,8 +12,9 @@ const ProgressBar = () => {
   const progressValue = useSharedValue(0);
 
   useEffect(() => {
-    progressValue.value = withTiming(progress * 100, { duration: 200 });
-  }, [progress]);
+    // Directly set the progressValue to the new progress
+    progressValue.value = withTiming(progress, { duration: 200 });
+  }, [progress]); // Dependency on progress
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
