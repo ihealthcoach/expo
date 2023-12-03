@@ -5,7 +5,7 @@ import ButtonBack from "./ButtonBack";
 
 const Bottom = ({ path }) => {
   return (
-    <View className="absolute bottom-0 w-full px-4 pb-6">
+    <View className="absolute bottom-0 w-full px-4 py-2">
       <Button progress={12.5} text={"Continue"} path={path} />
       <ButtonBack />
     </View>
