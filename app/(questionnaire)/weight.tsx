@@ -4,8 +4,10 @@ import {
   Text,
   TextInput,
   ImageBackground,
+  Keyboard,
   KeyboardAvoidingView,
   Platform,
+  Pressable,
 } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
@@ -53,6 +55,11 @@ const QWeight = () => {
           <View className="flex-1 items-center justify-center">
             <View className="mb-36 w-full">
               <View className="items-center">
+                {/* <Pressable onPress={Keyboard.dismiss}>
+                  <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
+                    Testing dismiss keyboard
+                  </Text>
+                </Pressable> */}
                 <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
                   Tell us your
                 </Text>
