@@ -20,7 +20,7 @@ export default function Layout() {
       source={require("@/assets/images/imageBg.png")}
     >
       <ProgressBarProvider>
-        <View className="px-16 pt-8">
+        <View className="px-16 pt-5">
           <ProgressBar />
         </View>
         <QuestionnaireProvider>

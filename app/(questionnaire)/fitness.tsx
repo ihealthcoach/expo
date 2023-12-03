@@ -8,6 +8,7 @@ import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar"; // Import useProgressBar
+import Bottom from "@/components/Bottom";
 
 const QFitness = () => {
   const { level, setQuestionnaire } = useQuestionnaire();
@@ -71,10 +72,7 @@ const QFitness = () => {
               setValue={handleValueChange}
             />
           </View>
-          <View className="absolute bottom-0 w-full px-4 pb-12">
-            <Button progress={12.5} text={"Continue"} path={"/weight"} />
-            <ButtonBack />
-          </View>
+          <Bottom path="/weight" />
         </View>
       </PanGestureHandler>
     </ImageBackground>

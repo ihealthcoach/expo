@@ -18,6 +18,7 @@ import ButtonBack from "@/components/ButtonBack";
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
+import Bottom from "@/components/Bottom";
 
 const QMainGoal = () => {
   const { goal, setQuestionnaire } = useQuestionnaire();
@@ -87,10 +88,7 @@ const QMainGoal = () => {
               setValue={handleValueChange}
             />
           </View>
-          <View className="absolute bottom-0 w-full px-4 pb-12">
-            <Button progress={12.5} text={"Continue"} path={"/workout"} />
-            <ButtonBack />
-          </View>
+          <Bottom path="/workout" />
         </View>
       </PanGestureHandler>
     </ImageBackground>

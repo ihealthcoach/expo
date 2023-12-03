@@ -17,8 +17,8 @@ const Card = ({ headline, body, name, value, setValue }) => {
       <View
         className={
           isChecked
-            ? "box-border flex-1 flex-row items-center justify-between rounded-md border-2 border-primary-600 bg-[#54d9c2] p-[3%] shadow-sm"
-            : "flex-1 flex-row items-center justify-between rounded-md border-[1px] border-primary-600 p-[3%]"
+            ? "box-border flex-1 flex-row items-center justify-between rounded-md border-2 border-primary-600 bg-[#54d9c2] p-4 shadow-sm"
+            : "flex-1 flex-row items-center justify-between rounded-md border-[1px] border-primary-600 p-4"
         }
       >
         <View>

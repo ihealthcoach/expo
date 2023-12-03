@@ -11,6 +11,7 @@ import CardRadioButton from "@/components/CardRadioButton";
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
+import Bottom from "@/components/Bottom";
 
 const QGender = () => {
   const { gender, setQuestionnaire } = useQuestionnaire();
@@ -70,13 +71,7 @@ const QGender = () => {
               />
             </View>
           </View>
-          <View className="absolute bottom-0 w-full px-4 pb-12">
-            {/* Continue */}
-            <Button progress={12.5} text={"Continue"} path={"/mainGoal"} />
-            {/* Back button */}
-
-            <ButtonBack />
-          </View>
+          <Bottom path="/mainGoal" />
         </View>
       </ImageBackground>
     </PanGestureHandler>
