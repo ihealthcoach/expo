@@ -12,7 +12,7 @@ const ButtonBack = () => {
   };
 
   return (
-    <Pressable onPress={handleBackPress}>
+    <Pressable className="pt-4" onPress={handleBackPress}>
       <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
         Back
       </Text>
