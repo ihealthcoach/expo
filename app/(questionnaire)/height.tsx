@@ -15,6 +15,7 @@ import Toggle from "@/components/Toggle";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar";
+import Bottom from "@/components/Bottom";
 
 const QHeight = () => {
   const { height, setQuestionnaire } = useQuestionnaire();
@@ -85,10 +86,7 @@ const QHeight = () => {
                 />
               </View>
             </View>
-            <View className="absolute bottom-0 w-full px-4 pb-12">
-              <Button progress={12.5} text={"Continue"} path={"/age"} />
-              <ButtonBack />
-            </View>
+            <Bottom path="/age" />
           </View>
         </KeyboardAvoidingView>
       </PanGestureHandler>

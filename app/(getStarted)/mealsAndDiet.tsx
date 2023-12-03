@@ -24,7 +24,7 @@ const GSmealsAndDiet = () => {
             and get inspiration for new recipes etc.
           </Text>
         </View>
-        <View className="absolute bottom-0 w-full px-4 pb-12">
+        <View className="absolute bottom-0 w-full px-4 pb-6">
           <Button text={"Continue"} path={"/progress"} />
           <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
             Already have an account?
