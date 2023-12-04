@@ -19,6 +19,7 @@ import ButtonBack from "@/components/ButtonBack";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
+import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 
 const QMainGoal = () => {
   const { goal, setQuestionnaire } = useQuestionnaire();
@@ -56,7 +57,11 @@ const QMainGoal = () => {
         failOffsetY={[-5, 5]}
       >
         <View className="mt-6 flex flex-1 items-center">
-          <View className="mt-4 flex items-center">
+          <Animated.View
+            className="mt-4 flex items-center"
+            entering={FadeInRight}
+            exiting={FadeOutLeft}
+          >
             <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
               What is your
             </Text>
@@ -87,7 +92,7 @@ const QMainGoal = () => {
               value={value}
               setValue={handleValueChange}
             />
-          </View>
+          </Animated.View>
           <Bottom path="/workout" />
         </View>
       </PanGestureHandler>

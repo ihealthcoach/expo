@@ -29,7 +29,7 @@ export default function Layout() {
               name="age"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -37,7 +37,7 @@ export default function Layout() {
               name="bodytype"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -45,7 +45,7 @@ export default function Layout() {
               name="fitness"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -53,7 +53,7 @@ export default function Layout() {
               name="gender"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -61,7 +61,7 @@ export default function Layout() {
               name="height"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -69,7 +69,7 @@ export default function Layout() {
               name="weight"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -77,7 +77,7 @@ export default function Layout() {
               name="mainGoal"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -85,7 +85,7 @@ export default function Layout() {
               name="workout"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -93,7 +93,7 @@ export default function Layout() {
               name="continueWithEmail"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
                 gestureEnabled: false,
               }}
             />
@@ -101,7 +101,7 @@ export default function Layout() {
               name="createAccount"
               options={{
                 headerShown: false,
-                animation: "fade",
+                animation: "none",
               }}
             />
           </Stack>

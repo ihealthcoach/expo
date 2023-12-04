@@ -9,6 +9,7 @@ import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
+import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 
 const QWorkout = () => {
   const { workoutDays, setQuestionnaire } = useQuestionnaire();
@@ -58,7 +59,11 @@ const QWorkout = () => {
         failOffsetY={[-5, 5]}
       >
         <View className="mt-6 flex flex-1 items-center">
-          <View className="mt-4 flex items-center">
+          <Animated.View
+            className="mt-4 flex items-center"
+            entering={FadeInRight}
+            exiting={FadeOutLeft}
+          >
             <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
               How often would you like to
             </Text>
@@ -104,7 +109,7 @@ const QWorkout = () => {
               isChecked={checkedState["7x per week"] || false}
               setIsChecked={() => toggleChecked("7x per week")}
             />
-          </View>
+          </Animated.View>
           <Bottom path="/fitness" />
         </View>
       </PanGestureHandler>
