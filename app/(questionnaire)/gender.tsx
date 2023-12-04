@@ -12,6 +12,11 @@ import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import Bottom from "@/components/Bottom";
+import Animated, {
+  FadeIn,
+  FadeOut,
+  FadeOutLeft,
+} from "react-native-reanimated";
 
 const QGender = () => {
   const { gender, setQuestionnaire } = useQuestionnaire();
@@ -41,7 +46,11 @@ const QGender = () => {
       >
         <View className="flex-1 items-center justify-center">
           <View className="mb-36 w-full">
-            <View className="items-center">
+            <Animated.View
+              className="items-center"
+              entering={FadeIn}
+              exiting={FadeOutLeft}
+            >
               <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
                 What is your
               </Text>
@@ -69,7 +78,7 @@ const QGender = () => {
                 value={value}
                 setValue={handleValueChange}
               />
-            </View>
+            </Animated.View>
           </View>
           <Bottom path="/mainGoal" />
         </View>
