@@ -89,13 +89,13 @@ export default function Account({ session }: { session: Session }) {
           onChangeText={(text) => setUsername(text)}
         />
       </View>
-      <View style={styles.verticallySpaced}>
+      {/* <View style={styles.verticallySpaced}>
         <Input
           label="Website"
           value={website || ""}
           onChangeText={(text) => setWebsite(text)}
         />
-      </View>
+      </View> */}
 
       <View style={[styles.verticallySpaced, styles.mt20]}>
         <Button

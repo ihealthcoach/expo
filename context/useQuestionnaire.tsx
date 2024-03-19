@@ -53,9 +53,9 @@ export const QuestionnaireProvider: React.FC<QuestionnaireProviderProps> = ({
     bodytype: null,
   });
 
-  // useEffect(() => {
-  //   console.log(questionnaire);
-  // }, [questionnaire]);
+  useEffect(() => {
+    console.log(questionnaire);
+  }, [questionnaire]);
 
   const setQuestionnaire = (data: Partial<QuestionnaireState>) => {
     setQuestionnaireState((prev) => ({ ...prev, ...data }));

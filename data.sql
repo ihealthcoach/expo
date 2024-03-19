@@ -74,3 +74,73 @@ create policy "Anyone can upload an avatar." on storage.objects
 
 create policy "Anyone can update their own avatar." on storage.objects
   for update using (auth.uid() = owner) with check (bucket_id = 'avatars');
+
+-- Supabase
+
+create table
+  public.user_profile (
+    -- users table
+    id uuid not null,
+    firstname text null,
+    lastname text null,
+    email text null,
+    avatar_url text null,
+    country text null,
+    language text null,
+    profile_id REFERENCE profile,
+    progress_id REFERENCE progress,
+    nutrition_id REFERENCE nutrition,
+
+    -- profile table
+    id uuid not null,
+    dob date null,
+    body_type text null,
+    gender text null,
+    main_goal text null,
+    height smallint null,
+    level text null,
+    workout_days smallint[] null,
+    experience text null,
+    preferred_workout_location text null,
+    activity_level text null,
+    injuries boolean null,
+    injuries_list text[] null,
+    steps_goal text null,
+
+    -- progress table
+    id uuid not null,
+    weight smallint null,
+    fat_percentage text null,
+    muscle_mass text null,
+    bmi text null,
+    body_measurements_thigh text null,
+    body_measurements_chest text null,
+    body_measurements_stomach text null,
+    body_measurements_glutes text null,
+    steps_current text null,
+    body_progress_image_front text null,
+    body_progress_image_back text null,
+    body_progress_image_side text null,
+
+
+    -- nutrition table
+    id uuid not null,
+    meals text null,
+    meal_variation text null,
+    food_allergies boolean null,
+    food_allergies_items text[] null,
+    food_items_avoid text[] null,
+    preferred_food_items text[] null,
+    calories_per_day text null,
+    protein_per_day text null,
+    fat_per_day text null,
+    carbohydrates_per_day text null,
+    created_at timestamp with time zone null,
+    -- profile_id REFERENCE profile smallint not null,
+  ) tablespace pg_default;
+
+    -- constraint user_profile_pkey primary key (profile_id),
+    -- constraint user_profile_user_id_key unique (user_id),
+    -- constraint user_profile_username_key unique (username),
+    -- constraint user_profile_user_id_fkey foreign key (user_id) references auth.users (id),
+    -- constraint username_length check ((char_length(username) >= 3))
