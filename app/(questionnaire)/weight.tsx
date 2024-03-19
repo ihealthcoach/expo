@@ -18,6 +18,15 @@ import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar"; // Import useProgressBar
 import Bottom from "@/components/Bottom";
+import Animated, {
+  FadeIn,
+  FadeInDown,
+  FadeInRight,
+  FadeInUp,
+  FadeOut,
+  FadeOutDown,
+  FadeOutLeft,
+} from "react-native-reanimated";
 
 const QWeight = () => {
   const { weight, setQuestionnaire } = useQuestionnaire();
@@ -55,7 +64,11 @@ const QWeight = () => {
         >
           <View className="flex-1 items-center justify-center">
             <View className="mb-36 w-full">
-              <View className="items-center">
+              <Animated.View
+                className="items-center"
+                entering={FadeIn}
+                exiting={FadeOut}
+              >
                 {/* <Pressable onPress={Keyboard.dismiss}>
                   <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
                     Testing dismiss keyboard
@@ -91,7 +104,7 @@ const QWeight = () => {
                   unit={unit}
                   setUnit={setUnit}
                 />
-              </View>
+              </Animated.View>
             </View>
             <Bottom path="/height" />
           </View>

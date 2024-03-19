@@ -10,6 +10,7 @@ interface ButtonProps {
   text: string;
   path: string;
   progress?: number; // The '?' makes the 'progress' prop optional
+  setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 type StaticRoutes =
@@ -26,13 +27,26 @@ type StaticRoutes =
   | "/fitness"
   | "/continueWithEmail";
 
-const Button: React.FC<ButtonProps> = ({ text, path, progress }) => {
+const Button: React.FC<ButtonProps> = ({
+  text,
+  path,
+  progress,
+  setIsVisible,
+}) => {
   const { incrementProgress } = useProgressBar();
 
   const handlePress = () => {
     const incrementValue = progress !== undefined ? progress : 5;
     incrementProgress(incrementValue);
-    router.push(path as StaticRoutes);
+    if (setIsVisible) {
+      setIsVisible(false);
+    }
+    // if (handleHideComponent) {
+    //   handleHideComponent();
+    // }
+    setTimeout(() => {
+      router.push(path as StaticRoutes);
+    }, 100);
   };
 
   return (
