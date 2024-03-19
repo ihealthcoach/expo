@@ -14,3 +14,21 @@ All notable changes to this project will be documented in this file.
 - Lowered buttons (bottom)
 - Raised progress bar (top)
 - Fixed size of cards for radio buttons
+
+## [1.0.9] - 03-12-2023
+
+### Fixed
+
+- Lowered buttons (bottom) - apparently, this was not fixed in 1.0.8
+
+## [1.0.10] - 04-12-2023
+
+### Added
+
+- Added Reanimated to Questionnaire
+
+## [1.0.11] - 04-12-2023
+
+### Fixed
+
+- Fixed Reanimated to Questionnaire
