@@ -1,14 +1,28 @@
 import React from "react";
-import { View } from "react-native";
+import { Pressable, View } from "react-native";
 import Button from "./Button";
 import ButtonBack from "./ButtonBack";
 
-const Bottom = ({ path }) => {
+type BottomProps = {
+  path: string;
+  setIsVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+const Bottom = ({ path, setIsVisible }: BottomProps) => {
+  // const Bottom = ({ path, setIsVisible }) => {
+  // onPress = () => {
+  //   console.log("pressed");
+  // }
   return (
-    <View className="absolute bottom-0 w-full px-4 py-2">
-      <Button progress={12.5} text={"Continue"} path={path} />
+    <Pressable className="absolute bottom-0 w-full px-4 py-2">
+      <Button
+        progress={12.5}
+        text={"Continue"}
+        path={path}
+        // setIsVisible={setIsVisible}
+      />
       <ButtonBack />
-    </View>
+    </Pressable>
   );
 };
 

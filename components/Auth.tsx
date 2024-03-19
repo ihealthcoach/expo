@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Alert, StyleSheet, View } from "react-native";
+import { useQuestionnaire } from "@/context/useQuestionnaire";
+// import { questionnaire } from "@/context/useQuestionnaire";
 import { supabase } from "@/lib/supabase";
 import { Button, Input } from "react-native-elements";
 
@@ -7,6 +9,9 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const { age, bodytype, gender, goal, height, level, weight, workoutDays } =
+    useQuestionnaire();
 
   async function signInWithEmail() {
     setLoading(true);
@@ -30,9 +35,30 @@ export default function Auth() {
     });
 
     if (error) Alert.alert(error.message);
-    if (!session)
+    if (!session) {
       Alert.alert("Please check your inbox for email verification!");
-    setLoading(false);
+      setLoading(false);
+    }
+
+    // Insert questionnaire data into profiles table
+
+    const { data, error: insertError } = await supabase
+      .from("profiles")
+      .update({
+        age,
+        body_type: bodytype,
+        gender,
+        goal,
+        height,
+        level,
+        weight,
+        workout_days: workoutDays,
+      })
+      .eq("id", session?.user?.id)
+      .select();
+    // console.log("data", data);
+    // console.log("insertError", insertError);
+    if (insertError) Alert.alert(insertError.message);
   }
 
   return (
