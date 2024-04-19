@@ -2,7 +2,11 @@
 
 import React, { useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
-import { PanGestureHandler, State } from "react-native-gesture-handler";
+import {
+  GestureHandlerRootView,
+  PanGestureHandler,
+  State,
+} from "react-native-gesture-handler";
 
 // Components
 import Button from "@/components/Button";

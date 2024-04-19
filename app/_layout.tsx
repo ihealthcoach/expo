@@ -2,6 +2,7 @@ import { Dimensions, ImageBackground, View } from "react-native";
 import { Slot, Stack } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import loadFonts from "@/lib/loadFonts";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 // import { useFonts } from "expo-font";
 
 export default function Layout() {
@@ -12,6 +13,7 @@ export default function Layout() {
   }
 
   return (
+    // <GestureHandlerRootView>
     <View className="h-full w-full flex-1 bg-[#66eed2]">
       <ImageBackground
         className="h-full w-full flex-1"
@@ -22,5 +24,6 @@ export default function Layout() {
         </SafeAreaView>
       </ImageBackground>
     </View>
+    // </GestureHandlerRootView>
   );
 }
