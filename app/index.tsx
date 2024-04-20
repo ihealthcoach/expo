@@ -12,7 +12,9 @@ export default function Page() {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      router.push("/(getStarted)/mealsAndDiet");
+      // Temporarily changed the route to /dashboard/landingpage
+      router.push("/(dashboard)/landingpage");
+      // router.push("/(getStarted)/mealsAndDiet");
     }, 3000);
     return () => {
       clearTimeout(timeout);
