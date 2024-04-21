@@ -15,7 +15,8 @@ export default function Page() {
       // Temporarily changed the route to /dashboard/landingpage
       router.push("/(dashboard)/landingpage");
       // router.push("/(getStarted)/mealsAndDiet");
-    }, 3000);
+    }, 30);
+    // }, 3000);
     return () => {
       clearTimeout(timeout);
     };

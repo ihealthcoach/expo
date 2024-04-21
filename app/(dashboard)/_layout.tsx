@@ -14,7 +14,7 @@ export default function Layout() {
     <View className="h-full w-full flex-1">
       <ImageBackground
         className="h-full w-full flex-1"
-        source={require("@/assets/images/dashboardLandingpage.png")}
+        source={require("@/assets/images/dashboard-landingpage/dashboardLandingpage.png")}
       >
         <Slot />
         {/* <Stack>
