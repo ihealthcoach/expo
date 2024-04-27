@@ -3,7 +3,7 @@ import { View, Text, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
-import Button from "@/components/Button";
+import ButtonOnboarding from "@/components/ButtonOnboarding";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";

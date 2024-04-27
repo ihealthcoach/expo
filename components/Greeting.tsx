@@ -1,10 +1,13 @@
 import { View, Text } from "react-native";
+
+// Zustand
+import { useUserStore } from "@/store/users";
+
 import React from "react";
 import Badge from "./Badge";
 
-const firstName = "Casper";
-
 const Greeting = () => {
+  const firstName = useUserStore((state) => state.firstName);
   return (
     <View className="mx-4 mb-6 mt-2 items-start justify-start">
       <Text className="font-interLight text-3xl leading-9">Good Morning</Text>

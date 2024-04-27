@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, View } from "react-native";
-import Button from "./Button";
+import ButtonOnboarding from "./ButtonOnboarding";
 import ButtonBack from "./ButtonBack";
 
 type BottomProps = {
@@ -15,7 +15,7 @@ const Bottom = ({ path, setIsVisible }: BottomProps) => {
   // }
   return (
     <Pressable className="absolute bottom-0 w-full px-4 py-2">
-      <Button
+      <ButtonOnboarding
         progress={12.5}
         text={"Continue"}
         path={path}

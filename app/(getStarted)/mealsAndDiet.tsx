@@ -2,7 +2,7 @@ import { View, Text, Pressable, ImageBackground } from "react-native";
 import React from "react";
 import { Stack, useRouter } from "expo-router";
 
-import Button from "@/components/Button";
+import ButtonOnboarding from "@/components/ButtonOnboarding";
 
 const GSmealsAndDiet = () => {
   const router = useRouter();
@@ -25,7 +25,7 @@ const GSmealsAndDiet = () => {
           </Text>
         </View>
         <View className="absolute bottom-0 w-full px-4 pb-6">
-          <Button text={"Continue"} path={"/progress"} />
+          <ButtonOnboarding text={"Continue"} path={"/progress"} />
           <Text className="mb-4 text-center font-interMedium text-base text-primary-700">
             Already have an account?
             <Text className="font-interBold"> Sign in</Text>{" "}

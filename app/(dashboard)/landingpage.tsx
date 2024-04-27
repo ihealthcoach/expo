@@ -1,22 +1,34 @@
 import Greeting from "@/components/Greeting";
 import Header from "@/components/Header";
-import TodaysGoals from "@/components/TodaysGoals";
+import TodayGoals from "@/components/TodayGoals";
 import React from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 
-// Test data
-// import data from "@/app/(dashboard)/data.json";
-
-// import { imageUrl } from "@/assets/images/dashboard-landingpage/avatar.png";
-// /home/zvzk/VS/reactnative/ihealth/assets/images/dashboard-landingpage/avatar.png
-// import avatarImage from "/app/assets/images/dashboard-landingpage/avatar.png";
+// Context
+// import { useProgressBar } from "@/context/useProgressBar";
 
 const landingpage = () => {
+  // const { incrementProgress } = useProgressBar();
+
+  // const handlePress = () => {
+  //   const incrementValue = progress !== undefined ? progress : 5;
+  //   incrementProgress(incrementValue);
+  //   if (setIsVisible) {
+  //     setIsVisible(false);
+  //   }
+  //   // if (handleHideComponent) {
+  //   //   handleHideComponent();
+  //   // }
+  //   setTimeout(() => {
+  //     router.push(path as StaticRoutes);
+  //   }, 100);
+  // };
+
   return (
     <View className="flex-1">
       <Header />
       <Greeting />
-      <TodaysGoals />
+      <TodayGoals />
     </View>
   );
 };

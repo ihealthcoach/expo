@@ -6,7 +6,7 @@ import { router } from "expo-router";
 import { useProgressBar } from "@/context/useProgressBar";
 
 // Define the type for the component props
-interface ButtonProps {
+interface ButtonOnboardingProps {
   text: string;
   path: string;
   progress?: number; // The '?' makes the 'progress' prop optional
@@ -27,7 +27,7 @@ type StaticRoutes =
   | "/fitness"
   | "/continueWithEmail";
 
-const Button: React.FC<ButtonProps> = ({
+const ButtonOnboarding: React.FC<ButtonOnboardingProps> = ({
   text,
   path,
   progress,
@@ -63,4 +63,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default ButtonOnboarding;
