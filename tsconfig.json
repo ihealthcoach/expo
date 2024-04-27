@@ -1,14 +1,13 @@
 {
   "compilerOptions": { "paths": { "@/*": ["./*"] } },
   "extends": "expo/tsconfig.base",
-  "exclude": [
-    "**/App.js",
-    "**/app/(getStarted)/index.tsx",
-  ],
+  "exclude": ["**/App.js", "**/app/(getStarted)/index.tsx"],
   "include": [
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-, "app/mealsAndDiet.tsx.backup", "app/(questionnaire)/_layout.tsx"  ]
+    "expo-env.d.ts",
+    "app/mealsAndDiet.tsx.backup",
+    "app/(questionnaire)/_layout.tsx"
+  ]
 }

@@ -29,6 +29,9 @@ importers:
       expo-font:
         specifier: ~11.10.3
         version: 11.10.3(expo@50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10))
+      expo-image:
+        specifier: ^1.10.6
+        version: 1.10.6(expo@50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10))
       expo-linking:
         specifier: ~6.2.2
         version: 6.2.2(expo@50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10))
@@ -77,6 +80,9 @@ importers:
       typescript:
         specifier: ^5.4.5
         version: 5.4.5
+      zustand:
+        specifier: ^4.5.2
+        version: 4.5.2(@types/react@18.2.79)(react@18.2.0)
     devDependencies:
       '@babel/core':
         specifier: ^7.20.0
@@ -2122,6 +2128,11 @@ packages:
 
   expo-font@11.10.3:
     resolution: {integrity: sha512-q1Td2zUvmLbCA9GV4OG4nLPw5gJuNY1VrPycsnemN1m8XWTzzs8nyECQQqrcBhgulCgcKZZJJ6U0kC2iuSoQHQ==}
+    peerDependencies:
+      expo: '*'
+
+  expo-image@1.10.6:
+    resolution: {integrity: sha512-vcnAIym1eU8vQgV1re1E7rVQZStJimBa4aPDhjFfzMzbddAF7heJuagyewiUkTzbZUwYzPaZAie6VJPyWx9Ueg==}
     peerDependencies:
       expo: '*'
 
@@ -4389,6 +4400,21 @@ packages:
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+
+  zustand@4.5.2:
+    resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
+    engines: {node: '>=12.7.0'}
+    peerDependencies:
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
+      react: '>=16.8'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      immer:
+        optional: true
+      react:
+        optional: true
 
 snapshots:
 
@@ -7138,6 +7164,11 @@ snapshots:
       expo: 50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10)
       fontfaceobserver: 2.3.0
 
+  expo-image@1.10.6(expo@50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10)):
+    dependencies:
+      '@react-native/assets-registry': 0.73.1
+      expo: 50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10)
+
   expo-keep-awake@12.8.2(expo@50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10)):
     dependencies:
       expo: 50.0.17(@babel/core@7.23.2)(@react-native/babel-preset@0.73.21(@babel/core@7.23.2)(@babel/preset-env@7.23.2(@babel/core@7.23.2)))(bufferutil@4.0.8)(utf-8-validate@5.0.10)
@@ -9521,3 +9552,10 @@ snapshots:
       yargs-parser: 21.1.1
 
   yocto-queue@0.1.0: {}
+
+  zustand@4.5.2(@types/react@18.2.79)(react@18.2.0):
+    dependencies:
+      use-sync-external-store: 1.2.0(react@18.2.0)
+    optionalDependencies:
+      '@types/react': 18.2.79
+      react: 18.2.0

@@ -9,7 +9,7 @@ import {
 } from "react-native-gesture-handler";
 
 // Components
-import Button from "@/components/Button";
+import ButtonOnboarding from "@/components/ButtonOnboarding";
 import CardRadioButton from "@/components/CardRadioButton";
 
 // Context
