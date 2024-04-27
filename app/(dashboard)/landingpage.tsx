@@ -2,33 +2,28 @@ import Greeting from "@/components/Greeting";
 import Header from "@/components/Header";
 import TodayGoals from "@/components/TodayGoals";
 import React from "react";
-import { View } from "react-native";
-
-// Context
-// import { useProgressBar } from "@/context/useProgressBar";
+import { ScrollView, View } from "react-native";
+import Button from "@/components/Button";
+import ArrowRightIcon from "@/assets/icons/arrow-right-mini";
+import TodayActivities from "@/components/TodayActivities";
+import AddWidget from "@/components/AddWidget";
 
 const landingpage = () => {
-  // const { incrementProgress } = useProgressBar();
-
-  // const handlePress = () => {
-  //   const incrementValue = progress !== undefined ? progress : 5;
-  //   incrementProgress(incrementValue);
-  //   if (setIsVisible) {
-  //     setIsVisible(false);
-  //   }
-  //   // if (handleHideComponent) {
-  //   //   handleHideComponent();
-  //   // }
-  //   setTimeout(() => {
-  //     router.push(path as StaticRoutes);
-  //   }, 100);
-  // };
-
   return (
-    <View className="flex-1">
-      <Header />
-      <Greeting />
-      <TodayGoals />
+    <View className="mx-4 flex-1">
+      <ScrollView>
+        <Header />
+        <Greeting />
+        <TodayGoals />
+        <Button
+          text="Start a workout"
+          bgColor="bg-gray-900"
+          onPress={() => console.log("Let's start a workout!")}
+          icon={<ArrowRightIcon fill="#FCFEFE" width={24} height={24} />}
+        />
+        <TodayActivities />
+        <AddWidget />
+      </ScrollView>
     </View>
   );
 };

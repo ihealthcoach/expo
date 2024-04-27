@@ -9,7 +9,7 @@ import imageUrl from "@/assets/images/dashboard-landingpage/avatar.png";
 
 const Header = () => {
   return (
-    <View className="mx-4 mb-6 mt-2 flex-row items-start justify-start">
+    <View className="mb-6 mt-2 flex-row items-start justify-start">
       <View className="flex-1 py-2">
         <Bars3BottomLeftIcon />
       </View>

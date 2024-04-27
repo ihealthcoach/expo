@@ -26,7 +26,7 @@ const TodayGoalsCard = ({
       style={{ backgroundColor: bgColor, marginRight: marginRight ? 8 : 0 }}
     >
       <View className="mb-1">{icon}</View>
-      <Text className="font-interSemiBold text-sm">{title}</Text>
+      <Text className="android:mb-4 font-interSemiBold text-sm">{title}</Text>
       <Text className="py-2 font-interMedium text-2xl">
         {value} <Text className="text-xs">{unit}</Text>
       </Text>

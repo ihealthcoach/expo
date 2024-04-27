@@ -9,7 +9,7 @@ import Badge from "./Badge";
 const Greeting = () => {
   const firstName = useUserStore((state) => state.firstName);
   return (
-    <View className="mx-4 mb-6 mt-2 items-start justify-start">
+    <View className="mb-6 mt-2 items-start justify-start">
       <Text className="font-interLight text-3xl leading-9">Good Morning</Text>
       <Text className="mb-3 font-interBold text-3xl leading-9">
         {firstName}
