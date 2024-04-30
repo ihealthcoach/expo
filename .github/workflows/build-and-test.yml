@@ -1,11 +1,11 @@
 on:
   - push
   - pull_request
+
 jobs:
-  preview:
+  install:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write # Allow comments on PRs
+   
     steps:
       - name: 🏗 Setup repo
         uses: actions/checkout@v3
@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 18.x
     
-    - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v3
         name: Install pnpm
         with:
           version: 8
