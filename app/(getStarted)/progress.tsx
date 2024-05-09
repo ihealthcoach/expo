@@ -1,12 +1,9 @@
 import { View, Text, ImageBackground } from "react-native";
 import React from "react";
-// import { useRouter } from "expo-router";
 
 import ButtonOnboarding from "@/components/ButtonOnboarding";
 
 const GSmealsAndDiet = () => {
-  // const router = useRouter();
-
   return (
     <ImageBackground
       className="h-full w-full flex-1"
