@@ -13,6 +13,7 @@ export type UsersState = {
   removeUser: (id: number) => void;
 };
 
+// TODO: Hardcoded needs to be fetched from user account in database
 const useUserStore = create<UsersState>((set) => ({
   users: [],
   firstName: "Casper",

@@ -16,7 +16,6 @@ export default function Layout() {
         className="h-full w-full flex-1"
         source={require("@/assets/images/imageBg.png")}
       >
-        {/* <Slot /> */}
         <Stack>
           <Stack.Screen
             name="goals"
