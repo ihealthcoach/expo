@@ -16,6 +16,7 @@ const Bottom = ({ path, setIsVisible }: BottomProps) => {
   return (
     <Pressable className="absolute bottom-0 w-full px-4 py-2">
       <ButtonOnboarding
+        // TODO: Create a flag for the progress - if 'bodyType' (last page), then no progress should be added.
         progress={12.5}
         text={"Continue"}
         path={path}

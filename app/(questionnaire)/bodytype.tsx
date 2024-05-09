@@ -9,7 +9,7 @@ import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
-import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
+// import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 
 const QBodytype = () => {
   const { bodytype, setQuestionnaire } = useQuestionnaire();
@@ -24,10 +24,10 @@ const QBodytype = () => {
       newValue === "1"
         ? "ectomorph"
         : newValue === "2"
-        ? "endomorph"
-        : newValue === "3"
-        ? "mesomorph"
-        : "combination";
+          ? "endomorph"
+          : newValue === "3"
+            ? "mesomorph"
+            : "combination";
     setQuestionnaire({ bodytype: bodyTypeValue });
   };
 
@@ -49,10 +49,10 @@ const QBodytype = () => {
         failOffsetY={[-5, 5]}
       >
         <View className="mt-6 flex flex-1 items-center">
-          <Animated.View
+          <View
             className="mt-4 flex items-center"
-            entering={FadeInRight}
-            exiting={FadeOutLeft}
+            // entering={FadeInRight}
+            // exiting={FadeOutLeft}
           >
             <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
               What is your
@@ -96,7 +96,7 @@ const QBodytype = () => {
               value={value}
               setValue={handleBodyTypeChange}
             />
-          </Animated.View>
+          </View>
           <Bottom path="/createAccount" />
         </View>
       </PanGestureHandler>
