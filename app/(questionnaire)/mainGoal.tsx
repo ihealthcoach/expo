@@ -2,29 +2,25 @@
 
 // React
 import React, { useState } from "react";
-import { View, Text, ImageBackground, Pressable } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 
 // Expo
 import { useRouter } from "expo-router";
 
 // Dependencies
-import { PanGestureHandler, State } from "react-native-gesture-handler";
+import { PanGestureHandler } from "react-native-gesture-handler";
 
 // Components
-import ButtonOnboarding from "@/components/ButtonOnboarding";
 import CardRadioButton from "@/components/CardRadioButton";
-import ButtonBack from "@/components/ButtonBack";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
-// import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 
 const QMainGoal = () => {
   const { goal, setQuestionnaire } = useQuestionnaire();
   const [value, setValue] = useState(goal || "");
-  // const [isVisible, setIsVisible] = useState(true);
 
   const router = useRouter();
 
@@ -36,17 +32,11 @@ const QMainGoal = () => {
   };
 
   const onGestureEvent = ({ nativeEvent }) => {
-    // setIsVisible(true);
     if (nativeEvent.translationX > 0) {
       decrementProgress(12.5);
       router.back();
     }
   };
-
-  // const handleHideComponent = () => {
-  //   console.log("handleHideComponent");
-  //   setIsVisible(false);
-  // };
 
   return (
     <ImageBackground
@@ -64,12 +54,7 @@ const QMainGoal = () => {
         failOffsetY={[-5, 5]}
       >
         <View className="mt-6 flex flex-1 items-center">
-          {/* {isVisible && ( */}
-          <View
-            className="mt-4 flex items-center"
-            // entering={FadeInRight}
-            // exiting={FadeOutLeft}
-          >
+          <View className="mt-4 flex items-center">
             <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
               What is your
             </Text>
@@ -101,17 +86,7 @@ const QMainGoal = () => {
               setValue={handleValueChange}
             />
           </View>
-          {/* )} */}
-          {/* <Pressable onPress={() => setIsVisible(false)}> */}
-          {/* <Pressable
-            className="border-2 border-red-500"
-            onPress={handleHideComponent}
-          > */}
-          {/* <Text>Testing Reanimated</Text> */}
           <Bottom path="/workout" />
-          {/* <Bottom path="/workout" setIsVisible={setIsVisible} /> */}
-          {/* </Pressable> */}
-          {/* </Pressable> */}
         </View>
       </PanGestureHandler>
     </ImageBackground>
