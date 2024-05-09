@@ -3,18 +3,18 @@
 import React, { useState } from "react";
 import { View, Text, ImageBackground } from "react-native";
 import {
-  GestureHandlerRootView,
+  // GestureHandlerRootView,
   PanGestureHandler,
   State,
 } from "react-native-gesture-handler";
 
 // Components
-import ButtonOnboarding from "@/components/ButtonOnboarding";
+// import ButtonOnboarding from "@/components/ButtonOnboarding";
 import CardRadioButton from "@/components/CardRadioButton";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
-import ButtonBack from "@/components/ButtonBack";
+// import ButtonBack from "@/components/ButtonBack";
 import Bottom from "@/components/Bottom";
 import Animated, { FadeIn, FadeOutLeft } from "react-native-reanimated";
 

@@ -15,7 +15,7 @@ import { useQuestionnaire } from "@/context/useQuestionnaire";
 import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
-import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
+// import Animated, { FadeIn, FadeOut } from "react-native-reanimated";
 
 const QAge = () => {
   const { age, setQuestionnaire } = useQuestionnaire();
@@ -53,10 +53,10 @@ const QAge = () => {
           <View className="flex-1 items-center justify-center">
             {/* <View className="absolute top-0 w-full items-start px-4 py-3"></View> */}
             <View className="mb-36 w-full">
-              <Animated.View
+              <View
                 className="items-center"
-                entering={FadeIn}
-                exiting={FadeOut}
+                // entering={FadeIn}
+                // exiting={FadeOut}
               >
                 <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
                   What is your
@@ -82,7 +82,7 @@ const QAge = () => {
                     keyboardType="numeric"
                   />
                 </View>
-              </Animated.View>
+              </View>
             </View>
             <Bottom path="/bodytype" />
           </View>
