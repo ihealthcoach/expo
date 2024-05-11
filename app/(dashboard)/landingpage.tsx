@@ -1,8 +1,8 @@
 import Greeting from "@/components/Greeting";
 import Header from "@/components/Header";
 import TodayGoals from "@/components/TodayGoals";
-import React, { useMemo, useState } from "react";
-import { ScrollView, View, Text } from "react-native";
+import React, { useMemo, useState, useRef } from "react";
+import { ScrollView, View, Text, Pressable } from "react-native";
 import Button from "@/components/Button";
 import ArrowRightIcon from "@/assets/icons/arrow-right-mini";
 import TodayActivities from "@/components/TodayActivities";
@@ -10,12 +10,30 @@ import AddWidget from "@/components/AddWidget";
 
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Link } from "expo-router";
-import PlusCircleIcon from "@/assets/icons/plus-circle-outline";
+// import PlusCircleIcon from "@/assets/icons/plus-circle-outline";
 import PlusIcon from "@/assets/icons/plus-mini-20";
+import {
+  BottomSheetModal,
+  BottomSheetModalProvider,
+} from "@gorhom/bottom-sheet";
+import BottomNavigation from "@/components/BottomNavigation";
+import HomeIcon from "@/assets/icons/vuesax-linear-home";
+import Chart2Icon from "@/assets/icons/vuesax-chart-2-outline";
+import ChartBarIcon from "@/assets/icons/chart-bar-outline";
+import BottomNavigationAllIcons from "@/components/BottomNavigationAllIcons";
+import XMarkIcon from "@/assets/icons/x-mark-mini";
 
 const landingpage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const snapPoints = useMemo(() => ["50%"], []);
+  // const snapPoints = useMemo(() => ["CONTENT_HEIGHT"], []);
+  const snapPoints = useMemo(() => ["55%"], []);
+  // TODO: Console warning: Function components cannot be given refs. Attempts to access this ref will fail. Did you mean to use React.forwardRef()?
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+
+  const handleClosePanel = () => bottomSheetRef.current?.close();
+  const handleOpenPanel = () => {
+    // bottomSheetRef.current?.expand();
+    bottomSheetRef.current?.present();
+  };
 
   return (
     <View className="mx-4 flex-1">
@@ -23,78 +41,80 @@ const landingpage = () => {
         <Header />
         <Greeting />
         <TodayGoals />
+
         <Button
           text="Start a workout"
           bgColor="bg-gray-900"
-          onPress={() => setIsVisible(!isVisible)}
+          onPress={handleClosePanel}
           icon={<ArrowRightIcon fill="#FCFEFE" width={24} height={24} />}
-        >
-        </Button>
+        />
         <TodayActivities />
         <AddWidget />
       </ScrollView>
-      <Button
+      {/* <Button
         text="Plus icon"
         bgColor="bg-gray-900"
-        onPress={() => setIsVisible(!isVisible)}
+        onPress={handleOpenPanel}
         icon={<PlusIcon fill="#FCFEFE" width={24} height={24} />}
-      >
-
-      </Button>
-      {isVisible && (
-        <BottomSheet
+      /> */}
+      {/* TODO: For now, all icons (in)active state is hardcoded into SVG */}
+      <BottomNavigationAllIcons handleOpenPanel={handleOpenPanel} />
+      <BottomSheetModalProvider>
+        <BottomSheetModal
+          ref={bottomSheetRef}
+          index={0}
+          // enableDynamicSizing={true}
           snapPoints={snapPoints}
-          backgroundStyle={{ borderRadius: 50, backgroundColor: "#FCFEFE" }}
-          handleIndicatorStyle={{ display: "none" }}
+          backgroundStyle={{ borderRadius: 20, backgroundColor: "#FCFEFE" }}
+          // style={[{ borderRadius: 100 }]}
+          handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
         >
+          {/* <BottomSheet snapPoints={snapPoints} ref={bottomSheetRef}> */}
           <View className="mx-4 mt-2 flex-1 items-center ">
-            <View className="items-center ">
- 
-              <Text className="text-2xl mb-4 font-interBold text-gray-900">
-                Workouts
-              </Text>
+            <View className="flex-1 items-center">
+              <View className="mb-6 w-full flex-row items-center justify-between">
+                <Text className="font-interBold text-2xl text-gray-900">
+                  Workouts
+                </Text>
+                <Pressable
+                  onPress={handleClosePanel}
+                  className="shrink rounded-full bg-gray-100 p-2"
+                >
+                  <XMarkIcon fill="#FCFEFE" width={24} height={24} />
+                </Pressable>
+              </View>
 
-              <Link
-                href="/trackWorkout"
-                asChild
-              >
-                <Button
-                  text="Track workout"
-                  bgColor="bg-gray-50 border border-gray-200"
-                  // onPress={() => setIsVisible(!isVisible)}
-              
-                />
-              </Link>
-
-              <Link
-                href="/workoutHistory"
-                asChild
-              >
-                <Button
-                  text="Workout history"
-                  bgColor="bg-gray-50 border border-gray-200"
-                  // onPress={() => setIsVisible(!isVisible)}
-                />
-
-              </Link>
-
-              <Link
-                href="/findWorkout"
-                asChild
-              >
-                <Button
-                  text="Find a workout"
-                  bgColor="bg-gray-50 border border-gray-200"
-                  // onPress={() => setIsVisible(!isVisible)}
-                />
-
-              </Link>
+              <View className="flex items-center justify-between ">
+                <Link href="#" asChild>
+                  <Button
+                    text="Track a workout"
+                    bgColor="bg-gray-50 border border-gray-200"
+                  />
+                </Link>
+                <Link href="#" asChild>
+                  <Button
+                    text="Workout history"
+                    bgColor="bg-gray-50 border border-gray-200"
+                  />
+                </Link>
+                <Link href="#" asChild>
+                  <Button
+                    text="My workout templates"
+                    bgColor="bg-gray-50 border border-gray-200"
+                  />
+                </Link>
+                <Link href="#" asChild>
+                  <Button
+                    text="Find a workout"
+                    bgColor="bg-gray-50 border border-gray-200"
+                  />
+                </Link>
+              </View>
             </View>
           </View>
-        </BottomSheet>
-      )
-      }
-
+          {/* </BottomSheet> */}
+        </BottomSheetModal>
+      </BottomSheetModalProvider>
     </View>
   );
 };

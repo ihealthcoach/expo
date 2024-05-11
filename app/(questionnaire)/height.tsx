@@ -10,17 +10,10 @@ import {
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
-import ButtonOnboarding from "@/components/ButtonOnboarding";
 import Toggle from "@/components/Toggle";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
-import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom";
-// import Animated, {
-//   FadeIn,
-//   FadeOut,
-//   FadingTransition,
-// } from "react-native-reanimated";
 
 const QHeight = () => {
   const { height, setQuestionnaire } = useQuestionnaire();
@@ -58,11 +51,7 @@ const QHeight = () => {
         >
           <View className="flex-1 items-center justify-center">
             <View className="mb-36 w-full">
-              <View
-                className="items-center"
-                // entering={FadeIn}
-                // exiting={FadeOut}
-              >
+              <View className="items-center">
                 <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
                   Tell us your
                 </Text>

@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 import TodayActivitiesRunning from "./TodayActivitiesRunning";
-import TodayActivitiesGym from "./TodayAcitivitesGym";
+import TodayActivitiesGym from "./TodayActivitiesGym";
 
 const TodayActivitiesCard = () => {
   return (
