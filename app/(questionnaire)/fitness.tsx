@@ -3,13 +3,10 @@ import { View, Text, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
-import ButtonOnboarding from "@/components/ButtonOnboarding";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
-import ButtonBack from "@/components/ButtonBack";
 import { useProgressBar } from "@/context/useProgressBar"; // Import useProgressBar
 import Bottom from "@/components/Bottom";
-// import Animated, { FadeInRight, FadeOutLeft } from "react-native-reanimated";
 
 const QFitness = () => {
   const { level, setQuestionnaire } = useQuestionnaire();
@@ -41,11 +38,7 @@ const QFitness = () => {
         failOffsetY={[-5, 5]}
       >
         <View className="mt-6 flex flex-1 items-center">
-          <View
-            className="mt-4 flex items-center"
-            // entering={FadeInRight}
-            // exiting={FadeOutLeft}
-          >
+          <View className="mt-4 flex items-center">
             <Text className="mb-2 text-xl font-semibold italic leading-tight text-primary-700">
               Are you new to
             </Text>
