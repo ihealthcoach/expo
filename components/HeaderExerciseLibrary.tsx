@@ -1,4 +1,5 @@
 import { View, Text, Pressable } from "react-native";
+import { useRouter } from "expo-router";
 import React from "react";
 import ArrowLeftIcon from "@/assets/icons/arrow-left-solid";
 import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
@@ -9,9 +10,12 @@ import CheckBadgeOutlineIcon from "@/assets/icons/check-badge-outline";
 import CheckOutlineIcon from "@/assets/icons/check-outline";
 
 const HeaderExerciseLibrary = () => {
+  const router = useRouter();
   return (
     <View className="mb-6 mt-4 flex-row items-center justify-between px-4">
-      <ArrowLeftIcon />
+      <Pressable onPress={() => router.back()} className="">
+        <ArrowLeftIcon />
+      </Pressable>
       <View className="flex-row items-center">
         <View className="mr-3 flex-row items-center">
           <Text className="mr-1 font-interMedium text-sm text-gray-600">

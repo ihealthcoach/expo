@@ -14,6 +14,7 @@ const BadgesExerciseLibrary = () => {
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
+        // BUG: contentOffset and contentInset are not working on Android
         contentOffset={{ x: -16, y: 0 }}
         contentInset={{ top: 0, left: 16, bottom: 0, right: 16 }}
         contentContainerStyle={{ display: "flex", gap: 10 }}

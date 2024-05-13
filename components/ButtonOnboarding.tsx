@@ -25,7 +25,8 @@ type StaticRoutes =
   | "/weight"
   | "/bodytype"
   | "/fitness"
-  | "/continueWithEmail";
+  | "/continueWithEmail"
+  | "/overview";
 
 const ButtonOnboarding: React.FC<ButtonOnboardingProps> = ({
   text,
