@@ -13,8 +13,11 @@ export default function Page() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       // Temporarily changed the route to /dashboard/landingpage
-      router.push("/(dashboard)/landingpage");
+      // router.push("/(workout)/exerciseLibrary");
+      // router.push("/(dashboard)/landingpage");
+      // router.push("/(questionnaire)/bodytype");
       // router.push("/(getStarted)/mealsAndDiet");
+      router.push("/(dev)/overview");
     }, 30);
     // }, 3000);
     return () => {

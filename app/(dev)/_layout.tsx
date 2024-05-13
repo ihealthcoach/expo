@@ -14,25 +14,10 @@ export default function Layout() {
   return (
     <ImageBackground
       className="h-full w-full flex-1"
-      source={require("@/assets/images/dashboard-landingpage/dashboardLandingpage.png")}
+      source={require("@/assets/images/imageBg.png")}
     >
       <SafeAreaView className="flex-1" edges={["top"]}>
         <Slot />
-        {/* </SafeAreaView> */}
-        {/* <Stack>
-          <Stack.Screen
-            name="goals"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="mealsAndDiet"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-          <Stack.Screen
-            name="progress"
-            options={{ headerShown: false, animation: "fade" }}
-          />
-        </Stack> */}
       </SafeAreaView>
     </ImageBackground>
   );

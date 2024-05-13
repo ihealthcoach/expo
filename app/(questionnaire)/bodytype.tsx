@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, Pressable } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
@@ -90,7 +90,15 @@ const QBodytype = () => {
               setValue={handleBodyTypeChange}
             />
           </View>
-          <Bottom path="/createAccount" />
+          {/* <Pressable
+            onPress={() => router.push("/(dev)/overview")}
+            className="absolute bottom-0 px-10 pb-12"
+          >
+            <Text className="m-12 text-center font-interMedium text-sm text-primary-800">
+              Overview
+            </Text>
+          </Pressable> */}
+          <Bottom path="/(dev)/overview" />
         </View>
       </PanGestureHandler>
     </ImageBackground>
