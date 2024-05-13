@@ -21,92 +21,94 @@ export default function Layout() {
       source={require("@/assets/images/imageBg.png")}
     >
       <ProgressBarProvider>
-        <View className="px-16 pt-5">
-          <ProgressBar />
-        </View>
-        <QuestionnaireProvider>
-          <Stack>
-            <Stack.Screen
-              name="age"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="bodytype"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="fitness"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="gender"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="height"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="weight"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="mainGoal"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="workout"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="continueWithEmail"
-              options={{
-                headerShown: false,
-                animation: "none",
-                gestureEnabled: false,
-              }}
-            />
-            <Stack.Screen
-              name="createAccount"
-              options={{
-                headerShown: false,
-                animation: "none",
-              }}
-            />
-          </Stack>
-        </QuestionnaireProvider>
+        <SafeAreaView className="flex-1">
+          <View className="px-16 pt-5">
+            <ProgressBar />
+          </View>
+          <QuestionnaireProvider>
+            <Stack>
+              <Stack.Screen
+                name="age"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="bodytype"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="fitness"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="gender"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="height"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="weight"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="mainGoal"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="workout"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="continueWithEmail"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                  gestureEnabled: false,
+                }}
+              />
+              <Stack.Screen
+                name="createAccount"
+                options={{
+                  headerShown: false,
+                  animation: "none",
+                }}
+              />
+            </Stack>
+          </QuestionnaireProvider>
+        </SafeAreaView>
       </ProgressBarProvider>
     </ImageBackground>
   );

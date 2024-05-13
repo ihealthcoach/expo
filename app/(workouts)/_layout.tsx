@@ -1,8 +1,8 @@
-import { Slot, Stack } from "expo-router";
+// import { Slot, Stack } from "expo-router";
 import loadFonts from "@/lib/loadFonts";
 import { ImageBackground, View, Text } from "react-native";
-import BottomSheet from "@gorhom/bottom-sheet";
-import { useMemo } from "react";
+// import BottomSheet from "@gorhom/bottom-sheet";
+// import { useMemo } from "react";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
@@ -11,7 +11,7 @@ export default function Layout() {
     return null;
   }
 
-  const snapPoints = useMemo(() => ["60%"], []);
+  // const snapPoints = useMemo(() => ["60%"], []);
 
   return (
     <View className="h-full w-full flex-1">
