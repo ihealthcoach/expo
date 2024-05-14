@@ -17,7 +17,7 @@
       "supportsTablet": true,
       "backgroundColor": "#66eed2",
       "bundleIdentifier": "com.ihealthcoach.io",
-      "buildNumber": "1.0.13"
+      "buildNumber": "1.0.14"
     },
     "android": {
       "adaptiveIcon": {
