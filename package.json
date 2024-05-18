@@ -4,7 +4,7 @@
   "main": "expo-router/entry",
   "scripts": {
     "start": "expo start --clear",
-    "start manjaro": "set BROWSER=/usr/bin/google-chrome-stable && expo start --clear",
+    "start_manjaro": "set BROWSER=/usr/bin/google-chrome-stable && expo start --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web"
@@ -24,6 +24,7 @@
     "expo-system-ui": "~3.0.4",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
+    "react-devtools": "^5.2.0",
     "react-native": "0.74.1",
     "react-native-elements": "^3.4.3",
     "react-native-gesture-handler": "~2.16.2",

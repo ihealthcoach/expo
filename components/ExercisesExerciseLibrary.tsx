@@ -69,6 +69,7 @@ const ExercisesScreen = () => {
           ref={sectionListRef}
           sections={sections}
           stickySectionHeadersEnabled
+          ListFooterComponent={<View style={{ marginBottom: 100 }} />}
           keyExtractor={(item, index) => item.id + index}
           renderItem={({ item }) => (
             <View className="flex-row items-center justify-between">
@@ -106,7 +107,6 @@ const ExercisesScreen = () => {
           onSelectLetter={handleSelectLetter}
         />
       </View>
-      {/* <Badge className="absolute bottom-4 w-4 shrink" isDark text="Test" /> */}
     </View>
     // </SafeAreaView>
   );
