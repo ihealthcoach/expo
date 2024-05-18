@@ -3,10 +3,12 @@ import React from "react";
 import HeaderExerciseLibrary from "@/components/HeaderExerciseLibrary";
 import BadgesExerciseLibrary from "@/components/BadgesExerciseLibrary";
 import ExercisesScreen from "@/components/ExercisesExerciseLibrary";
+import Badge from "@/components/Badge";
+import SortIcon from "@/assets/icons/vuesax-sort-linear";
 
-const exerciseLibrary = () => {
+const ExerciseLibrary = () => {
   return (
-    <View>
+    <View className="relative flex-1">
       <HeaderExerciseLibrary />
       <View className="mx-4 mb-6">
         <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
@@ -18,9 +20,15 @@ const exerciseLibrary = () => {
       </View>
       <BadgesExerciseLibrary />
       {/* <Text>exerciseLibrary</Text> */}
-      <ExercisesScreen />
+      <View className="flex-1">
+        <ExercisesScreen />
+      </View>
+      <View className="absolute bottom-8 right-8">
+        {/* TODO: Add/fix gap between badge and icon */}
+        <Badge className="w-full" isDark text="4" iconBefore={<SortIcon />} />
+      </View>
     </View>
   );
 };
 
-export default exerciseLibrary;
+export default ExerciseLibrary;
