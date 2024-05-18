@@ -9,9 +9,11 @@ interface BadgeProps {
   isDark?: boolean;
   isLight?: boolean;
   isWhite?: boolean;
+  className?: string;
 }
 
 const Badge = ({
+  className,
   text,
   iconBefore,
   iconAfter,
@@ -20,29 +22,22 @@ const Badge = ({
   isLight,
   isWhite,
 }: BadgeProps) => {
-  let badgeClassName = "flex-row items-center rounded-full px-4 py-3";
-  let textClassName = "font-interMedium";
+  let badgeClassName = `flex-row items-center rounded-full px-4 py-3 
+  ${hasBorder ? "border border-gray-900" : ""} 
+  ${isDark ? "bg-gray-900" : ""} 
+  ${isLight ? "bg-gray-200" : ""} 
+  ${isWhite ? "bg-white" : ""} 
+  ${className}`;
 
-  if (hasBorder) {
-    badgeClassName += " border-[1px] border-gray-900";
-  }
-  if (isDark) {
-    badgeClassName += " bg-gray-900";
-    textClassName += " text-white";
-  }
-  if (isLight) {
-    badgeClassName += " bg-gray-200";
-    textClassName += " text-gray-900";
-  }
-  if (isWhite) {
-    badgeClassName += " bg-white";
-    textClassName += " text-gray-600";
-  }
+  let textClassName = `font-interMedium 
+  ${isDark ? "text-white" : ""} 
+  ${isLight ? "text-gray-900" : ""} 
+  ${isWhite ? "text-gray-600" : ""}`;
 
   return (
-    <View className={badgeClassName}>
+    <View className={badgeClassName.trim()}>
       {iconBefore && <View className="mr-1">{iconBefore}</View>}
-      <Text className={textClassName}>{text}</Text>
+      <Text className={textClassName.trim()}>{text}</Text>
       {iconAfter && <View className="ml-1">{iconAfter}</View>}
     </View>
   );
