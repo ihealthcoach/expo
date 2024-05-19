@@ -13,7 +13,7 @@ const HeaderExerciseLibrary = () => {
   const router = useRouter();
   return (
     <View className="mb-6 mt-4 flex-row items-center justify-between px-4">
-      <Pressable onPress={() => router.back()} className="">
+      <Pressable onPress={() => router.back()}>
         <ArrowLeftIcon />
       </Pressable>
       <View className="flex-row items-center">

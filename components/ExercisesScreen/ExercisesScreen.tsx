@@ -65,7 +65,6 @@ const ExercisesScreen = () => {
     <View className="">
       <View className="flex-row">
         <SectionList
-          // className="h-2/4"
           ref={sectionListRef}
           sections={sections}
           stickySectionHeadersEnabled
