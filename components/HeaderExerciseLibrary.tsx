@@ -5,7 +5,7 @@ import ArrowLeftIcon from "@/assets/icons/arrow-left-solid";
 import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
 import PlusCircleIcon from "@/assets/icons/plus-circle-outline";
 import PlusIcon from "@/assets/icons/plus-mini-20";
-import Badge from "./Badge";
+import Badge from "./Badge/Badge";
 import CheckBadgeOutlineIcon from "@/assets/icons/check-badge-outline";
 import CheckOutlineIcon from "@/assets/icons/check-outline";
 

@@ -4,7 +4,7 @@ import { View, Text } from "react-native";
 import { useUserStore } from "@/store/users";
 
 import React from "react";
-import Badge from "./Badge";
+import Badge from "./Badge/Badge";
 
 const Greeting = () => {
   const firstName = useUserStore((state) => state.firstName);
