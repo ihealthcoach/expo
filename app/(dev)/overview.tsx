@@ -5,7 +5,7 @@ import React from "react";
 const overview = () => {
   const router = useRouter();
   return (
-    <View className="mx-4 flex-1 justify-center">
+    <View className="mx-4 h-full flex-1 justify-center">
       <Pressable
         onPress={() => router.push("/(dashboard)/landingpage")}
         className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
@@ -15,11 +15,11 @@ const overview = () => {
         </Text>
       </Pressable>
       <Pressable
-        onPress={() => router.push("/(workout)/exerciseLibrary")}
+        onPress={() => router.push("/(dev)/workout/overview")}
         className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
       >
         <Text className="text-center font-interMedium text-sm text-white">
-          Workout - Exercise Library
+          Workout - screens
         </Text>
       </Pressable>
       <Pressable
