@@ -5,7 +5,7 @@ import { Image } from "expo-image";
 
 import { SectionList, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import Badge from "./Badge";
+import Badge from "../Badge";
 
 interface Exercise {
   id: string;

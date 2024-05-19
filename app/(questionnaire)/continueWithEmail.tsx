@@ -2,7 +2,7 @@ import "react-native-url-polyfill/auto";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 import Auth from "@/components/Auth";
-import Account from "@/components/Account";
+import Account from "@/components/Account/Account";
 import { View } from "react-native";
 import { Session } from "@supabase/supabase-js";
 

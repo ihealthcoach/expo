@@ -2,7 +2,7 @@ import { View, Text, ImageBackground } from "react-native";
 import React from "react";
 import HeaderExerciseLibrary from "@/components/HeaderExerciseLibrary";
 import BadgesExerciseLibrary from "@/components/BadgesExerciseLibrary";
-import ExercisesScreen from "@/components/ExercisesExerciseLibrary";
+import ExercisesScreen from "@/components/ExercisesScreen/ExercisesScreen";
 import Badge from "@/components/Badge";
 import SortIcon from "@/assets/icons/vuesax-sort-linear";
 
