@@ -3,10 +3,14 @@ import React from "react";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
 import PlusIcon from "@/assets/icons/plus-mini-20";
-import Badge from "@/components/Badge";
+import Badge from "@/components/Badge/Badge";
 import CheckOutlineIcon from "@/assets/icons/check-outline";
 import HeartIcon from "@/assets/icons/heart-outline";
 import { Image } from "expo-image";
+import CheckMiniIcon from "@/assets/icons/check-mini";
+import CheckBox from "@/components/CheckBox";
+import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
+import Button from "@/components/Button/Button";
 
 const ExerciseDescription = () => {
   return (
@@ -87,7 +91,7 @@ const ExerciseDescription = () => {
             />
           </View>
         </View>
-        <View className="mx-4">
+        <View className="mx-4 mb-6">
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             How to
           </Text>
@@ -107,7 +111,7 @@ const ExerciseDescription = () => {
           <View className="mb-2 flex-row">
             <Text className="w-4 font-interRegular text-gray-600">3.</Text>
             <Text className="mr-4 font-interRegular text-gray-600">
-              ﻿Slowly lower the weights back to the starting position, twisting
+              Slowly lower the weights back to the starting position, twisting
               your forearms back to facing you.
             </Text>
           </View>
@@ -119,6 +123,126 @@ const ExerciseDescription = () => {
               practicing the technique.
             </Text>
           </View>
+        </View>
+        <View className="mx-4 mb-6">
+          <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
+            Your stats
+          </Text>
+          <View className="flex-row justify-between border-b-2 border-gray-200 py-3">
+            <Text className="font-interRegular text-sm text-gray-600">
+              Times logged
+            </Text>
+            <Text className="font-interMedium text-sm text-gray-600">24</Text>
+          </View>
+          <View className="flex-row justify-between border-b-2 border-gray-200 py-3">
+            <Text className="font-interRegular text-sm text-gray-600">
+              Weight lifted
+            </Text>
+            <Text className="font-interMedium text-sm text-gray-600">
+              999 kg
+            </Text>
+          </View>
+          <View className="flex-row justify-between border-b-2 border-gray-200 py-3">
+            <Text className="font-interRegular text-sm text-gray-600">
+              Number of sets
+            </Text>
+            <Text className="font-interMedium text-sm text-gray-600">72</Text>
+          </View>
+          <View className="flex-row justify-between py-3">
+            <Text className="font-interRegular text-sm text-gray-600">
+              Number of reps
+            </Text>
+            <Text className="font-interMedium text-sm text-gray-600">720</Text>
+          </View>
+        </View>
+        <View className="mx-4 mb-6">
+          <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
+            Benefits
+          </Text>
+          <View className="mb-2 flex-row">
+            <CheckMiniIcon className="mr-4" />
+            <Text className="font-interRegular text-sm text-gray-600">
+              Great for adding mass to the shoulders
+            </Text>
+          </View>
+          <View className="mb-2 flex-row">
+            <CheckMiniIcon className="mr-4" />
+            <Text className="font-interRegular text-sm text-gray-600">
+              May be more shoulder-friendly than palms-forward presses
+            </Text>
+          </View>
+          <View className="flex-row">
+            <CheckMiniIcon className="mr-4" />
+            <Text className="font-interRegular text-sm text-gray-600">
+              Great main movement on shoulder day or accessory move for other
+              presses
+            </Text>
+          </View>
+        </View>
+        <View className="mx-4 mb-6">
+          <Text className="mb-3 font-interSemiBold text-2xl leading-8 text-gray-900">
+            Exercise variations
+          </Text>
+          {/* First exercise */}
+          <View className="mb-2 flex-row items-center justify-between">
+            <View className="flex-row items-center">
+              <View className="mr-4">
+                <CheckBox checked />
+              </View>
+              <Image
+                source={require("@/assets/test-data/dumbbell_arnold_press.gif")}
+                contentFit="contain"
+                className="mr-4 h-16 w-16"
+              />
+              <View>
+                <Text className="font-interSemiBold text-base text-gray-900">
+                  Arnold press
+                </Text>
+                <Text className="font-interRegular text-xs text-gray-400">
+                  Biceps, Dumbbell
+                </Text>
+              </View>
+            </View>
+            <Text className="font-interSemiBold text-xs text-indigo-600">
+              Added
+            </Text>
+          </View>
+          {/* Second exercise */}
+          <View className="mb-2 flex-row items-center justify-between">
+            <View className="flex-row items-center">
+              <View className="mr-4">
+                <CheckBox />
+              </View>
+              <Image
+                source={require("@/assets/test-data/assisted_standing_chin-up_no_bg.gif")}
+                contentFit="contain"
+                className="mr-4 h-16 w-16"
+              />
+              <View>
+                <Text className="font-interSemiBold text-base text-gray-900">
+                  Assisted chin ups
+                </Text>
+                <Text className="font-interRegular text-xs text-gray-400">
+                  Lats, Machine
+                </Text>
+              </View>
+            </View>
+            <ChevronRightIcon />
+          </View>
+        </View>
+        <View className="mx-4">
+          <Button
+            text="Add exercise to workout"
+            bgColor="bg-indigo-600"
+            iconBefore={<PlusIcon fill="#FCFEFE" />}
+          />
+          <Button
+            text="Add to favorites"
+            bgColor="bg-gray-50"
+            textColor="text-gray-700"
+            border="border-[1px] border-gray-200"
+            iconBefore={<HeartIcon stroke="#374151" />}
+          />
         </View>
       </ScrollView>
     </View>

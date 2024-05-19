@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import React from "react";
-import Badge from "./Badge";
+import Badge from "./Badge/Badge";
 import BarsArrowDownIcon from "@/assets/icons/bars-arrow-down-outline";
 import ClockOutline24Icon from "@/assets/icons/clock-outline-24";
 import HeartIcon from "@/assets/icons/heart-outline";
