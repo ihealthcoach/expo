@@ -46,7 +46,7 @@ const landingpage = () => {
           text="Start a workout"
           bgColor="bg-gray-900"
           onPress={handleClosePanel}
-          icon={<ArrowRightIcon fill="#FCFEFE" width={24} height={24} />}
+          iconAfter={<ArrowRightIcon fill="#FCFEFE" width={24} height={24} />}
         />
         <TodayActivities />
         <AddWidget />

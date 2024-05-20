@@ -30,7 +30,7 @@ const Badge = ({
   ${className}`;
 
   let textClassName = `font-interMedium 
-  ${isDark ? "text-white" : ""} 
+  ${isDark ? "text-white-ih" : ""} 
   ${isLight ? "text-gray-900" : ""} 
   ${isWhite ? "text-gray-600" : ""}`;
 
