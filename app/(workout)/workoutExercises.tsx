@@ -13,30 +13,46 @@ import Button from "@/components/Button/Button";
 import PlusIcon from "@/assets/icons/plus-mini-20";
 import { SwipeListView } from "react-native-swipe-list-view";
 import { Image } from "expo-image";
+import XMarkIcon from "@/assets/icons/x-mark-mini";
+
+// TODO: The custom styles for the swiped cards are missing.
 
 const WorkoutExercises = () => {
   const { exercises, deleteExercise } = useExerciseStore();
 
   const renderItem = ({ item }: { item: Exercise }) => (
-    console.log(item.gif_path),
-    (
-      <View className="flex justify-center border border-gray-300 bg-white">
+    <View className="mb-2 flex-row items-center justify-between bg-gray-100">
+      <View className="flex-row items-center justify-start">
         <Image
           source={{ uri: item.gif_path }}
-          style={{ width: 50, height: 50 }}
+          style={{ width: 68, height: 68 }}
         />
-        <Text>{item.name}</Text>
+        <View className="ml-2">
+          <Text className="font-interSemiBold text-base leading-5">
+            {item.name}
+          </Text>
+          <Text className="font-interRegular text-xs text-gray-400">
+            {item.sets_completed} of {item.total_sets} completed sets
+          </Text>
+        </View>
       </View>
-    )
+      {item.status === "Completed" ? (
+        <Text className="font-interSemiBold text-xs text-indigo-600">
+          Completed
+        </Text>
+      ) : (
+        <EllipsisHorizontalIcon fill={"#9CA3AF"} stroke={"#9CA3AF"} />
+      )}
+    </View>
   );
 
   const renderHiddenItem = (data, rowMap) => (
-    <View className="flex-1 flex-row items-center justify-end bg-red-500 pl-4">
+    <View className="flex-1 flex-row items-center justify-end pl-4">
       <TouchableOpacity
-        className="w-12 items-center justify-center bg-red-500"
+        className="h-full w-[75px] items-center justify-center border-b-8 border-gray-100 bg-red-500"
         onPress={() => deleteRow(rowMap, data.item.key)}
       >
-        <Text className="text-white">X</Text>
+        <XMarkIcon stroke="#FCFEFE" fill="#FCFEFE" />
       </TouchableOpacity>
     </View>
   );
@@ -66,7 +82,7 @@ const WorkoutExercises = () => {
           <EllipsisHorizontalIcon />
         </View>
       </HeaderWithBackArrow>
-      <View className="mx-4">
+      <View className="mx-4 mb-6">
         <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
           Workout
         </Text>
@@ -75,12 +91,12 @@ const WorkoutExercises = () => {
         </Text>
       </View>
 
-      <View className="mx-4">
+      <View className="mx-4 mb-6">
         <SwipeListView
           data={exercises}
           renderItem={renderItem}
           renderHiddenItem={renderHiddenItem}
-          rightOpenValue={-50}
+          rightOpenValue={-75}
           disableRightSwipe
         />
       </View>
