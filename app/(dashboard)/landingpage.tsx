@@ -1,4 +1,4 @@
-import Greeting from "@/components/Greeting";
+import Greeting from "@/components/Greeting/Greeting";
 import Header from "@/components/Header";
 import TodayGoals from "@/components/TodayGoals";
 import React, { useMemo, useState, useRef } from "react";
@@ -6,7 +6,7 @@ import { ScrollView, View, Text, Pressable } from "react-native";
 import Button from "@/components/Button/Button";
 import ArrowRightIcon from "@/assets/icons/arrow-right-mini";
 import TodayActivities from "@/components/TodayActivities";
-import AddWidget from "@/components/AddWidget";
+import AddWidget from "@/components/AddWidget/AddWidget";
 
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Link } from "expo-router";

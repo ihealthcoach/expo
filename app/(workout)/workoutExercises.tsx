@@ -1,5 +1,10 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useState } from "react";
+
+// import exercises from "@/assets/test-data/workout-exercises.json";
+import type { Exercise } from "@/types/exercises";
+import useExerciseStore from "@/store/exercises";
+
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import Badge from "@/components/Badge/Badge";
 import BookmarkIcon from "@/assets/icons/bookmark-outline";
@@ -7,18 +12,22 @@ import EllipsisHorizontalIcon from "@/assets/icons/ellipsis-horizontal-outline";
 import Button from "@/components/Button/Button";
 import PlusIcon from "@/assets/icons/plus-mini-20";
 import { SwipeListView } from "react-native-swipe-list-view";
+import { Image } from "expo-image";
 
 const WorkoutExercises = () => {
-  const [listData, setListData] = useState(
-    Array(5)
-      .fill("")
-      .map((_, i) => ({ key: `${i}`, text: `item #${i}` })),
-  );
+  const { exercises, deleteExercise } = useExerciseStore();
 
-  const renderItem = (data) => (
-    <View className="flex h-12 justify-center border border-gray-300 bg-white">
-      <Text>{data.item.text}</Text>
-    </View>
+  const renderItem = ({ item }: { item: Exercise }) => (
+    console.log(item.gif_path),
+    (
+      <View className="flex justify-center border border-gray-300 bg-white">
+        <Image
+          source={{ uri: item.gif_path }}
+          style={{ width: 50, height: 50 }}
+        />
+        <Text>{item.name}</Text>
+      </View>
+    )
   );
 
   const renderHiddenItem = (data, rowMap) => (
@@ -27,17 +36,14 @@ const WorkoutExercises = () => {
         className="w-12 items-center justify-center bg-red-500"
         onPress={() => deleteRow(rowMap, data.item.key)}
       >
-        <Text className="text-white">Delete</Text>
+        <Text className="text-white">X</Text>
       </TouchableOpacity>
     </View>
   );
 
-  const deleteRow = (rowMap, rowKey) => {
+  const deleteRow = (rowMap: any, rowKey: number) => {
     closeRow(rowMap, rowKey);
-    const newData = [...listData];
-    const prevIndex = listData.findIndex((item) => item.key === rowKey);
-    newData.splice(prevIndex, 1);
-    setListData(newData);
+    deleteExercise(rowKey);
   };
 
   const closeRow = (rowMap, rowKey) => {
@@ -71,15 +77,11 @@ const WorkoutExercises = () => {
 
       <View className="mx-4">
         <SwipeListView
-          data={listData}
+          data={exercises}
           renderItem={renderItem}
           renderHiddenItem={renderHiddenItem}
           rightOpenValue={-50}
           disableRightSwipe
-
-          // previewRowKey={"0"}
-          // previewOpenValue={-40}
-          // previewOpenDelay={3000}
         />
       </View>
 

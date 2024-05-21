@@ -16,7 +16,7 @@ import CardRadioButton from "@/components/CardRadioButton";
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
-import Bottom from "@/components/Bottom";
+import Bottom from "@/components/Bottom/Bottom";
 
 const QMainGoal = () => {
   const { goal, setQuestionnaire } = useQuestionnaire();

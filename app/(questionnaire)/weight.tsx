@@ -13,7 +13,7 @@ import { PanGestureHandler } from "react-native-gesture-handler";
 import Toggle from "@/components/Toggle";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar"; // Import useProgressBar
-import Bottom from "@/components/Bottom";
+import Bottom from "@/components/Bottom/Bottom";
 
 const QWeight = () => {
   const { weight, setQuestionnaire } = useQuestionnaire();
