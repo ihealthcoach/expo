@@ -6,7 +6,7 @@ import { PanGestureHandler } from "react-native-gesture-handler";
 import CardRadioButton from "@/components/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
-import Bottom from "@/components/Bottom";
+import Bottom from "@/components/Bottom/Bottom";
 
 const QBodytype = () => {
   const { bodytype, setQuestionnaire } = useQuestionnaire();

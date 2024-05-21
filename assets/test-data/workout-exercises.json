@@ -1,0 +1,38 @@
+[
+  {
+    "name": "Arnold press",
+    "sets_completed": 3,
+    "total_sets": 5,
+    "status": "Completed",
+    "gif_path": "assets/test-data/dumbbell_arnold_press.gif"
+  },
+  {
+    "name": "Assisted dips",
+    "sets_completed": 0,
+    "total_sets": 5,
+    "status": "Completed",
+    "gif_path": "assets/test-data/assisted_triceps_dip_(kneeling)_no_bg.gif"
+  },
+  {
+    "name": "Behind neck lat pulldowns",
+    "sets_completed": 0,
+    "total_sets": 5,
+    "status": "Pending",
+    "gif_path": "assets/test-data/cable_wide_grip_rear_pulldown_behind_neck_no_bg.gif"
+  },
+  {
+    "name": "Arnold press",
+    "muscles": ["Biceps", "Dumbbell"],
+    "sets_completed": 0,
+    "total_sets": 5,
+    "status": "Pending",
+    "gif_path": "assets/test-data/dumbbell_arnold_press.gif"
+  },
+  {
+    "name": "Calf raise",
+    "sets_completed": 0,
+    "total_sets": 5,
+    "status": "Pending",
+    "gif_path": "assets/test-data/bodyweight_standing_calf_raise_no_bg.gif"
+  }
+]

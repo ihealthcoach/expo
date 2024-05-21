@@ -57,6 +57,18 @@ const Button = ({
           </View>
         </Pressable>
       )}
+      {!iconBefore && !iconAfter && (
+        <Pressable
+          onPress={onPress}
+          className={`flex-1 rounded-md ${bgColor} px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700 ${border}`}
+        >
+          <Text
+            className={`text-center font-interMedium text-base ${textColor}`}
+          >
+            {text}
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 };

@@ -9,7 +9,7 @@ import CardRadioButton from "@/components/CardRadioButton";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
-import Bottom from "@/components/Bottom";
+import Bottom from "@/components/Bottom/Bottom";
 
 const QGender = () => {
   const { gender, setQuestionnaire } = useQuestionnaire();

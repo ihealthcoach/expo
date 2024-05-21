@@ -12,7 +12,7 @@ import { PanGestureHandler } from "react-native-gesture-handler";
 
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
-import Bottom from "@/components/Bottom";
+import Bottom from "@/components/Bottom/Bottom";
 
 const QAge = () => {
   const { age, setQuestionnaire } = useQuestionnaire();

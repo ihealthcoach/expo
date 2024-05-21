@@ -71,6 +71,9 @@ dependencies:
   react-native-svg:
     specifier: ^15.2.0
     version: 15.2.0(react-native@0.74.1)(react@18.2.0)
+  react-native-swipe-list-view:
+    specifier: ^3.2.9
+    version: 3.2.9(prop-types@15.8.1)(react-native@0.74.1)(react@18.2.0)
   react-native-url-polyfill:
     specifier: ^2.0.0
     version: 2.0.0(react-native@0.74.1)
@@ -7685,6 +7688,18 @@ packages:
     dependencies:
       css-select: 5.1.0
       css-tree: 1.1.3
+      react: 18.2.0
+      react-native: 0.74.1(@babel/core@7.24.4)(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
+    dev: false
+
+  /react-native-swipe-list-view@3.2.9(prop-types@15.8.1)(react-native@0.74.1)(react@18.2.0):
+    resolution: {integrity: sha512-SjAEuHc/D6ovp+RjDUhfNmw6NYOntdT7+GFhfMGfP/BSLMuMWynpzJy9GKQeyB8sI78T6Lzip21TVbongOg1Mw==}
+    peerDependencies:
+      prop-types: '>=15.5.0'
+      react: '>=0.14.8'
+      react-native: '>=0.23.1'
+    dependencies:
+      prop-types: 15.8.1
       react: 18.2.0
       react-native: 0.74.1(@babel/core@7.24.4)(@babel/preset-env@7.24.4)(@types/react@18.2.79)(react@18.2.0)
     dev: false
