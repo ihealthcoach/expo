@@ -15,6 +15,8 @@ import { SwipeListView } from "react-native-swipe-list-view";
 import { Image } from "expo-image";
 import XMarkIcon from "@/assets/icons/x-mark-mini";
 
+// TODO: The custom styles for the swiped cards are missing.
+
 const WorkoutExercises = () => {
   const { exercises, deleteExercise } = useExerciseStore();
 
