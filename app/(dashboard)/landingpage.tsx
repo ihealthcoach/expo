@@ -16,11 +16,11 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import BottomNavigation from "@/components/BottomNavigation";
+import BottomNavigation from "@/components/BottomNavigation/BottomNavigation";
 import HomeIcon from "@/assets/icons/vuesax-linear-home";
 import Chart2Icon from "@/assets/icons/vuesax-chart-2-outline";
 import ChartBarIcon from "@/assets/icons/chart-bar-outline";
-import BottomNavigationAllIcons from "@/components/BottomNavigationAllIcons";
+import BottomNavigationAllIcons from "@/components/BottomNavigationAllIcons/BottomNavigationAllIcons";
 import XMarkIcon from "@/assets/icons/x-mark-mini";
 
 const landingpage = () => {

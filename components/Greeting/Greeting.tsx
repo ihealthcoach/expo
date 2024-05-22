@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 
 // Zustand
-import { useUserStore } from "@/store/users";
+import { useUserStore } from "@/store/usersStore";
 
 import React from "react";
 import Badge from "@/components/Badge/Badge";

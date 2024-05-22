@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 // import exercises from "@/assets/test-data/workout-exercises.json";
 import type { Exercise } from "@/types/exercises";
-import useExerciseStore from "@/store/exercises";
+import useExerciseStore from "@/store/exercisesStore";
 
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import Badge from "@/components/Badge/Badge";
