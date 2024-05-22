@@ -34,6 +34,14 @@ const Overview = () => {
             Workout - Workout exercises
           </Text>
         </Pressable>
+        <Pressable
+          onPress={() => router.push("/(workout)/exerciseTracking")}
+          className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+        >
+          <Text className="text-center font-interMedium text-sm text-white">
+            Workout - Exercise tracking
+          </Text>
+        </Pressable>
       </View>
     </View>
   );

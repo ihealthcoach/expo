@@ -10,7 +10,6 @@ const PlusIcon = (props: PlusIconProps) => (
     width={20} // Adjusted to match the SVG's width
     height={20} // Set the height of the SVG
     viewBox="0 0 20 20" // Set the viewBox to match the SVG's dimensions
-    fill={props.fill || "#000"} // Set the default fill color
     {...props} // Spread the rest of the props for customization
   >
     <Path

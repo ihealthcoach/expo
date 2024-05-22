@@ -11,7 +11,6 @@ const useExerciseStore = create<ExerciseStore>((set) => ({
       status: "Completed",
       gif_path:
         "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
-      // gif_path: "@/assets/test-data/dumbbell_arnold_press.gif",
     },
     {
       id: 2,
