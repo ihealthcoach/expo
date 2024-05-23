@@ -3,6 +3,7 @@ import { Slot, Stack } from "expo-router";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import loadFonts from "@/lib/loadFonts";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 // import { useFonts } from "expo-font";
 
 export default function Layout() {
@@ -14,6 +15,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView className="flex-1">
+      {/* <BottomSheetModalProvider> */}
       {/* <View className="h-full w-full flex-1 bg-red-500"> */}
       {/* <View className="h-full w-full flex-1 bg-[#66eed2]"> */}
       {/* <ImageBackground
@@ -41,6 +43,7 @@ export default function Layout() {
         </Stack> */}
       {/* </ImageBackground> */}
       {/* </View> */}
+      {/* </BottomSheetModalProvider> */}
     </GestureHandlerRootView>
   );
 }

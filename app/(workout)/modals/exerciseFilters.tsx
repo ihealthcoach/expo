@@ -1,5 +1,4 @@
 import { View, Text } from "react-native";
-import React, { useEffect, useRef } from "react";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import ExerciseFilters from "@/components/Modals/ExerciseFilters/ExerciseFilters";
 

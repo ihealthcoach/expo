@@ -47,6 +47,24 @@ const Modals = () => {
             Exercise set type
           </Link>
           <Link
+            href={"/(workout)/modals/exerciseDescription"}
+            className="font-interMedium text-xl"
+          >
+            Exercise description
+          </Link>
+          <Link
+            href={"/(workout)/modals/exercisePreviousStats"}
+            className="font-interMedium text-xl"
+          >
+            Exercise previous stats
+          </Link>
+          {/* <Link
+            href={"/(workout)/modals/exerciseFilterPicker"}
+            className="font-interMedium text-xl"
+          >
+            Exercise filter picker
+          </Link> */}
+          <Link
             href={"/(workout)/modals/workoutsSettings"}
             className="font-interMedium text-xl"
           >
