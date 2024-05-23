@@ -21,11 +21,13 @@ const ExerciseFilters = () => {
 
   return (
     <View className="flex-1">
-      <Button
-        text="Open modal"
-        bgColor="bg-indigo-600"
-        onPress={handleOpenPanel}
-      />
+      <View className="mx-4">
+        <Button
+          text="Open modal"
+          bgColor="bg-indigo-600"
+          onPress={handleOpenPanel}
+        />
+      </View>
       <BottomSheetModalProvider>
         <BottomSheetModal
           ref={bottomSheetRef}

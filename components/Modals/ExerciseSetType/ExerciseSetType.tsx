@@ -1,13 +1,11 @@
-import { View, Text, Pressable, TextInput } from "react-native";
-import React, { useState, useMemo, useRef } from "react";
+import { View, Text, Pressable } from "react-native";
+import React, { useMemo, useRef } from "react";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 import XMarkIcon from "@/assets/icons/x-mark-mini";
-import { Link } from "expo-router";
 import Button from "@/components/Button/Button";
-import MagnifyingGlassIcon from "@/assets/icons/magnifying-glass-mini";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import RadioButton from "@/components/RadioButton/RadioButton";
 
@@ -59,11 +57,13 @@ const ExerciseSetType = () => {
 
   return (
     <View className="flex-1">
-      <Button
-        text="Open modal"
-        bgColor="bg-indigo-600"
-        onPress={handleOpenPanel}
-      />
+      <View className="mx-4">
+        <Button
+          text="Open modal"
+          bgColor="bg-indigo-600"
+          onPress={handleOpenPanel}
+        />
+      </View>
       <BottomSheetModalProvider>
         <BottomSheetModal
           ref={bottomSheetRef}
@@ -103,6 +103,9 @@ const ExerciseSetType = () => {
                       {set.description}
                     </Text>
                   </View>
+                  {/* <View>
+                    <ChevronRightIcon fill="#9CA3AF" width={20} height={20} />
+                  </View> */}
                   <RadioButton setName={set.name} />
                 </View>
               ))}

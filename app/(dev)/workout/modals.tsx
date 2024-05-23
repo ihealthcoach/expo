@@ -22,7 +22,7 @@ const Modals = () => {
 
   return (
     <View className="flex-1">
-      <HeaderWithBackArrow>
+      <HeaderWithBackArrow path="/(dev)/workout/overview">
         <Text>List of modals</Text>
       </HeaderWithBackArrow>
       <View className="mx-4 flex-1">
@@ -35,29 +35,25 @@ const Modals = () => {
           }}
         >
           <Link
-            href={"/(workout)/modals/exerciseFiltersModal"}
+            href={"/(workout)/modals/exerciseFilters"}
             className="font-interMedium text-xl"
           >
-            Exercise filters modal
+            Exercise filters
           </Link>
           <Link
             href={"/(workout)/modals/exerciseSetType"}
             className="font-interMedium text-xl"
           >
-            Exercise set type modal
+            Exercise set type
+          </Link>
+          <Link
+            href={"/(workout)/modals/workoutsSettings"}
+            className="font-interMedium text-xl"
+          >
+            Workout settings
           </Link>
         </ScrollView>
-        {/* <ExerciseFilters /> */}
-        {/* <ExerciseSetTypeModal /> */}
       </View>
-      {/* <View className="mx-4"> */}
-      {/* <Button
-          onPress={exerciseFiltersRef}
-          // onPress={handleOpenFilters}
-          text="Open modal"
-          bgColor="bg-indigo-600"
-        /> */}
-      {/* </View> */}
     </View>
   );
 };
