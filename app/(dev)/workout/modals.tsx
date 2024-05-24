@@ -58,6 +58,12 @@ const Modals = () => {
           >
             Exercise previous stats
           </Link>
+          <Link
+            href={"/(workout)/modals/exerciseOneRepMax"}
+            className="font-interMedium text-xl"
+          >
+            Exercise one rep max
+          </Link>
           {/* <Link
             href={"/(workout)/modals/exerciseFilterPicker"}
             className="font-interMedium text-xl"
