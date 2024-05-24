@@ -11,7 +11,7 @@ import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
 // Components
-import CardRadioButton from "@/components/CardRadioButton";
+import CardRadioButton from "@/components/CardRadioButton/CardRadioButton";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";

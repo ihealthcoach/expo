@@ -3,7 +3,7 @@ import { View, Text, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
-import CardCheckBox from "@/components/CardCheckBox";
+import CardCheckBox from "@/components/CardCheckBox/CardCheckBox";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar";
 import Bottom from "@/components/Bottom/Bottom";

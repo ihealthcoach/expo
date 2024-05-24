@@ -3,7 +3,7 @@ import { View, Text, ImageBackground } from "react-native";
 import { useRouter } from "expo-router";
 import { PanGestureHandler } from "react-native-gesture-handler";
 
-import CardRadioButton from "@/components/CardRadioButton";
+import CardRadioButton from "@/components/CardRadioButton/CardRadioButton";
 import { useQuestionnaire } from "@/context/useQuestionnaire";
 import { useProgressBar } from "@/context/useProgressBar"; // Import useProgressBar
 import Bottom from "@/components/Bottom/Bottom";

@@ -5,7 +5,7 @@ import { View, Text, ImageBackground } from "react-native";
 import { PanGestureHandler, State } from "react-native-gesture-handler";
 
 // Components
-import CardRadioButton from "@/components/CardRadioButton";
+import CardRadioButton from "@/components/CardRadioButton/CardRadioButton";
 
 // Context
 import { useQuestionnaire } from "@/context/useQuestionnaire";
