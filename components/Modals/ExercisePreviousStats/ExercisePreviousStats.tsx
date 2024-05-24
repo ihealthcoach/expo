@@ -1,4 +1,4 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, ScrollView } from "react-native";
 import React, { useMemo, useRef } from "react";
 import {
   BottomSheetBackdrop,
@@ -18,8 +18,47 @@ import NoteAddIcon from "@/assets/icons/vuesax-note-add-outline";
 import LogoutIcon from "@/assets/icons/logout-outline";
 import { Image } from "expo-image";
 
+const activeDates = [
+  {
+    id: 1,
+    date: "10",
+    day: "Wed",
+  },
+  {
+    id: 2,
+    date: "15",
+    day: "Mon",
+  },
+  {
+    id: 3,
+    date: "16",
+    day: "Tue",
+  },
+  {
+    id: 4,
+    date: "18",
+    day: "Thu",
+  },
+  {
+    id: 5,
+    date: "26",
+    day: "Fri",
+  },
+  {
+    id: 6,
+    date: "1",
+    day: "Thu",
+  },
+  {
+    id: 7,
+    date: "2",
+    day: "Today",
+  },
+];
+
 const data = [
   {
+    id: 1,
     set_number: 1,
     type: "Standard set",
     weight: 41.3,
@@ -27,6 +66,7 @@ const data = [
     reps: 20,
   },
   {
+    id: 2,
     set_number: 2,
     type: "Standard set",
     weight: 61.3,
@@ -34,6 +74,7 @@ const data = [
     reps: 12,
   },
   {
+    id: 3,
     set_number: 3,
     type: "Standard set",
     weight: 76.3,
@@ -41,6 +82,7 @@ const data = [
     reps: 8,
   },
   {
+    id: 4,
     set_number: 4,
     type: "Standard set",
     weight: 76.3,
@@ -48,6 +90,7 @@ const data = [
     reps: 6,
   },
   {
+    id: 5,
     set_number: 5,
     type: "Standard set",
     weight: 76.3,
@@ -111,14 +154,39 @@ const ExercisePreviousStats = () => {
             </View>
 
             {/* TODO: Add horizontal scroll view here */}
-            <View className="mb-6 h-16 items-center justify-center">
-              <Text>Horizontal ScrollView</Text>
+            <View className="-mx-4 mb-6">
+              <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {activeDates.map((date) => (
+                  <View
+                    key={date.id}
+                    className="flex items-center justify-center gap-1"
+                  >
+                    <View className="flex items-center gap-2">
+                      <View
+                        className={`h-[50px] w-[50px] items-center justify-center rounded-full ${date.day === "Today" ? "bg-indigo-600" : "bg-gray-100"}`}
+                      >
+                        <Text
+                          className={`font-interMedium text-base ${date.day === "Today" ? "text-white-ih" : "text-gray-400"}`}
+                        >
+                          {date.date}
+                        </Text>
+                      </View>
+                      <Text
+                        className={`font-interRegular text-xs ${date.day === "Today" ? "text-indigo-600" : "text-gray-400"}`}
+                      >
+                        {date.day.toUpperCase()}
+                      </Text>
+                    </View>
+                  </View>
+                ))}
+              </ScrollView>
             </View>
 
             <View className="mb-6">
               {/* TODO: Add padding right or width to match Figma */}
               {data.map((item, index) => (
                 <View
+                  key={item.id}
                   className={`border-b border-gray-200 py-2 ${index !== data.length - 1 ? "" : "border-b-0"}`}
                 >
                   <View className="flex-row items-center justify-between">

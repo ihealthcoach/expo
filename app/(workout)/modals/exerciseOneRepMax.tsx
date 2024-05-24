@@ -1,18 +1,18 @@
 import { View, Text } from "react-native";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
-import WorkoutSettings from "@/components/Modals/WorkoutSettings/WorkoutSettings";
+import ExerciseOneRepMax from "@/components/Modals/ExerciseOneRepMax/ExerciseOneRepMax";
 
-const WorkoutsSettingsDemo = () => {
+const ExerciseOneRepMaxDemo = () => {
   return (
     <View className="flex-1">
       <HeaderWithBackArrow path="/(dev)/workout/modals">
-        <Text>Workout settings</Text>
+        <Text>Exercise one rep max</Text>
       </HeaderWithBackArrow>
       <View className="flex-1">
-        <WorkoutSettings />
+        <ExerciseOneRepMax />
       </View>
     </View>
   );
 };
 
-export default WorkoutsSettingsDemo;
+export default ExerciseOneRepMaxDemo;
