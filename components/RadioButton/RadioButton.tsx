@@ -4,7 +4,7 @@ import useRadioButtonStore from "@/store/useRadioButtonStore";
 
 interface RadioButtonProps {
   setName?: string;
-  checked: boolean;
+  checked?: boolean;
 }
 
 const RadioButton: React.FC<RadioButtonProps> = ({ setName }) => {

@@ -15,6 +15,7 @@ export default function Layout() {
 
   return (
     <GestureHandlerRootView className="flex-1">
+      {/* BUG: BottomSheetModalProvider is not generating the proper backdrop */}
       {/* <BottomSheetModalProvider> */}
       {/* <View className="h-full w-full flex-1 bg-red-500"> */}
       {/* <View className="h-full w-full flex-1 bg-[#66eed2]"> */}

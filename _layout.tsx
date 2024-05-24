@@ -1,6 +1,7 @@
 import { Slot } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useFonts } from "expo-font";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 export default function Layout() {
   const [fontsLoaded, fontError] = useFonts({
@@ -12,8 +13,10 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaView>
-      <Slot />
-    </SafeAreaView>
+    <BottomSheetModalProvider>
+      <SafeAreaView>
+        <Slot />
+      </SafeAreaView>
+    </BottomSheetModalProvider>
   );
 }

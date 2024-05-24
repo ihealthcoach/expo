@@ -68,6 +68,7 @@ const ExercisesScreen = () => {
           ref={sectionListRef}
           sections={sections}
           stickySectionHeadersEnabled
+          showsVerticalScrollIndicator={false}
           ListFooterComponent={<View style={{ marginBottom: 100 }} />}
           keyExtractor={(item, index) => item.id + index}
           renderItem={({ item }) => (

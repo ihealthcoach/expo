@@ -8,10 +8,9 @@ import XMarkIcon from "@/assets/icons/x-mark-mini";
 import Button from "@/components/Button/Button";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import RadioButton from "@/components/RadioButton/RadioButton";
+import RadioButtonGetStarted from "@/components/RadioButtonGetStarted/RadioButtonGetStarted";
 
 const ExerciseSetType = () => {
-  // const [selectedOption, setSelectedOption] = useState<number | null>(null);
-
   const sets = [
     {
       id: 1,
@@ -50,10 +49,6 @@ const ExerciseSetType = () => {
   const handleOpenPanel = () => {
     bottomSheetRef.current?.present();
   };
-
-  // const handlePress = (option: number) => {
-  //   setSelectedOption(option);
-  // };
 
   return (
     <View className="flex-1">
