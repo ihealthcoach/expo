@@ -8,7 +8,7 @@ import CheckOutlineIcon from "@/assets/icons/check-outline";
 import HeartIcon from "@/assets/icons/heart-outline";
 import { Image } from "expo-image";
 import CheckMiniIcon from "@/assets/icons/check-mini";
-import CheckBox from "@/components/CheckBox";
+import CheckBox from "@/components/CheckBox/CheckBox";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import Button from "@/components/Button/Button";
 

@@ -3,7 +3,8 @@ import { View, Pressable } from "react-native";
 import useRadioButtonStore from "@/store/useRadioButtonStore";
 
 interface RadioButtonProps {
-  setName: string;
+  setName?: string;
+  checked: boolean;
 }
 
 const RadioButton: React.FC<RadioButtonProps> = ({ setName }) => {

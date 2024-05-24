@@ -1,11 +1,13 @@
 import { View, Text, Pressable } from "react-native";
 import React from "react";
-import CheckBox from "./CheckBox";
+import RadioButtonGetStarted from "../RadioButtonGetStarted/RadioButtonGetStarted";
 
-const Card = ({ headline, body, isChecked, setIsChecked }) => {
+const Card = ({ headline, body, name, value, setValue }) => {
+  const isChecked = value === name;
+
   return (
     <Pressable
-      onPress={() => setIsChecked(!isChecked)}
+      onPress={() => setValue(name)}
       className={
         isChecked
           ? "mx-4 mb-2 flex-row"
@@ -29,7 +31,7 @@ const Card = ({ headline, body, isChecked, setIsChecked }) => {
             </Text>
           )}
         </View>
-        <CheckBox checked={isChecked} />
+        <RadioButtonGetStarted checked={isChecked} />
       </View>
     </Pressable>
   );

@@ -1,7 +1,7 @@
 import { View, Text, Pressable, ImageBackground } from "react-native";
 import React from "react";
 
-import ButtonOnboarding from "@/components/ButtonOnboarding";
+import ButtonOnboarding from "@/components/ButtonOnBoarding/ButtonOnboarding";
 
 const GSmealsAndDiet = () => {
   return (

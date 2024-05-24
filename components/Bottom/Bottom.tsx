@@ -1,6 +1,6 @@
 import React from "react";
 import { Pressable, View } from "react-native";
-import ButtonOnboarding from "../ButtonOnboarding";
+import ButtonOnboarding from "../ButtonOnBoarding/ButtonOnboarding";
 import ButtonBack from "../ButtonBack/ButtonBack";
 
 type BottomProps = {
