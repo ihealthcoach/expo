@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import exercises from "@/assets/test-data/exercises.json";
 import { Image } from "expo-image";
@@ -6,14 +6,10 @@ import { Image } from "expo-image";
 import { SectionList, Text, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Badge from "../Badge/Badge";
-
-interface Exercise {
-  id: string;
-  name: string;
-  description: string;
-  imageUrl: string;
-  status: string;
-}
+import useExerciseStore from "@/store/exercisesStore";
+import { supabase } from "@/lib/supabase";
+import { Exercise } from "@/types/exercises";
+import { organizeExercisesAlphabetically } from "@/utils/organzieExercisesAlphabetically/organizeExercisesAlphabetically";
 
 interface AlphabetNavigationProps {
   onSelectLetter: (letter: string) => void;
@@ -41,6 +37,18 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
   );
 };
 const ExercisesScreen = () => {
+  const exercises = organizeExercisesAlphabetically(
+    useExerciseStore((state) => state.exercises),
+  );
+  const fetchExercises = useExerciseStore((state) => state.fetchExercises);
+
+  useEffect(() => {
+    fetchExercises();
+  }, []);
+
+  useEffect(() => {
+    console.log(exercises);
+  }, [exercises]);
   const sectionListRef = useRef<SectionList<Exercise>>(null);
 
   const sections = Object.keys(exercises).map((key) => ({
@@ -74,7 +82,9 @@ const ExercisesScreen = () => {
             <View className="flex-row items-center justify-between">
               <View className="ml-4 flex-row items-center">
                 <Image
-                  source={{ uri: item.imageUrl }}
+                  source={{
+                    uri: `https://fleiivpyjkvahakriuta.supabase.co/storage/v1/object/public/${item.gif_url}`,
+                  }}
                   style={{ width: 68, height: 68 }}
                 />
                 <View>
@@ -86,13 +96,14 @@ const ExercisesScreen = () => {
                   </Text>
                 </View>
               </View>
-              {item.status === "Added" ? (
+              {/* NOTE:  Currently there is no column for added property ~Kror-shack */}
+              {/* {item.status === "Added" ? (
                 <Text className="font-interSemiBold text-xs leading-[13.75px] text-indigo-600">
                   Added
                 </Text>
               ) : (
                 <ChevronRightIcon />
-              )}
+              )} */}
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (

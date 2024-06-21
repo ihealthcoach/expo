@@ -1,59 +1,39 @@
+// useExerciseStore.js
 import { create } from "zustand";
-import type { Exercise, ExerciseStore } from "@/types/exercises";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { persist } from "zustand/middleware";
+import { ExerciseStore } from "@/types/exercises";
+import { fetchExercises } from "@/utils/fetchExercises/fetchExercises";
 
-const useExerciseStore = create<ExerciseStore>((set) => ({
-  exercises: [
+const useExerciseStore = create<ExerciseStore>()(
+  persist(
+    (set) => ({
+      exercises: [],
+      fetchExercises: async () => {
+        try {
+          const data = await fetchExercises();
+          set({ exercises: data || [] });
+        } catch (error) {
+          console.error("Error fetching the exercises:", error);
+        }
+      },
+    }),
     {
-      id: 1,
-      name: "Arnold press",
-      sets_completed: 3,
-      total_sets: 5,
-      status: "Completed",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
+      name: "exercise-storage",
+      storage: {
+        getItem: async (name) => {
+          const value = await AsyncStorage.getItem(name);
+          return value ? JSON.parse(value) : null;
+        },
+        setItem: async (name, value) => {
+          await AsyncStorage.setItem(name, JSON.stringify(value));
+        },
+        removeItem: async (name) => {
+          await AsyncStorage.removeItem(name);
+        },
+      },
     },
-    {
-      id: 2,
-      name: "Assisted dips",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Completed",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/assisted_triceps_dip_(kneeling)_no_bg.gif",
-    },
-    {
-      id: 3,
-      name: "Behind neck lat pulldowns",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/cable_wide_grip_rear_pulldown_behind_neck_no_bg.gif",
-    },
-    {
-      id: 4,
-      name: "Arnold press",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
-    },
-    {
-      id: 5,
-      name: "Calf raise",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/bodyweight_standing_calf_raise_no_bg.gif",
-    },
-  ] as Exercise[],
-  setExercises: (exercises: Exercise[]) => set({ exercises }),
-  deleteExercise: (id: number) =>
-    set((state) => ({
-      exercises: state.exercises.filter((exercise) => exercise.id !== id),
-    })),
-}));
+  ),
+);
 
 export default useExerciseStore;
