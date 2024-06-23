@@ -11,6 +11,7 @@ const useExerciseStore = create<ExerciseStore>()(
       exercises: [],
       fetchExercises: async () => {
         try {
+          console.log("fetchingg");
           const data = await fetchExercises();
           set({ exercises: data || [] });
         } catch (error) {

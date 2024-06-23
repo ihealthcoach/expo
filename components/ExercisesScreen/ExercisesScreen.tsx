@@ -9,7 +9,8 @@ import Badge from "../Badge/Badge";
 import useExerciseStore from "@/store/exercisesStore";
 import { supabase } from "@/lib/supabase";
 import { Exercise } from "@/types/exercises";
-import { organizeExercisesAlphabetically } from "@/utils/organzieExercisesAlphabetically/organizeExercisesAlphabetically";
+import { organizeExercisesAlphabetically } from "@/utils/organizeExercisesAlphabetically/organizeExercisesAlphabetically";
+import useGifStore from "@/store/gifStore";
 
 interface AlphabetNavigationProps {
   onSelectLetter: (letter: string) => void;
@@ -37,17 +38,17 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
   );
 };
 const ExercisesScreen = () => {
-  const exercises = organizeExercisesAlphabetically(
-    useExerciseStore((state) => state.exercises),
+  const exercises = useExerciseStore((state) =>
+    organizeExercisesAlphabetically(
+      state.exercises,
+      // .filter((exercise) => gifs[exercise.id]), //filters out the exercises that do not have a gif
+    ),
   );
-  const fetchExercises = useExerciseStore((state) => state.fetchExercises);
+  const gifs = useGifStore((state) => state.gifs);
+  console.log("🚀 ~ ExercisesScreen ~ gifs:", gifs);
 
   useEffect(() => {
-    fetchExercises();
-  }, []);
-
-  useEffect(() => {
-    console.log(exercises);
+    console.log("updated");
   }, [exercises]);
   const sectionListRef = useRef<SectionList<Exercise>>(null);
 
@@ -83,7 +84,7 @@ const ExercisesScreen = () => {
               <View className="ml-4 flex-row items-center">
                 <Image
                   source={{
-                    uri: `https://fleiivpyjkvahakriuta.supabase.co/storage/v1/object/public/${item.gif_url}`,
+                    uri: gifs[item.id],
                   }}
                   style={{ width: 68, height: 68 }}
                 />
@@ -92,7 +93,7 @@ const ExercisesScreen = () => {
                     {item.name}
                   </Text>
                   <Text className="font-interRegular text-xs leading-[13.75px] text-gray-400">
-                    {item.description}
+                    {item.primary_muscles.join(",")}
                   </Text>
                 </View>
               </View>

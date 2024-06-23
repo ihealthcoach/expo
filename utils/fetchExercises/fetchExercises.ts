@@ -3,7 +3,6 @@ import { Exercise, RawExerciseFromSupabase } from "@/types/exercises";
 
 const fetchExercises = async () => {
   const { data, error } = await supabase.from("exercises").select();
-  console.log("🚀 ~ fetchExercises: ~ data:", data);
   if (error) {
     console.error("Error fetching exercises:", error);
     return null;
@@ -37,7 +36,7 @@ const processRawExercises = (
 
     // Construct gif_url property
     const gifName = exercise.name.replace(/[\s-]/g, "_");
-    const gif_url = `exercises/gifs/${gifName}.gif`;
+    const gif_url = `https://fleiivpyjkvahakriuta.supabase.co/storage/v1/object/public/exercises/gifs/${gifName}.gif`;
 
     return {
       ...exercise,
