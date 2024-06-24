@@ -45,11 +45,7 @@ const ExercisesScreen = () => {
     ),
   );
   const gifs = useGifStore((state) => state.gifs);
-  console.log("🚀 ~ ExercisesScreen ~ gifs:", gifs);
 
-  useEffect(() => {
-    console.log("updated");
-  }, [exercises]);
   const sectionListRef = useRef<SectionList<Exercise>>(null);
 
   const sections = Object.keys(exercises).map((key) => ({
@@ -97,13 +93,16 @@ const ExercisesScreen = () => {
                   </Text>
                 </View>
               </View>
-              {/* NOTE:  Currently there is no column for added property ~Kror-shack */}
-              {/* {item.status === "Added" ? (
-                <Text className="font-interSemiBold text-xs leading-[13.75px] text-indigo-600">
-                  Added
-                </Text>
-              ) : (
-                <ChevronRightIcon />
+              {/* NOTE:  The added property will need to be set from another user store
+                          if added signifies whether the user has them added somewhere,
+                          so I have commented out the conditional.
+                          ~ Kror-shack */}
+              {/* {item.status === "Added" ? ( */}
+              <Text className="font-interSemiBold text-xs leading-[13.75px] text-indigo-600">
+                Added
+              </Text>
+              {/* ) : (
+              / <ChevronRightIcon />
               )} */}
             </View>
           )}

@@ -1,9 +1,13 @@
-// useExerciseStore.js
 import { create } from "zustand";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { persist } from "zustand/middleware";
-import { ExerciseStore } from "@/types/exercises";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { Exercise } from "@/types/exercises";
 import { fetchExercises } from "@/utils/fetchExercises/fetchExercises";
+
+export interface ExerciseStore {
+  exercises: Exercise[];
+  fetchExercises: () => Promise<void>;
+}
 
 const useExerciseStore = create<ExerciseStore>()(
   persist(
@@ -11,7 +15,7 @@ const useExerciseStore = create<ExerciseStore>()(
       exercises: [],
       fetchExercises: async () => {
         try {
-          console.log("fetchingg");
+          console.log("fetching Exercises");
           const data = await fetchExercises();
           set({ exercises: data || [] });
         } catch (error) {
@@ -21,18 +25,7 @@ const useExerciseStore = create<ExerciseStore>()(
     }),
     {
       name: "exercise-storage",
-      storage: {
-        getItem: async (name) => {
-          const value = await AsyncStorage.getItem(name);
-          return value ? JSON.parse(value) : null;
-        },
-        setItem: async (name, value) => {
-          await AsyncStorage.setItem(name, JSON.stringify(value));
-        },
-        removeItem: async (name) => {
-          await AsyncStorage.removeItem(name);
-        },
-      },
+      storage: createJSONStorage(() => AsyncStorage),
     },
   ),
 );

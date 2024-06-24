@@ -33,8 +33,3 @@ export interface RawExerciseFromSupabase {
   gif_url: string;
   id: string;
 }
-
-export interface ExerciseStore {
-  exercises: Exercise[];
-  fetchExercises: () => void;
-}
