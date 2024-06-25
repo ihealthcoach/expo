@@ -4,7 +4,7 @@ const organizeExercisesAlphabetically = (exercises: Exercise[]) => {
   const organized = {}; //alphabetically under every present alphabet
 
   exercises.forEach((exercise) => {
-    const firstLetter = exercise.name.charAt(0).toUpperCase();
+    const firstLetter = exercise.name.match(/[A-Za-z]/)?.[0].toUpperCase(); //to ignore leading numbers
 
     if (!organized[firstLetter]) {
       organized[firstLetter] = [];
