@@ -16,6 +16,13 @@ export interface Exercise {
   id: string;
 }
 
+export interface ExerciseSummary {
+  id: string;
+  name: string;
+  gif_url: string;
+  primary_muscles: string[];
+}
+
 export interface RawExerciseFromSupabase {
   exercise_type: string;
   experience: string;

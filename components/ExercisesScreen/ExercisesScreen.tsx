@@ -3,7 +3,13 @@ import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import exercises from "@/assets/test-data/exercises.json";
 import { Image } from "expo-image";
 
-import { SectionList, Text, View, TouchableOpacity } from "react-native";
+import {
+  SectionList,
+  Text,
+  View,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Badge from "../Badge/Badge";
 import useExerciseStore from "@/store/exercisesStore";
@@ -38,13 +44,10 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
   );
 };
 const ExercisesScreen = () => {
-  const exercises = useExerciseStore((state) =>
-    organizeExercisesAlphabetically(
-      state.exercises,
-      // .filter((exercise) => gifs[exercise.id]), //filters out the exercises that do not have a gif
-    ),
+  const exercises = organizeExercisesAlphabetically(
+    useExerciseStore.getState().exercises,
   );
-  const gifs = useGifStore((state) => state.gifs);
+  const gifsAreReady = useGifStore.getState().ready;
 
   const sectionListRef = useRef<SectionList<Exercise>>(null);
 
@@ -64,6 +67,8 @@ const ExercisesScreen = () => {
     }
   };
 
+  if (!gifsAreReady) return null; //TODO: return a loading screen
+
   // BUG: SectionList is disappearing below the screen.
   return (
     // <SafeAreaView className="flex-1" edges={["top", "bottom"]}>
@@ -80,7 +85,7 @@ const ExercisesScreen = () => {
               <View className="ml-4 flex-row items-center">
                 <Image
                   source={{
-                    uri: gifs[item.id],
+                    uri: useGifStore.getState().gifs[item.id],
                   }}
                   style={{ width: 68, height: 68 }}
                 />

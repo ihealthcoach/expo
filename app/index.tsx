@@ -12,7 +12,7 @@ export default function Page() {
   const { width, height } = Dimensions.get("window");
 
   const fetchExercises = useExerciseStore((state) => state.fetchExercises);
-  const fetchGifs = useGifStore((state) => state.fetchGifs);
+  const fetchGifs = useGifStore.getState().fetchAndStoreAllGifs;
 
   useEffect(() => {
     fetchExercises();

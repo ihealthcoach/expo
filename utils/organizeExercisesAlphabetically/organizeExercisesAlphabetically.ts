@@ -1,6 +1,6 @@
-import { Exercise } from "@/types/exercises";
+import { ExerciseSummary } from "@/types/exercises";
 
-const organizeExercisesAlphabetically = (exercises: Exercise[]) => {
+const organizeExercisesAlphabetically = (exercises: ExerciseSummary[]) => {
   const organized = {}; //alphabetically under every present alphabet
 
   exercises.forEach((exercise) => {
