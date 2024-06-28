@@ -29,9 +29,9 @@ const processRawExercises = (
       : [];
     const equipment = exercise.equipment ? exercise.equipment.split(",") : [];
 
-    const benefits = exercise.benefits ? exercise.benefits.split(",") : [];
+    const benefits = exercise.benefits ? splitWithDot(exercise.benefits) : [];
     const instructions = exercise.instructions
-      ? exercise.instructions.split(",")
+      ? splitWithDot(exercise.instructions)
       : [];
 
     // Construct gif_url property
@@ -50,4 +50,10 @@ const processRawExercises = (
   });
 
   return updatedExercises;
+};
+
+const splitWithDot = (text: string) => {
+  // Match any character except dot, followed by a dot.
+  const regex = /[^.]+\.|.+$/g;
+  return text.match(regex) || [];
 };
