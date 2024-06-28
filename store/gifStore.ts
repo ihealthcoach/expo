@@ -34,16 +34,26 @@ const useGifStore = create<GifStore>()(
             useExerciseStore.getState().exercises;
           const gifsToCache: Record<string, string> = {};
 
+          const fetchPromises: Promise<void>[] = [];
+
           for (const exercise of exercises) {
             const { id, gif_url } = exercise;
             if (gif_url) {
-              const fileUri = await fetchGif(gif_url, id);
-              console.log(0);
-              mmkvStorage.set(id, fileUri); // Store URI in MMKV with exercise ID as key
-              gifsToCache[id] = fileUri;
+              const fetchPromise = fetchGif(gif_url, id)
+                .then((fileUri) => {
+                  mmkvStorage.set(id, fileUri);
+                  gifsToCache[id] = fileUri;
+                })
+                .catch((error) => {
+                  console.error(`Error fetching GIF with ID ${id}:`, error);
+                });
+
+              fetchPromises.push(fetchPromise);
             }
           }
 
+          await Promise.all(fetchPromises);
+          // Once all promises are resolved, update the state
           set({ gifs: gifsToCache, ready: true });
         } catch (error) {
           console.error("Error fetching and storing GIFs:", error);
