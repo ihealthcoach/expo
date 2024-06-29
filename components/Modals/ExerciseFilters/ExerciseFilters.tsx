@@ -1,4 +1,10 @@
-import { View, Text, Pressable, TextInput } from "react-native";
+import {
+  View,
+  Text,
+  Pressable,
+  TextInput,
+  TouchableOpacity,
+} from "react-native";
 import React, { useMemo, useRef, useEffect } from "react";
 import { BottomSheetModal } from "@gorhom/bottom-sheet";
 import XMarkIcon from "@/assets/icons/x-mark-mini";
@@ -8,13 +14,20 @@ import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 
 const ExerciseFilters = ({
   setPanelHandlers,
+  setOpenBackDrop,
 }: {
   setPanelHandlers: (open: () => void, close: () => void) => void;
+  setOpenBackDrop: (open: boolean) => void;
 }) => {
   const snapPoints = useMemo(() => ["68%"], []);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const handleClosePanel = () => bottomSheetRef.current?.close();
+  const handleClosePanel = () => {
+    console.log("closing panel");
+    bottomSheetRef.current?.close();
+    setOpenBackDrop(false);
+  };
+  // const handleClosePanel = () => bottomSheetRef.current?.close()
   const handleOpenPanel = () => bottomSheetRef.current?.present();
 
   const handlersSet = useRef(false);
@@ -34,6 +47,32 @@ const ExerciseFilters = ({
       snapPoints={snapPoints}
       backgroundStyle={{ borderRadius: 20, backgroundColor: "#FCFEFE" }}
       handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
+      onDismiss={() => setOpenBackDrop(false)}
+      backdropComponent={({ animatedIndex }) => (
+        <TouchableOpacity
+          onPress={handleClosePanel}
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            // opacity: animatedIndex.interpolate({
+            //   inputRange: [0, 1],
+            //   outputRange: [0, 1],
+            // }),
+          }}
+        >
+          {/* <View
+            // onPress={handleClosePanel}
+            style={{
+              flex: 1,
+              backgroundColor: "rgba(0,0,0,0.5)",
+              // opacity: animatedIndex.interpolate({
+              //   inputRange: [0, 1],
+              //   outputRange: [0, 1],
+              // }),
+            }}
+          /> */}
+        </TouchableOpacity>
+      )}
     >
       <View className="mx-4 mt-2 flex-1 items-center">
         <View className="w-full flex-1 items-center">
