@@ -106,7 +106,7 @@ const ExerciseSetType = () => {
                   {/* <View>
                     <ChevronRightIcon fill="#9CA3AF" width={20} height={20} />
                   </View> */}
-                  <RadioButton setName={set.name} />
+                  {/* <RadioButton setName={set.name} /> */}
                 </View>
               ))}
             </View>
