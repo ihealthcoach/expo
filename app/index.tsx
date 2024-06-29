@@ -3,10 +3,21 @@ import { Dimensions, ImageBackground, Text, View } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
 
 import { useRouter } from "expo-router";
+import useExerciseStore from "@/store/exercisesStore";
+import useGifStore from "@/store/gifStore";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Page() {
   const router = useRouter();
   const { width, height } = Dimensions.get("window");
+
+  const fetchExercises = useExerciseStore((state) => state.fetchExercises);
+  const fetchGifs = useGifStore.getState().fetchAndStoreAllGifs;
+
+  useEffect(() => {
+    fetchExercises();
+    fetchGifs();
+  }, []);
 
   // const { width, height } = Dimensions.get("window");
 

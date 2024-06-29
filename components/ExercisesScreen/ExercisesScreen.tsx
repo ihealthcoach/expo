@@ -1,19 +1,22 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import exercises from "@/assets/test-data/exercises.json";
 import { Image } from "expo-image";
 
-import { SectionList, Text, View, TouchableOpacity } from "react-native";
+import {
+  SectionList,
+  Text,
+  View,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Badge from "../Badge/Badge";
-
-interface Exercise {
-  id: string;
-  name: string;
-  description: string;
-  imageUrl: string;
-  status: string;
-}
+import useExerciseStore from "@/store/exercisesStore";
+import { supabase } from "@/lib/supabase";
+import { Exercise } from "@/types/exercises";
+import { organizeExercisesAlphabetically } from "@/utils/organizeExercisesAlphabetically/organizeExercisesAlphabetically";
+import useGifStore from "@/store/gifStore";
 
 interface AlphabetNavigationProps {
   onSelectLetter: (letter: string) => void;
@@ -41,6 +44,11 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
   );
 };
 const ExercisesScreen = () => {
+  const exercises = organizeExercisesAlphabetically(
+    useExerciseStore.getState().exercises,
+  );
+  const gifsAreReady = useGifStore.getState().ready;
+
   const sectionListRef = useRef<SectionList<Exercise>>(null);
 
   const sections = Object.keys(exercises).map((key) => ({
@@ -59,7 +67,11 @@ const ExercisesScreen = () => {
     }
   };
 
+  if (!gifsAreReady) return null; //TODO: return a loading screen
+
   // BUG: SectionList is disappearing below the screen.
+  // BUG: The large image-load causes the screen to crash -> a smaller list or removing the image
+  //       component removes the bug whereas loading even one gif for all the exercises mantains the bug.
   return (
     // <SafeAreaView className="flex-1" edges={["top", "bottom"]}>
     <View className="">
@@ -74,7 +86,9 @@ const ExercisesScreen = () => {
             <View className="flex-row items-center justify-between">
               <View className="ml-4 flex-row items-center">
                 <Image
-                  source={{ uri: item.imageUrl }}
+                  source={{
+                    uri: useGifStore.getState().gifs[item.id],
+                  }}
                   style={{ width: 68, height: 68 }}
                 />
                 <View>
@@ -82,17 +96,21 @@ const ExercisesScreen = () => {
                     {item.name}
                   </Text>
                   <Text className="font-interRegular text-xs leading-[13.75px] text-gray-400">
-                    {item.description}
+                    {item.primary_muscles.join(",")}
                   </Text>
                 </View>
               </View>
-              {item.status === "Added" ? (
-                <Text className="font-interSemiBold text-xs leading-[13.75px] text-indigo-600">
-                  Added
-                </Text>
-              ) : (
-                <ChevronRightIcon />
-              )}
+              {/* NOTE:  The added property will need to be set from another user store
+                          if added signifies whether the user has them added somewhere,
+                          so I have commented out the conditional.
+                          ~ Kror-shack */}
+              {/* {item.status === "Added" ? ( */}
+              <Text className="font-interSemiBold text-xs leading-[13.75px] text-indigo-600">
+                Added
+              </Text>
+              {/* ) : (
+              / <ChevronRightIcon />
+              )} */}
             </View>
           )}
           renderSectionHeader={({ section: { title } }) => (

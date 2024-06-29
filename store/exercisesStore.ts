@@ -1,59 +1,69 @@
 import { create } from "zustand";
-import type { Exercise, ExerciseStore } from "@/types/exercises";
+import { MMKV } from "react-native-mmkv";
+import { StateStorage, createJSONStorage, persist } from "zustand/middleware";
+import { Exercise, ExerciseSummary } from "@/types/exercises"; // Ensure you have Exercise and ExerciseSummary types defined
+import { fetchExercises } from "@/utils/fetchExercises/fetchExercises";
+import { zustandMMKVStorage } from "@/lib/mmkv/mmkv";
 
-const useExerciseStore = create<ExerciseStore>((set) => ({
-  exercises: [
+const mmkvStorage = new MMKV();
+
+interface ExerciseStore {
+  exercises: ExerciseSummary[];
+  fetchExercises: () => Promise<void>;
+  getExercise: (id: string) => Exercise | undefined;
+  getAllExercises: () => Exercise[] | undefined;
+}
+
+export const useExerciseStore = create<
+  ExerciseStore,
+  [["zustand/persist", ExerciseStore]]
+>(
+  persist(
+    (set, get) => ({
+      exercises: [],
+      fetchExercises: async () => {
+        try {
+          console.log("fetching Exercises");
+          const data = await fetchExercises();
+          if (data && Array.isArray(data)) {
+            const summaries = data.map(
+              ({ id, name, gif_url, primary_muscles }) => ({
+                id,
+                name,
+                gif_url,
+                primary_muscles,
+              }),
+            );
+            set({ exercises: summaries });
+            data.forEach((exercise) => {
+              mmkvStorage.set(
+                `exercise_${exercise.id}`,
+                JSON.stringify(exercise),
+              );
+            });
+          }
+        } catch (error) {
+          console.error("Error fetching the exercises:", error);
+        }
+      },
+      getExercise: (id) => {
+        const exerciseStr = mmkvStorage.getString(`exercise_${id}`);
+        return exerciseStr ? JSON.parse(exerciseStr) : undefined;
+      },
+      getAllExercises: () => {
+        return get()
+          .exercises.map((summary) => {
+            const exerciseStr = mmkvStorage.getString(`exercise_${summary.id}`);
+            return exerciseStr ? JSON.parse(exerciseStr) : undefined;
+          })
+          .filter((exercise) => exercise !== undefined);
+      },
+    }),
     {
-      id: 1,
-      name: "Arnold press",
-      sets_completed: 3,
-      total_sets: 5,
-      status: "Completed",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
+      name: "exercise-storage",
+      storage: createJSONStorage(() => zustandMMKVStorage),
     },
-    {
-      id: 2,
-      name: "Assisted dips",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Completed",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/assisted_triceps_dip_(kneeling)_no_bg.gif",
-    },
-    {
-      id: 3,
-      name: "Behind neck lat pulldowns",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/cable_wide_grip_rear_pulldown_behind_neck_no_bg.gif",
-    },
-    {
-      id: 4,
-      name: "Arnold press",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
-    },
-    {
-      id: 5,
-      name: "Calf raise",
-      sets_completed: 0,
-      total_sets: 5,
-      status: "Pending",
-      gif_path:
-        "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/bodyweight_standing_calf_raise_no_bg.gif",
-    },
-  ] as Exercise[],
-  setExercises: (exercises: Exercise[]) => set({ exercises }),
-  deleteExercise: (id: number) =>
-    set((state) => ({
-      exercises: state.exercises.filter((exercise) => exercise.id !== id),
-    })),
-}));
+  ),
+);
 
 export default useExerciseStore;
