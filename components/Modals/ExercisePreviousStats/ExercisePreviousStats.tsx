@@ -224,44 +224,6 @@ const ExercisePreviousStats = () => {
                   </View>
                 </View>
               ))}
-              {/* }
-              <View>
-                <Text className="mb-1 font-interBold text-xl leading-[30px] text-gray-900">
-                  
-                </Text>
-              </View> */}
-              {/* <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
-                How to
-              </Text>
-              <View className="mb-2 flex-row">
-                <Text className="w-4 font-interRegular text-gray-600">1.</Text>
-                <Text className="mr-4 font-interRegular text-gray-600">
-                  Start from the chest with your palms facing towards you.
-                </Text>
-              </View>
-              <View className="mb-2 flex-row">
-                <Text className="w-4 font-interRegular text-gray-600">2.</Text>
-                <Text className="mr-4 font-interRegular text-gray-600">
-                  Twist your forearms outwards as you move the weight upwards.
-                  The end position should be the same as with a normal shoulder
-                  press.
-                </Text>
-              </View>
-              <View className="mb-2 flex-row">
-                <Text className="w-4 font-interRegular text-gray-600">3.</Text>
-                <Text className="mr-4 font-interRegular text-gray-600">
-                  Slowly lower the weights back to the starting position,
-                  twisting your forearms back to facing you.
-                </Text>
-              </View>
-              <View className="mb-2 flex-row">
-                <Text className="w-4 font-interRegular text-gray-600">4.</Text>
-                <Text className="mr-4 font-interRegular text-gray-600">
-                  Arnold presses have been accused of being harsh on shoulders
-                  and rotator cuffs, so we would advise to start with low
-                  weights for practicing the technique.
-                </Text>
-              </View> */}
             </View>
           </View>
         </BottomSheetModal>
