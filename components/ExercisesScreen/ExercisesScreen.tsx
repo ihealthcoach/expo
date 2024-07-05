@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import exercises from "@/assets/test-data/exercises.json";
 import { Image } from "expo-image";
+import { useQuery } from "@tanstack/react-query";
 
 import {
   SectionList,
@@ -12,11 +13,10 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Badge from "../Badge/Badge";
-import useExerciseStore from "@/store/exercisesStore";
 import { supabase } from "@/lib/supabase";
-import { Exercise } from "@/types/exercises";
+import { Exercise, ExerciseSummary } from "@/types/exercises";
 import { organizeExercisesAlphabetically } from "@/utils/organizeExercisesAlphabetically/organizeExercisesAlphabetically";
-import useGifStore from "@/store/gifStore";
+import useAllExerciseQuery from "@/queries/useAllExerciseQuery/useAllExerciseQuery";
 
 interface AlphabetNavigationProps {
   onSelectLetter: (letter: string) => void;
@@ -44,12 +44,13 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
   );
 };
 const ExercisesScreen = () => {
-  const exercises = organizeExercisesAlphabetically(
-    useExerciseStore.getState().exercises,
-  );
-  const gifsAreReady = useGifStore.getState().ready;
-
   const sectionListRef = useRef<SectionList<Exercise>>(null);
+  const unorededExercises = useAllExerciseQuery();
+
+  if (!unorededExercises) return null;
+  const exercises = organizeExercisesAlphabetically(unorededExercises);
+
+  if (!exercises) return null;
 
   const sections = Object.keys(exercises).map((key) => ({
     title: key,
@@ -67,7 +68,7 @@ const ExercisesScreen = () => {
     }
   };
 
-  if (!gifsAreReady) return null; //TODO: return a loading screen
+  // if (!gifsAreReady) return null; //TODO: return a loading screen
 
   // BUG: SectionList is disappearing below the screen.
   // BUG: The large image-load causes the screen to crash -> a smaller list or removing the image
@@ -81,16 +82,16 @@ const ExercisesScreen = () => {
           sections={sections}
           stickySectionHeadersEnabled
           ListFooterComponent={<View style={{ marginBottom: 100 }} />}
-          keyExtractor={(item, index) => item.id + index}
+          keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => (
             <View className="flex-row items-center justify-between">
               <View className="ml-4 flex-row items-center">
-                <Image
+                {/* <Image
                   source={{
                     uri: useGifStore.getState().gifs[item.id],
                   }}
                   style={{ width: 68, height: 68 }}
-                />
+                /> */}
                 <View>
                   <Text className="font-interSemiBold text-base leading-5 text-gray-900">
                     {item.name}
