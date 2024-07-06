@@ -3,6 +3,7 @@ import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import exercises from "@/assets/test-data/exercises.json";
 import { Image } from "expo-image";
 import { useQuery } from "@tanstack/react-query";
+import * as FileSystem from "expo-file-system";
 
 import {
   SectionList,
@@ -17,6 +18,7 @@ import { supabase } from "@/lib/supabase";
 import { Exercise, ExerciseSummary } from "@/types/exercises";
 import { organizeExercisesAlphabetically } from "@/utils/organizeExercisesAlphabetically/organizeExercisesAlphabetically";
 import useAllExerciseQuery from "@/queries/useAllExerciseQuery/useAllExerciseQuery";
+import useAllGifsQuery from "@/queries/useAllGifsQuery/useAllGifsQuery";
 
 interface AlphabetNavigationProps {
   onSelectLetter: (letter: string) => void;
@@ -46,6 +48,27 @@ const AlphabetNavigation: React.FC<AlphabetNavigationProps> = ({
 const ExercisesScreen = () => {
   const sectionListRef = useRef<SectionList<Exercise>>(null);
   const unorededExercises = useAllExerciseQuery();
+  const allGifs = useAllGifsQuery();
+
+  // for (let gifId in allGifs) {
+  //   if (allGifs.hasOwnProperty(gifId)) {
+  //     const gifUri = allGifs[gifId];
+  //     FileSystem.getInfoAsync(gifUri)
+  //       .then((fileInfo) => {
+  //         if (fileInfo.exists) {
+  //           console.log(`GIF with ID ${gifId} exists at ${gifUri}`);
+  //         } else {
+  //           console.log(`GIF with ID ${gifId} does not exist at ${gifUri}`);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.error(
+  //           `Error checking GIF with ID ${gifId} at ${gifUri}:`,
+  //           error,
+  //         );
+  //       });
+  //   }
+  // }
 
   if (!unorededExercises) return null;
   const exercises = organizeExercisesAlphabetically(unorededExercises);
@@ -86,12 +109,16 @@ const ExercisesScreen = () => {
           renderItem={({ item }) => (
             <View className="flex-row items-center justify-between">
               <View className="ml-4 flex-row items-center">
-                {/* <Image
-                  source={{
-                    uri: useGifStore.getState().gifs[item.id],
-                  }}
-                  style={{ width: 68, height: 68 }}
-                /> */}
+                {allGifs && allGifs[item.id] && (
+                  <Image
+                    source={{
+                      uri: allGifs[item.id],
+                    }}
+                    style={{ width: 68, height: 68 }}
+                  />
+                )}
+
+                {/* TODO: Handling gif display of images exercises without gifs */}
                 <View>
                   <Text className="font-interSemiBold text-base leading-5 text-gray-900">
                     {item.name}

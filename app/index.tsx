@@ -3,7 +3,6 @@ import { Dimensions, ImageBackground, Text, View } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
 
 import { useRouter } from "expo-router";
-import useExerciseStore from "@/store/exercisesStore";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Page() {
