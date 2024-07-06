@@ -12,9 +12,9 @@ import CheckBox from "@/components/CheckBox/CheckBox";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import Button from "@/components/Button/Button";
 import { Exercise } from "@/types/exercises";
-import useExerciseStore from "@/store/exercisesStore";
 import useGetExerciseByIdQuery from "@/queries/useGetExerciseByIdQuery/useGetExerciseByIdQuery";
-
+import useGetGifByExerciseQuery from "@/queries/useGetGifByExerciseQuery/useGetGifByExerciseQuery";
+import * as FileSystem from "expo-file-system";
 type Props = {
   id: string;
 };
@@ -26,7 +26,9 @@ const ExerciseDescription = ({
   id = "2f3af3df-9268-4965-aff5-b208bfcb58ee", // a random exercise id(bodyweight standing calf raise) for testing.
 }: Props) => {
   const exercise = useGetExerciseByIdQuery(id);
+  const gif = useGetGifByExerciseQuery(id);
   if (Array.isArray(exercise) || !exercise) return null;
+  if (!exercise) return null;
   return (
     <View className="relative flex-1">
       <HeaderWithBackArrow>
@@ -89,12 +91,14 @@ const ExerciseDescription = ({
           </View>
         </View>
         <View className="mb-6 h-48 flex-1 flex-row">
-          {/* <Image
-            source={{
-              uri: useGifStore.getState().gifs[exercise.id],
-            }}
-            className="h-full w-1/2"
-          /> */}
+          {gif && (
+            <Image
+              source={{
+                uri: gif,
+              }}
+              className="h-full w-1/2"
+            />
+          )}
           <View className="w-1/2 py-6">
             <Image
               contentFit="contain"
