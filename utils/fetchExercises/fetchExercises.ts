@@ -14,7 +14,7 @@ const fetchExercises = async () => {
   return processedExercises;
 };
 
-const fetchExerciseById = async (exerciseId) => {
+const fetchExerciseById = async (exerciseId: string) => {
   console.log("Fetching exercise with ID:", exerciseId);
   const { data, error } = await supabase
     .from("exercises")
