@@ -11,13 +11,11 @@ const useGetGifByExerciseQuery = (exerciseId: string) => {
   console.log("in use gif query");
 
   const gifs = useAllGifsQuery();
-  console.log("🚀 ~ useGetGifByExerciseQuery ~ gifs:", gifs);
   if (gifs && gifs[exerciseId]) {
     return gifs[exerciseId];
   }
 
   const exercise = useGetExerciseByIdQuery(exerciseId);
-  console.log("🚀 ~ useGetGifByExerciseQuery ~ exercise:", exercise);
 
   const { data, error, isLoading, isPending } = useQuery<string>({
     queryKey: ["gif"],
@@ -25,7 +23,6 @@ const useGetGifByExerciseQuery = (exerciseId: string) => {
     refetchOnMount: false,
     enabled: !!exercise,
   });
-  console.log("getting gif by id" + data);
 
   if (isLoading) console.log("Loading gifs...");
   if (error) console.error("Error: " + error.message);
