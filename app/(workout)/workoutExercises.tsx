@@ -3,7 +3,6 @@ import React, { useState } from "react";
 
 // import exercises from "@/assets/test-data/workout-exercises.json";
 import type { Exercise } from "@/types/exercises";
-import useExerciseStore from "@/store/exercisesStore";
 
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import Badge from "@/components/Badge/Badge";
@@ -17,10 +16,59 @@ import XMarkIcon from "@/assets/icons/x-mark-mini";
 
 // TODO: The custom styles for the swiped cards are missing.
 
-const WorkoutExercises = () => {
-  const { exercises, deleteExercise } = useExerciseStore();
+const mockData = [
+  {
+    id: 1,
+    name: "Arnold press",
+    sets_completed: 3,
+    total_sets: 5,
+    status: "Completed",
+    gif_path:
+      "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
+  },
+  {
+    id: 2,
+    name: "Assisted dips",
+    sets_completed: 0,
+    total_sets: 5,
+    status: "Completed",
+    gif_path:
+      "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/assisted_triceps_dip_(kneeling)_no_bg.gif",
+  },
+  {
+    id: 3,
+    name: "Behind neck lat pulldowns",
+    sets_completed: 0,
+    total_sets: 5,
+    status: "Pending",
+    gif_path:
+      "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/cable_wide_grip_rear_pulldown_behind_neck_no_bg.gif",
+  },
+  {
+    id: 4,
+    name: "Arnold press",
+    sets_completed: 0,
+    total_sets: 5,
+    status: "Pending",
+    gif_path:
+      "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/dumbbell_arnold_press.gif",
+  },
+  {
+    id: 5,
+    name: "Calf raise",
+    sets_completed: 0,
+    total_sets: 5,
+    status: "Pending",
+    gif_path:
+      "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/bodyweight_standing_calf_raise_no_bg.gif",
+  },
+];
 
-  const renderItem = ({ item }: { item: Exercise }) => (
+// NOTE: Mock data is used since workout store is not ready yet.
+const WorkoutExercises = () => {
+  const exercises = mockData;
+
+  const renderItem = ({ item }: { item: any }) => (
     <View className="mb-2 flex-row items-center justify-between bg-gray-100">
       <View className="flex-row items-center justify-start">
         <Image
@@ -59,7 +107,7 @@ const WorkoutExercises = () => {
 
   const deleteRow = (rowMap: any, rowKey: number) => {
     closeRow(rowMap, rowKey);
-    deleteExercise(rowKey);
+    // deleteExercise(rowKey);
   };
 
   const closeRow = (rowMap, rowKey) => {
