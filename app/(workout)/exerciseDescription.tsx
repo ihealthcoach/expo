@@ -11,8 +11,19 @@ import CheckMiniIcon from "@/assets/icons/check-mini";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import Button from "@/components/Button/Button";
+import { useGetExerciseByIdQuery } from "@/queries/exerciseQueries/exerciseQueries";
+import { useGetGifByExerciseQuery } from "@/queries/gifQueries/gifQueries";
 
-const ExerciseDescription = () => {
+type Props = {
+  id: string;
+};
+
+const ExerciseDescription = ({
+  id = "2f3af3df-9268-4965-aff5-b208bfcb58ee", // a random exercise id(bodyweight standing calf raise) for testing.
+}: Props) => {
+  const { data: exercise } = useGetExerciseByIdQuery(id);
+  const { data: gif } = useGetGifByExerciseQuery(id);
+  if (!exercise) return null;
   return (
     <View className="relative flex-1">
       <HeaderWithBackArrow>
@@ -21,18 +32,14 @@ const ExerciseDescription = () => {
           <Badge text="Add" isDark iconAfter={<PlusIcon fill="#FCFEFE" />} />
         </View>
       </HeaderWithBackArrow>
-
       <ScrollView>
         <View className="mx-4 mb-6">
           <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
-            Arnold Press
+            {exercise.name}
           </Text>
           <Text className="font-interRegular text-sm leading-[17.5px] text-gray-600">
-            Arnold press is a variation of the shoulder press made popular by
-            Arnold Schwarzenegger. The difference from regular shoulder press is
-            that they hit the front deltas more. The reason for it is a twist of
-            the forearms that comes from the starting position. Due to this
-            twist, it's only done with dumbbells.{" "}
+            {exercise.description}
+            {/* TODO: Read more functionality */}
             <Text className="font-interSemiBold text-gray-900">Read more</Text>
           </Text>
         </View>
@@ -44,7 +51,7 @@ const ExerciseDescription = () => {
                   Exercise type
                 </Text>
                 <Text className="font-interMedium text-sm text-indigo-600">
-                  Strength
+                  {exercise.exercise_type}
                 </Text>
               </View>
               <View className="items-center">
@@ -52,7 +59,7 @@ const ExerciseDescription = () => {
                   Primary muscle group
                 </Text>
                 <Text className="font-interMedium text-sm text-indigo-600">
-                  Shoulders
+                  {exercise.primary_muscles}
                 </Text>
               </View>
             </View>
@@ -64,7 +71,7 @@ const ExerciseDescription = () => {
                   Equipment
                 </Text>
                 <Text className="font-interMedium text-sm text-indigo-600">
-                  Dumbbell
+                  {exercise.equipment}
                 </Text>
               </View>
               <View className="items-center">
@@ -72,17 +79,21 @@ const ExerciseDescription = () => {
                   Secondary muscle group
                 </Text>
                 <Text className="font-interMedium text-sm text-indigo-600">
-                  Traps, Triceps
+                  {exercise.secondary_muscles}
                 </Text>
               </View>
             </View>
           </View>
         </View>
         <View className="mb-6 h-48 flex-1 flex-row">
-          <Image
-            source={require("@/assets/test-data/dumbbell_arnold_press.gif")}
-            className="h-full w-1/2"
-          />
+          {gif && (
+            <Image
+              source={{
+                uri: gif,
+              }}
+              className="h-full w-1/2"
+            />
+          )}
           <View className="w-1/2 py-6">
             <Image
               contentFit="contain"
@@ -95,34 +106,16 @@ const ExerciseDescription = () => {
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             How to
           </Text>
-          <View className="mb-2 flex-row">
-            <Text className="w-4 font-interRegular text-gray-600">1.</Text>
-            <Text className="mr-4 font-interRegular text-gray-600">
-              Start from the chest with your palms facing towards you.
-            </Text>
-          </View>
-          <View className="mb-2 flex-row">
-            <Text className="w-4 font-interRegular text-gray-600">2.</Text>
-            <Text className="mr-4 font-interRegular text-gray-600">
-              Twist your forearms outwards as you move the weight upwards. The
-              end position should be the same as with a normal shoulder press.
-            </Text>
-          </View>
-          <View className="mb-2 flex-row">
-            <Text className="w-4 font-interRegular text-gray-600">3.</Text>
-            <Text className="mr-4 font-interRegular text-gray-600">
-              Slowly lower the weights back to the starting position, twisting
-              your forearms back to facing you.
-            </Text>
-          </View>
-          <View className="mb-2 flex-row">
-            <Text className="w-4 font-interRegular text-gray-600">4.</Text>
-            <Text className="mr-4 font-interRegular text-gray-600">
-              Arnold presses have been accused of being harsh on shoulders and
-              rotator cuffs, so we would advise to start with low weights for
-              practicing the technique.
-            </Text>
-          </View>
+          {exercise.instructions.map((instruction, index) => (
+            <View key={index} className="mb-2 flex-row">
+              <Text className="w-4 font-interRegular text-gray-600">
+                {index + 1}.
+              </Text>
+              <Text className="mr-4 font-interRegular text-gray-600">
+                {instruction}
+              </Text>
+            </View>
+          ))}
         </View>
         <View className="mx-4 mb-6">
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
@@ -159,25 +152,16 @@ const ExerciseDescription = () => {
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             Benefits
           </Text>
-          <View className="mb-2 flex-row">
-            <CheckMiniIcon className="mr-4" />
-            <Text className="font-interRegular text-sm text-gray-600">
-              Great for adding mass to the shoulders
-            </Text>
-          </View>
-          <View className="mb-2 flex-row">
-            <CheckMiniIcon className="mr-4" />
-            <Text className="font-interRegular text-sm text-gray-600">
-              May be more shoulder-friendly than palms-forward presses
-            </Text>
-          </View>
-          <View className="flex-row">
-            <CheckMiniIcon className="mr-4" />
-            <Text className="font-interRegular text-sm text-gray-600">
-              Great main movement on shoulder day or accessory move for other
-              presses
-            </Text>
-          </View>
+          {exercise.benefits.map((benifits, index) => (
+            <View key={index} className="mb-2 flex-row">
+              <Text className="w-4 font-interRegular text-gray-600">
+                {index + 1}.
+              </Text>
+              <Text className="mr-4 font-interRegular text-gray-600">
+                {benifits}
+              </Text>
+            </View>
+          ))}
         </View>
         <View className="mx-4 mb-6">
           <Text className="mb-3 font-interSemiBold text-2xl leading-8 text-gray-900">
