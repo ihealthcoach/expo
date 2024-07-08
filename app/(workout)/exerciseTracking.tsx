@@ -158,17 +158,17 @@ const ExerciseTracking = () => {
   const snapPoints = useMemo(() => [snapPointsState], [snapPointsState]);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const handleClosePanel = () => {
-    setNameOfModal("");
-    bottomSheetRef.current?.close();
-    setOpenBackDrop(false);
-  };
-
   const handleOpenPanel = (modal: string, snapPoints: string) => {
     setSnapPointsState(snapPoints);
     setNameOfModal(modal);
     bottomSheetRef.current?.present();
     setOpenBackDrop(true);
+  };
+
+  const handleClosePanel = () => {
+    setNameOfModal("");
+    bottomSheetRef.current?.close();
+    setOpenBackDrop(false);
   };
 
   const { sets, addSet, deleteSet, updateSetCompletion } =

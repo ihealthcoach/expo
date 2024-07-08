@@ -76,6 +76,12 @@ const Modals = () => {
           >
             Workout settings
           </Link>
+          <Link
+            href={"/(workout)/modals/shortcuts"}
+            className="font-interMedium text-xl"
+          >
+            Shortcuts
+          </Link>
         </ScrollView>
       </View>
     </View>

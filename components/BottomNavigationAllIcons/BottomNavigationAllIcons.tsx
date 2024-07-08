@@ -4,11 +4,19 @@ import { Svg, Path, Rect, Circle } from "react-native-svg";
 
 const BottomNavigationAllIcons = ({
   handleOpenPanel,
+  setNameOfModal,
 }: {
-  handleOpenPanel: () => void;
+  handleOpenPanel: (modal: string, snapPoints: string) => void;
+  setNameOfModal: (name: string) => void;
 }) => (
-  <View className="relative items-center justify-center">
-    <Svg width={390} height={110} viewBox="0 0 390 110" fill="none">
+  <View className="relative w-screen items-center justify-center">
+    <Svg
+      className="absolute bottom-0"
+      width={390}
+      height={110}
+      viewBox="0 0 390 110"
+      fill="none"
+    >
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
@@ -107,8 +115,12 @@ const BottomNavigationAllIcons = ({
       />
     </Svg>
     <Pressable
-      onPress={handleOpenPanel}
-      className="absolute rounded-full p-10"
+      onPress={() => handleOpenPanel("workouts", "55%")}
+      className="absolute bottom-6 right-8 rounded-full p-8"
+    />
+    <Pressable
+      onPress={() => handleOpenPanel("shortcuts", "80%")}
+      className="absolute bottom-6 rounded-full p-8"
     />
   </View>
 );
