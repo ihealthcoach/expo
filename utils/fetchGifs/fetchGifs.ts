@@ -19,7 +19,6 @@ const fetchGifs = async (
 };
 
 const fetchGifByExercise = async (exercise: Exercise): Promise<string> => {
-  console.log("fetching" + exercise.id);
   const fileUri = FileSystem.documentDirectory + `${exercise.id}.gif`;
   await FileSystem.downloadAsync(exercise.gif_url, fileUri);
   return fileUri;

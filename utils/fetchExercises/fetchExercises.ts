@@ -2,7 +2,6 @@ import { supabase } from "@/lib/supabase";
 import { Exercise, RawExerciseFromSupabase } from "@/types/exercises";
 
 const fetchExercises = async () => {
-  console.log("in the fetchExercies function");
   let { data, error } = await supabase.from("exercises").select("*");
 
   if (error) {
@@ -18,7 +17,6 @@ const fetchExercises = async () => {
 };
 
 const fetchExerciseById = async (exerciseId: string) => {
-  console.log("Fetching exercise with ID:", exerciseId);
   const { data, error } = await supabase
     .from("exercises")
     .select("*")

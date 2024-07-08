@@ -9,12 +9,10 @@ import {
 // import useGifStore from "./gifStore";
 
 const useAllGifsQuery = () => {
-  console.log("in use gif query");
-
-  const allExercises = useAllExerciseQuery().data;
+  const { data: allExercises } = useAllExerciseQuery();
 
   return useQuery<Record<string, string>>({
-    queryKey: ["giffs"],
+    queryKey: ["gifs"],
     queryFn: async () => await fetchGifs(allExercises),
     refetchOnMount: false,
     enabled: !!allExercises,
@@ -22,8 +20,6 @@ const useAllGifsQuery = () => {
 };
 
 const useGetGifByExerciseQuery = (exerciseId: string) => {
-  console.log("in use gif query");
-
   const { data: gifs } = useAllGifsQuery();
   const { data: exercise } = useGetExerciseByIdQuery(exerciseId);
 
