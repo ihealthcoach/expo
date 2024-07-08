@@ -14,11 +14,12 @@ const Greeting = () => {
       <Text className="mb-3 font-interBold text-3xl leading-9">
         {firstName}
       </Text>
+      {/* FIX: Decrease padding on the badge container */}
       <View className="mb-3 flex-row">
-        <Badge text="Muscle building" />
-        <Badge text="3 meals" />
-        <Badge text="12 weeks" />
-        <Badge text="Vegan" />
+        <Badge text="Muscle building" hasBorder />
+        <Badge hasBorder text="3 meals" />
+        <Badge hasBorder text="12 weeks" />
+        <Badge hasBorder text="Vegan" />
       </View>
       <Text className="font-interRegular text-sm">
         Great start of the day, a little more to reach today’s goals
