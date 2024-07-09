@@ -6,7 +6,11 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 // import { useFonts } from "expo-font";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryCache,
+  QueryClient,
+  QueryClientProvider,
+} from "@tanstack/react-query";
 import { QuestionnaireProvider } from "@/context/useQuestionnaire";
 import { onlineManager } from "@tanstack/react-query";
 import NetInfo from "@react-native-community/netinfo";
@@ -15,12 +19,21 @@ import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useEffect } from "react";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      gcTime: Infinity,
+    },
+  },
+});
 
 const persister = createAsyncStoragePersister({
   storage: AsyncStorage,
   throttleTime: 3000,
 });
+
+persister.restoreClient();
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
