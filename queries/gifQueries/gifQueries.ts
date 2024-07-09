@@ -6,15 +6,12 @@ import {
   useGetExerciseByIdQuery,
 } from "../exerciseQueries/exerciseQueries";
 
-// import useGifStore from "./gifStore";
-
 const useAllGifsQuery = () => {
   const { data: allExercises } = useAllExerciseQuery();
 
   return useQuery<Record<string, string>>({
     queryKey: ["gifs"],
     queryFn: async () => await fetchGifs(allExercises),
-    refetchOnMount: false,
     enabled: !!allExercises,
   });
 };
@@ -31,7 +28,6 @@ const useGetGifByExerciseQuery = (exerciseId: string) => {
       }
       return await fetchGifByExercise(exercise);
     },
-    refetchOnMount: false,
     enabled: !!exercise,
   });
 };

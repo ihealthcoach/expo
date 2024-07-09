@@ -5,13 +5,10 @@ import {
   fetchExercises,
 } from "@/utils/fetchExercises/fetchExercises";
 
-// import useGifStore from "./gifStore";
-
 const useAllExerciseQuery = () => {
   return useQuery<Exercise[]>({
     queryKey: ["exercises"],
     queryFn: () => fetchExercises(),
-    staleTime: 1,
   });
 };
 
@@ -27,7 +24,6 @@ const useGetExerciseByIdQuery = (exerciseId: string) => {
       }
       return await fetchExerciseById(exerciseId);
     },
-    refetchOnMount: false,
   });
 };
 
