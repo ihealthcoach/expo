@@ -2,7 +2,7 @@ import { supabase } from "@/lib/supabase";
 import { Exercise, RawExerciseFromSupabase } from "@/types/exercises";
 
 const fetchExercises = async () => {
-  let { data, error } = await supabase.from("exercises").select("*");
+  let { data, error } = await supabase.from("exercises").select("*").limit(200); //NOTE: the limit is for testing purposes to reduce no. of requests
 
   if (error) {
     console.error("Error fetching exercises:", error);
