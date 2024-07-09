@@ -20,7 +20,7 @@ import XMarkIcon from "@/assets/icons/x-mark-mini";
 const WorkoutExercises = () => {
   const { exercises, deleteExercise } = useExerciseStore();
 
-  const renderItem = ({ item }: { item: Exercise }) => (
+  const renderItem = ({ item }: { item: any }) => (
     <View className="mb-2 flex-row items-center justify-between bg-gray-100">
       <View className="flex-row items-center justify-start">
         <Image
