@@ -8,10 +8,12 @@ const fetchGifs = async (
 
   await Promise.all(
     exercises.map(async (exercise) => {
-      console.log("fetching " + exercise.id);
       const fileUri = FileSystem.documentDirectory + `${exercise.id}.gif`;
-      await FileSystem.downloadAsync(exercise.gif_url, fileUri);
-      gifsToCache[exercise.id] = fileUri;
+      const response = await FileSystem.downloadAsync(
+        exercise.gif_url,
+        fileUri,
+      );
+      if (response.status === 200) gifsToCache[exercise.id] = fileUri;
     }),
   );
 
