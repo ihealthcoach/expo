@@ -1,7 +1,6 @@
 import { create } from "zustand";
-import type { Exercise, ExerciseStore } from "@/types/exercises";
 
-const useExerciseStore = create<ExerciseStore>((set) => ({
+const useExerciseStore = create<any>((set) => ({
   exercises: [
     {
       id: 1,
@@ -48,8 +47,8 @@ const useExerciseStore = create<ExerciseStore>((set) => ({
       gif_path:
         "https://olqyqpzmvfzjxnozlthv.supabase.co/storage/v1/object/public/gifs/bodyweight_standing_calf_raise_no_bg.gif",
     },
-  ] as Exercise[],
-  setExercises: (exercises: Exercise[]) => set({ exercises }),
+  ] as any[],
+  setExercises: (exercises: any[]) => set({ exercises }),
   deleteExercise: (id: number) =>
     set((state) => ({
       exercises: state.exercises.filter((exercise) => exercise.id !== id),
