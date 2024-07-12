@@ -204,9 +204,6 @@ const ExerciseTracking = () => {
     console.log("Weight:", weightInputValue);
     console.log("Reps:", repsInputValue);
     setInputVisible(false);
-    if (weightInputRef.current) {
-      weightInputRef.current.blur();
-    }
   };
 
   const { sets, addSet, deleteSet, updateSetCompletion } =

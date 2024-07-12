@@ -200,7 +200,11 @@ const landingpage = () => {
                     }`}
                   >
                     <View className="flex-1 flex-row items-center">
-                      <option.icon />
+                      {React.isValidElement(option.icon) ? (
+                        option.icon
+                      ) : (
+                        <option.icon />
+                      )}
                       <View className="ml-3 flex-1 flex-row items-center justify-between">
                         <Text className="font-interMedium text-base leading-5 text-gray-900">
                           {option.name}
@@ -224,7 +228,7 @@ const landingpage = () => {
                   <View
                     key={option.id}
                     className={`w-full flex-row items-center justify-between py-4 ${
-                      index !== optionsWorkout.length - 1
+                      index !== optionsFood.length - 1
                         ? "border-b border-b-gray-200"
                         : ""
                     }`}
