@@ -1,5 +1,14 @@
-import { View, Text, Pressable, ScrollView } from "react-native";
-import React, { useMemo, useRef, useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  TextInput,
+  KeyboardAvoidingView,
+  Platform,
+  InputAccessoryView,
+} from "react-native";
+import React, { useMemo, useRef, useState, useEffect } from "react";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import EllipsisHorizontalIcon from "@/assets/icons/ellipsis-horizontal-outline";
 import Badge from "@/components/Badge/Badge";
@@ -25,11 +34,17 @@ import TimerIcon from "@/assets/icons/timer-outline";
 import CalculatorOutline from "@/assets/icons/calculator-outline";
 import LogoutIcon from "@/assets/icons/logout-outline";
 import { Image } from "expo-image";
+import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
 
 const ExerciseTracking = () => {
+  const [isInputVisible, setInputVisible] = useState(false);
+  const [weightInputValue, setWeightInputValue] = useState<string>("");
+  const [repsInputValue, setRepsInputValue] = useState<string>("");
   const [openBackDrop, setOpenBackDrop] = useState<boolean>(false);
   const [nameOfModal, setNameOfModal] = useState<string>("");
   const [snapPointsState, setSnapPointsState] = useState<string>("1%");
+  const weightInputRef = useRef<TextInput>(null);
+  const repsInputRef = useRef<TextInput>(null);
 
   const options = [
     { id: 1, name: "Exercise guide", icon: InformationCircleIcon },
@@ -171,19 +186,105 @@ const ExerciseTracking = () => {
     setOpenBackDrop(false);
   };
 
+  const handlePress = () => {
+    setInputVisible(true);
+    setTimeout(() => {
+      if (weightInputRef.current) {
+        weightInputRef.current.focus();
+      }
+    }, 100); // Delay to ensure the input is rendered before focusing
+  };
+
+  // const handleDismissKeyboard = () => {
+  //   Keyboard.dismiss();
+  //   setInputVisible(false);
+  // };
+
+  const handleSubmit = () => {
+    console.log("Weight:", weightInputValue);
+    console.log("Reps:", repsInputValue);
+    setInputVisible(false);
+    if (weightInputRef.current) {
+      weightInputRef.current.blur();
+    }
+  };
+
   const { sets, addSet, deleteSet, updateSetCompletion } =
     useExerciseTrackingStore();
   return (
     <BottomSheetModalProvider>
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        {isInputVisible && (
+          <InputAccessoryView>
+            <View className=" bg-gray-50 p-4 pb-9">
+              <View className="w-full flex-row items-center justify-between pb-10">
+                <View className="flex-row items-center">
+                  <Text className="font-interMedium text-sm text-gray-900">
+                    Standard set
+                  </Text>
+                  <ChevronDownIcon />
+                </View>
+                <View className="flex-row items-center gap-2">
+                  <View className="relative">
+                    <TextInput
+                      className="flex items-center justify-center rounded-md border border-gray-300 px-4 py-3 font-interSemiBold text-xl text-black-ih"
+                      ref={weightInputRef}
+                      value={weightInputValue}
+                      onChangeText={setWeightInputValue}
+                      placeholder="Kg"
+                      onSubmitEditing={() => setInputVisible(false)}
+                      keyboardType="decimal-pad"
+                    />
+                    <View className="pointer-events-none absolute -bottom-6 flex w-full items-center">
+                      <Text className="font-interRegular text-sm text-gray-900">
+                        kg
+                      </Text>
+                    </View>
+                  </View>
+                  <Text className="font-interSemiBold text-sm text-gray-900">
+                    x
+                  </Text>
+                  <View className="relative">
+                    <TextInput
+                      className="flex items-center justify-center rounded-md border border-gray-300 px-4 py-3 font-interSemiBold text-xl text-black-ih"
+                      ref={repsInputRef}
+                      value={repsInputValue}
+                      onChangeText={setRepsInputValue}
+                      placeholder="Reps"
+                      onSubmitEditing={() => setInputVisible(false)}
+                      keyboardType="number-pad"
+                    />
+                    <View className="pointer-events-none absolute -bottom-6 flex w-full items-center">
+                      <Text className="font-interRegular text-sm text-gray-900">
+                        reps
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <Button
+                text="Save set"
+                bgColor="bg-indigo-600"
+                onPress={handleSubmit}
+              />
+            </View>
+          </InputAccessoryView>
+        )}
+      </KeyboardAvoidingView>
+
       <View className="flex-1">
         <HeaderWithBackArrow>
           <Text className="font-interRegular text-base text-gray-400">
             Exercise{" "}
             <Text className="font-interMedium text-gray-900">1 of 6</Text>
           </Text>
-          <Pressable onPress={() => handleOpenPanel("workoutSettings", "68%")}>
+          <TouchableOpacity
+            onPress={() => handleOpenPanel("workoutSettings", "68%")}
+          >
             <EllipsisHorizontalIcon />
-          </Pressable>
+          </TouchableOpacity>
         </HeaderWithBackArrow>
         <View className="mx-4 mb-12">
           <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
@@ -207,60 +308,60 @@ const ExerciseTracking = () => {
 
         {/* Sets */}
         {sets.map((set, index) => (
-          <View
-            key={set.id}
-            className={`mx-4 mb-4 flex-row justify-between bg-gray-100 pb-[10px] ${
-              index !== sets.length - 1 ? "border-b border-gray-200" : ""
-            }`}
-          >
-            <View className="flex w-1/3 items-start justify-between">
-              <Text className="font-interMedium text-lg leading-[22.5px] text-gray-900">
-                {set.set_number.toString().padStart(2, "0")}
-              </Text>
-              <Text className="font-interRegular text-xs leading-[17.5px] text-gray-400">
-                {set.type}
-              </Text>
-            </View>
-
-            {/* TODO: Fix missing centering when set.weight is more than two digits */}
-            {/* SOLUTION (MAYBE): Have three columns, each with a mapping */}
-            <View className="flex-row items-baseline gap-4">
-              <View className="items-center">
+          <TouchableOpacity onPress={handlePress} key={set.id}>
+            <View
+              key={set.id}
+              className={`mx-4 mb-4 flex-row justify-between bg-gray-100 pb-[10px] ${
+                index !== sets.length - 1 ? "border-b border-gray-200" : ""
+              }`}
+            >
+              <View className="flex w-1/3 items-start justify-between">
                 <Text className="font-interMedium text-lg leading-[22.5px] text-gray-900">
-                  {set.weight}
+                  {set.set_number.toString().padStart(2, "0")}
                 </Text>
                 <Text className="font-interRegular text-xs leading-[17.5px] text-gray-400">
-                  {set.weight_unit}
+                  {set.type}
                 </Text>
               </View>
-              <Text className="text-ms self-center font-interSemiBold leading-[17.5px] text-gray-400">
-                x
-              </Text>
-              <View className="items-center justify-center">
-                <Text className="font-interMedium text-lg leading-[22.5px] text-gray-900">
-                  {set.reps}
-                </Text>
-                <Text className="font-interRegular text-xs leading-[17.5px] text-gray-400">
-                  reps
-                </Text>
-              </View>
-            </View>
-            <View className="w-1/5 items-end self-center">
-              {set.completed ? (
-                <CheckMiniIcon />
-              ) : (
-                <View className="flex-row items-center justify-between">
-                  <View className="rounded-full border border-gray-200 px-3 py-[6px]">
-                    <Text className="font-interMedium text-xs leading-[15px] text-gray-400">
-                      RPE
-                    </Text>
-                  </View>
+              {/* TODO: Fix missing centering when set.weight is more than two digits */}
+              {/* SOLUTION (MAYBE): Have three columns, each with a mapping */}
+              <View className="flex-row items-baseline gap-4">
+                <View className="items-center">
+                  <Text className="font-interMedium text-lg leading-[22.5px] text-gray-900">
+                    {set.weight}
+                  </Text>
+                  <Text className="font-interRegular text-xs leading-[17.5px] text-gray-400">
+                    {set.weight_unit}
+                  </Text>
                 </View>
-              )}
+                <Text className="text-ms self-center font-interSemiBold leading-[17.5px] text-gray-400">
+                  x
+                </Text>
+                <View className="items-center justify-center">
+                  <Text className="font-interMedium text-lg leading-[22.5px] text-gray-900">
+                    {set.reps}
+                  </Text>
+                  <Text className="font-interRegular text-xs leading-[17.5px] text-gray-400">
+                    reps
+                  </Text>
+                </View>
+              </View>
+              <View className="w-1/5 items-end self-center">
+                {set.completed ? (
+                  <CheckMiniIcon />
+                ) : (
+                  <View className="flex-row items-center justify-between">
+                    <View className="rounded-full border border-gray-200 px-3 py-[6px]">
+                      <Text className="font-interMedium text-xs leading-[15px] text-gray-400">
+                        RPE
+                      </Text>
+                    </View>
+                  </View>
+                )}
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         ))}
-
         <View className="mx-4">
           <Button
             text="Add set"
@@ -270,29 +371,36 @@ const ExerciseTracking = () => {
             iconAfter={<PlusIcon stroke="#374151" />}
           />
         </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        ></View>
         <View className="flex-1 justify-end">
           <View className="mx-9 flex-row justify-around rounded-full bg-gray-900 px-6 py-3">
-            <Pressable
+            <TouchableOpacity
               onPress={() => handleOpenPanel("exerciseGuide", "90%")}
               className="items-center justify-center gap-2"
             >
               <InformationCircleIcon stroke={"#FCFEFE"} />
               <Text className="text-[9px] text-white-ih">Exercise guide</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => handleOpenPanel("exercisePreviousStats", "80%")}
               className="items-center justify-center gap-2"
             >
               <ActivityOutlineVuesax />
               <Text className="text-[9px] text-white-ih">Previous stats</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
               onPress={() => handleOpenPanel("oneRepMax", "85%")}
               className="items-center justify-center gap-2"
             >
               <Chart2Icon />
               <Text className="text-[9px] text-white-ih">One Rep Max</Text>
-            </Pressable>
+            </TouchableOpacity>
             <View className="items-center justify-center gap-2">
               {/* BUG: SVG wasn't exported properly (from Figma) */}
               <Note2Outline fill={"#FCFEFE"} />
@@ -301,7 +409,6 @@ const ExerciseTracking = () => {
           </View>
         </View>
       </View>
-
       {/*MARK: Bottom sheet modal */}
       <BottomSheetModal
         ref={bottomSheetRef}
@@ -311,7 +418,7 @@ const ExerciseTracking = () => {
         handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
         onDismiss={() => setOpenBackDrop(false)}
         backdropComponent={({ animatedIndex }) => (
-          <Pressable
+          <TouchableOpacity
             onPress={handleClosePanel}
             className={`absolute left-0 right-0 top-0 h-screen bg-[#24292f] transition-opacity duration-300 ${openBackDrop ? "opacity-60" : "opacity-0"}`}
           />
@@ -324,12 +431,12 @@ const ExerciseTracking = () => {
               <Text className="font-interBold text-2xl text-gray-900">
                 Workout settings
               </Text>
-              <Pressable
+              <TouchableOpacity
                 onPress={handleClosePanel}
                 className="shrink rounded-full bg-gray-100 p-2"
               >
                 <XMarkIcon fill="#111827" width={24} height={24} />
-              </Pressable>
+              </TouchableOpacity>
             </View>
             {options.map((option, index) => (
               <View
@@ -358,7 +465,6 @@ const ExerciseTracking = () => {
             ))}
           </View>
         )}
-
         {/*MARK: Exercise guide */}
         {nameOfModal === "exerciseGuide" && (
           <View className="mx-4 mt-2 flex-1">
@@ -366,19 +472,18 @@ const ExerciseTracking = () => {
               <Text className="font-interBold text-2xl text-gray-900">
                 Exercise guide
               </Text>
-              <Pressable
+              <TouchableOpacity
                 onPress={handleClosePanel}
                 className="shrink rounded-full bg-gray-100 p-2"
               >
                 <XMarkIcon fill="#111827" width={24} height={24} />
-              </Pressable>
+              </TouchableOpacity>
             </View>
             <View className="mb-6">
               <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
                 Arnold Press
               </Text>
             </View>
-
             <View className="mb-6 flex-1 flex-row">
               <Image
                 source={require("@/assets/test-data/dumbbell_arnold_press.gif")}
@@ -435,12 +540,12 @@ const ExerciseTracking = () => {
               <Text className="font-interBold text-2xl text-gray-900">
                 One Rep Max
               </Text>
-              <Pressable
+              <TouchableOpacity
                 onPress={handleClosePanel}
                 className="shrink rounded-full bg-gray-100 p-2"
               >
                 <XMarkIcon fill="#111827" width={24} height={24} />
-              </Pressable>
+              </TouchableOpacity>
             </View>
             <View className="mb-6">
               <Text className="mb-1 font-interBold text-xl leading-[30px] text-indigo-600">
@@ -474,7 +579,6 @@ const ExerciseTracking = () => {
             ))}
           </View>
         )}
-
         {/*MARK: Previous stats */}
         {nameOfModal === "exercisePreviousStats" && (
           <View className="mx-4 mt-2 flex-1">
@@ -482,12 +586,12 @@ const ExerciseTracking = () => {
               <Text className="font-interBold text-2xl text-gray-900">
                 Previous stats
               </Text>
-              <Pressable
+              <TouchableOpacity
                 onPress={handleClosePanel}
                 className="shrink rounded-full bg-gray-100 p-2"
               >
                 <XMarkIcon fill="#111827" width={24} height={24} />
-              </Pressable>
+              </TouchableOpacity>
             </View>
             <View className="mb-6">
               <Text className="mb-1 font-interBold text-xl leading-[30px] text-indigo-600">
@@ -497,7 +601,6 @@ const ExerciseTracking = () => {
                 5 sets I February 2, 2024 I 08:55
               </Text>
             </View>
-
             {/* TODO: Add horizontal scroll view here */}
             <View className="-mx-4 mb-6">
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -526,7 +629,6 @@ const ExerciseTracking = () => {
                 ))}
               </ScrollView>
             </View>
-
             <View className="mb-6">
               {/* TODO: Add padding right or width to match Figma */}
               {exercisePreviousStatsData.map((item, index) => (

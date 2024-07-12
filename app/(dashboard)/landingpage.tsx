@@ -69,8 +69,8 @@ const landingpage = () => {
   const snapPoints = useMemo(() => [snapPointsState], [snapPointsState]);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const handleOpenPanel = (modal, snapPoints) => {
-    // const handleOpenPanel = (modal: string, snapPoints: string) => {
+  // const handleOpenPanel = (modal, snapPoints) => {
+  const handleOpenPanel = (modal: string, snapPoints: string) => {
     setSnapPointsState(snapPoints);
     setNameOfModal(modal);
     bottomSheetRef.current?.present();
@@ -200,9 +200,9 @@ const landingpage = () => {
                     }`}
                   >
                     <View className="flex-1 flex-row items-center">
-                      <option.icon fill={"#111827"} stroke={"#111827"} />
+                      <option.icon />
                       <View className="ml-3 flex-1 flex-row items-center justify-between">
-                        <Text className="font-interSemiBold text-base leading-5 text-gray-900">
+                        <Text className="font-interMedium text-base leading-5 text-gray-900">
                           {option.name}
                         </Text>
                         {option.value && (
@@ -230,9 +230,9 @@ const landingpage = () => {
                     }`}
                   >
                     <View className="flex-1 flex-row items-center">
-                      <option.icon fill={"#111827"} stroke={"#111827"} />
+                      <option.icon />
                       <View className="ml-3 flex-1 flex-row items-center justify-between">
-                        <Text className="font-interSemiBold text-base leading-5 text-gray-900">
+                        <Text className="font-interMedium text-base leading-5 text-gray-900">
                           {option.name}
                         </Text>
                       </View>

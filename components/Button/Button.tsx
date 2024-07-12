@@ -2,7 +2,7 @@ import { View, Text, Pressable } from "react-native";
 import React from "react";
 
 interface ButtonProps {
-  text: string;
+  text?: string;
   textColor?: string;
   bgColor?: string;
   iconBefore?: React.ReactNode;
@@ -15,16 +15,11 @@ const Button = ({
   text,
   textColor = "text-white",
   bgColor,
-  onPress,
   iconBefore,
   iconAfter,
   border,
+  onPress,
 }: ButtonProps) => {
-  // const textColor =
-  //   bgColor === "bg-gray-900" || bgColor == undefined
-  //     ? "text-white"
-  //     : "text-black";
-
   return (
     <View className="mb-4 flex-row overflow-hidden rounded-md">
       {iconBefore && (
