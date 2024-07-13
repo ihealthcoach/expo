@@ -35,8 +35,10 @@ export const useCreateExerciseDetailMutation = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: createExerciseDetail,
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["exerciseDetails"] }),
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["workout", variables.id] });
+      queryClient.invalidateQueries({ queryKey: ["workouts"] });
+    },
   });
 };
 
@@ -45,8 +47,10 @@ export const useUpdateExerciseDetailMutation = () => {
   return useMutation({
     mutationFn: (params: { id: string; updates: Partial<ExerciseDetails> }) =>
       updateExerciseDetail(params.id, params.updates),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["exerciseDetails"] }),
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["workout", variables.id] });
+      queryClient.invalidateQueries({ queryKey: ["workouts"] });
+    },
   });
 };
 
@@ -54,7 +58,8 @@ export const useDeleteExerciseDetailMutation = (id: string) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: () => deleteExerciseDetail(id),
-    onSuccess: () =>
-      queryClient.invalidateQueries({ queryKey: ["exerciseDetails"] }),
+    onSuccess: (data, variables) => {
+      queryClient.invalidateQueries({ queryKey: ["workouts"] });
+    },
   });
 };
