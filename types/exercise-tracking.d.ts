@@ -1,17 +1,22 @@
-export interface Set {
-  id: number;
-  set_number: number;
-  type: string;
-  weight: number;
-  weight_unit: string;
-  reps: number;
-  completed: boolean;
-}
-
-export interface ExerciseTrackingStore {
-  sets: Set[];
-  setSets: (sets: Set[]) => void;
-  addSet: (newSet: Set) => void;
-  deleteSet: (set_number: number) => void;
-  updateSetCompletion: (set_number: number, completed: boolean) => void;
-}
+export type Workout = {
+  id: string; // Unique identifier for the workout
+  userId: string; // Foreign key to the User table
+  createdAt: Date; // Time when the workout was created
+  updatedAt: Date;
+  status: string; //TODO: change to enum
+};
+export type ExerciseDetails = {
+  id: string; // Unique identifier for the exercise details
+  workoutId: string; // Foreign key to the Workout table
+  exerciseId: string; // Foreign key to the Exercise table
+  createdAt: Date;
+  updatedAt: Date;
+};
+export type Set = {
+  id: string; // Unique identifier for the set
+  exerciseDetailsId: string; // Foreign key to the ExerciseDetails table
+  weight: number[]; // Weight lifted in the set
+  reps: number[]; // Number of repetitions in the set
+  createdAt: Date;
+  updatedAt: Date;
+};

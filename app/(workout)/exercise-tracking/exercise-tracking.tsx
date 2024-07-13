@@ -21,7 +21,6 @@ import Chart2Icon from "@/assets/icons/vuesax-chart-2-outline";
 import NoteAddIcon from "@/assets/icons/vuesax-note-add-outline";
 import Note2Outline from "@/assets/icons/NoteTwoOutline";
 import ActivityOutlineVuesax from "@/assets/icons/ActivityOutlineVuesax";
-import type { Set, ExerciseTrackingStore } from "@/types/exercise-tracking";
 import useExerciseTrackingStore from "@/store/exerciseTrackingStore";
 import CheckMiniIcon from "@/assets/icons/check-mini";
 import {
@@ -36,6 +35,24 @@ import CalculatorOutline from "@/assets/icons/calculator-outline";
 import LogoutIcon from "@/assets/icons/logout-outline";
 import { Image } from "expo-image";
 import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
+
+interface Set {
+  id: number;
+  set_number: number;
+  type: string;
+  weight: number;
+  weight_unit: string;
+  reps: number;
+  completed: boolean;
+}
+
+interface ExerciseTrackingStore {
+  sets: Set[];
+  setSets: (sets: Set[]) => void;
+  addSet: (newSet: Set) => void;
+  deleteSet: (set_number: number) => void;
+  updateSetCompletion: (set_number: number, completed: boolean) => void;
+}
 
 const ExerciseTracking = () => {
   const [isInputVisible, setInputVisible] = useState(false);
