@@ -1,5 +1,5 @@
 import Greeting from "@/components/Greeting/Greeting";
-import Header from "@/components/Header";
+import Header from "@/app/(dashboard)/landingpage/components/header/Header";
 import TodayGoals from "@/components/TodayGoals";
 import React, { useMemo, useState, useRef } from "react";
 import { ScrollView, View, Text, Pressable } from "react-native";
