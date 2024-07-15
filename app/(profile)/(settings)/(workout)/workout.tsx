@@ -35,7 +35,7 @@ const optionsWorkout = [
   },
 ];
 
-const Account = () => {
+const ProfileWorkout = () => {
   return (
     <View>
       <Text className="mb-3 font-interSemiBold text-2xl leading-[30px] text-gray-900">
@@ -70,4 +70,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default ProfileWorkout;

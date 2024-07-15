@@ -48,7 +48,7 @@ const optionsMore = [
   },
 ];
 
-const Account = () => {
+const More = () => {
   const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
   const toggleSwitch = () => {
@@ -100,4 +100,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default More;
