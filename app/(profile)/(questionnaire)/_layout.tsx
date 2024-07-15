@@ -26,7 +26,6 @@ export default function Layout() {
               Update your information
             </Text>
           </View>
-          <Badges />
           <Slot />
         </ScrollView>
       </View>

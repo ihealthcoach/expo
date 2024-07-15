@@ -15,7 +15,7 @@ interface Option {
   iconInTheEnd?: string;
 }
 
-const optionsAccount = [
+const optionsMore = [
   {
     id: 1,
     title: "Dark mode",
@@ -63,10 +63,10 @@ const Account = () => {
         More
       </Text>
       <View className="rounded-lg border border-gray-200 bg-gray-50">
-        {optionsAccount.map((option: Option, index: number) => (
+        {optionsMore.map((option: Option, index: number) => (
           <View
             key={option.id}
-            className={`flex-row py-4 ${index !== optionsAccount.length - 1 ? "mx-4 border-b border-gray-100" : "mx-4"}`}
+            className={`flex-row py-4 ${index !== optionsMore.length - 1 ? "mx-4 border-b border-gray-100" : "mx-4"}`}
           >
             <View className="flex-row items-center">
               {option.icon}

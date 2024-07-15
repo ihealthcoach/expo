@@ -12,7 +12,7 @@ interface Option {
   iconInTheEnd?: string;
 }
 
-const optionsAccount = [
+const optionsWorkout = [
   {
     id: 1,
     title: "Preferred units",
@@ -42,10 +42,10 @@ const Account = () => {
         Workout
       </Text>
       <View className="rounded-lg border border-gray-200 bg-gray-50">
-        {optionsAccount.map((option: Option, index: number) => (
+        {optionsWorkout.map((option: Option, index: number) => (
           <View
             key={option.id}
-            className={`flex-row py-4 ${index !== optionsAccount.length - 1 ? "mx-4 border-b border-gray-100" : "mx-4"}`}
+            className={`flex-row py-4 ${index !== optionsWorkout.length - 1 ? "mx-4 border-b border-gray-100" : "mx-4"}`}
           >
             <View className="flex-row items-center">
               {option.icon}
