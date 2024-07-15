@@ -7,6 +7,7 @@ import {
   KeyboardAvoidingView,
   Platform,
   InputAccessoryView,
+  Keyboard,
 } from "react-native";
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
@@ -40,11 +41,15 @@ const ExerciseTracking = () => {
   const [isInputVisible, setInputVisible] = useState(false);
   const [weightInputValue, setWeightInputValue] = useState<string>("");
   const [repsInputValue, setRepsInputValue] = useState<string>("");
+  const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
   const [openBackDrop, setOpenBackDrop] = useState<boolean>(false);
   const [nameOfModal, setNameOfModal] = useState<string>("");
   const [snapPointsState, setSnapPointsState] = useState<string>("1%");
   const weightInputRef = useRef<TextInput>(null);
   const repsInputRef = useRef<TextInput>(null);
+
+  console.log("Is Input Visible:", isInputVisible);
+  console.log("Keyboard height:", keyboardHeight);
 
   const options = [
     { id: 1, name: "Exercise guide", icon: InformationCircleIcon },
@@ -186,6 +191,26 @@ const ExerciseTracking = () => {
     setOpenBackDrop(false);
   };
 
+  // useEffect(() => {
+  //   const keyboardDidShowListener = Keyboard.addListener(
+  //     "keyboardDidShow",
+  //     (e) => {
+  //       setKeyboardHeight(e.endCoordinates.height);
+  //     },
+  //   );
+  //   const keyboardDidHideListener = Keyboard.addListener(
+  //     "keyboardDidHide",
+  //     () => {
+  //       setKeyboardHeight(0);
+  //     },
+  //   );
+
+  //   return () => {
+  //     keyboardDidHideListener.remove();
+  //     keyboardDidShowListener.remove();
+  //   };
+  // }, []);
+
   const handlePress = () => {
     setInputVisible(true);
     setTimeout(() => {
@@ -194,11 +219,6 @@ const ExerciseTracking = () => {
       }
     }, 100); // Delay to ensure the input is rendered before focusing
   };
-
-  // const handleDismissKeyboard = () => {
-  //   Keyboard.dismiss();
-  //   setInputVisible(false);
-  // };
 
   const handleSubmit = () => {
     console.log("Weight:", weightInputValue);
@@ -213,7 +233,7 @@ const ExerciseTracking = () => {
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
       >
-        {isInputVisible && (
+        {isInputVisible && Platform.OS === "ios" && (
           <InputAccessoryView>
             <View className=" bg-gray-50 p-4 pb-9">
               <View className="w-full flex-row items-center justify-between pb-10">
@@ -268,6 +288,70 @@ const ExerciseTracking = () => {
               />
             </View>
           </InputAccessoryView>
+        )}
+        {isInputVisible && Platform.OS === "android" && (
+          <View
+            style={{
+              // position: "absolute",
+              // bottom: -400,
+              // // bottom: keyboardHeight,
+              // left: 0,
+              // right: 0,
+              backgroundColor: "#f8f8f8",
+              padding: 16,
+            }}
+          >
+            <View className="w-full flex-row items-center justify-between pb-10">
+              <View className="flex-row items-center">
+                <Text className="font-interMedium text-sm text-gray-900">
+                  Standard set
+                </Text>
+                <ChevronDownIcon />
+              </View>
+              <View className="flex-row items-center gap-2">
+                <View className="relative">
+                  <TextInput
+                    className="flex items-center justify-center rounded-md border border-gray-300 px-4 py-3 font-interSemiBold text-xl text-black-ih"
+                    ref={weightInputRef}
+                    value={weightInputValue}
+                    onChangeText={setWeightInputValue}
+                    placeholder="Kg"
+                    onSubmitEditing={() => setInputVisible(false)}
+                    keyboardType="decimal-pad"
+                  />
+                  <View className="pointer-events-none absolute -bottom-6 flex w-full items-center">
+                    <Text className="font-interRegular text-sm text-gray-900">
+                      kg
+                    </Text>
+                  </View>
+                </View>
+                <Text className="font-interSemiBold text-sm text-gray-900">
+                  x
+                </Text>
+                <View className="relative">
+                  <TextInput
+                    className="flex items-center justify-center rounded-md border border-gray-300 px-4 py-3 font-interSemiBold text-xl text-black-ih"
+                    ref={repsInputRef}
+                    value={repsInputValue}
+                    onChangeText={setRepsInputValue}
+                    placeholder="Reps"
+                    onSubmitEditing={() => setInputVisible(false)}
+                    keyboardType="number-pad"
+                  />
+                  <View className="pointer-events-none absolute -bottom-6 flex w-full items-center">
+                    <Text className="font-interRegular text-sm text-gray-900">
+                      reps
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <Button
+              text="Save set"
+              bgColor="bg-indigo-600"
+              onPress={handleSubmit}
+            />
+          </View>
         )}
       </KeyboardAvoidingView>
 
