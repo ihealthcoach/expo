@@ -128,6 +128,7 @@ const Account = () => {
           </View>
         ))}
       </View>
+      {/* TODO: Add bottom navigation bar */}
     </View>
   );
 };
