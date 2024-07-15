@@ -1,5 +1,5 @@
 import Greeting from "@/components/Greeting/Greeting";
-import Header from "@/components/Header";
+import Header from "@/app/(dashboard)/landingpage/components/header/Header";
 import TodayGoals from "@/components/TodayGoals";
 import React, { useMemo, useState, useRef } from "react";
 import { ScrollView, View, Text, Pressable } from "react-native";
@@ -69,8 +69,8 @@ const landingpage = () => {
   const snapPoints = useMemo(() => [snapPointsState], [snapPointsState]);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const handleOpenPanel = (modal, snapPoints) => {
-    // const handleOpenPanel = (modal: string, snapPoints: string) => {
+  // const handleOpenPanel = (modal, snapPoints) => {
+  const handleOpenPanel = (modal: string, snapPoints: string) => {
     setSnapPointsState(snapPoints);
     setNameOfModal(modal);
     bottomSheetRef.current?.present();
@@ -200,9 +200,13 @@ const landingpage = () => {
                     }`}
                   >
                     <View className="flex-1 flex-row items-center">
-                      <option.icon fill={"#111827"} stroke={"#111827"} />
+                      {React.isValidElement(option.icon) ? (
+                        option.icon
+                      ) : (
+                        <option.icon />
+                      )}
                       <View className="ml-3 flex-1 flex-row items-center justify-between">
-                        <Text className="font-interSemiBold text-base leading-5 text-gray-900">
+                        <Text className="font-interMedium text-base leading-5 text-gray-900">
                           {option.name}
                         </Text>
                         {option.value && (
@@ -224,15 +228,15 @@ const landingpage = () => {
                   <View
                     key={option.id}
                     className={`w-full flex-row items-center justify-between py-4 ${
-                      index !== optionsWorkout.length - 1
+                      index !== optionsFood.length - 1
                         ? "border-b border-b-gray-200"
                         : ""
                     }`}
                   >
                     <View className="flex-1 flex-row items-center">
-                      <option.icon fill={"#111827"} stroke={"#111827"} />
+                      <option.icon />
                       <View className="ml-3 flex-1 flex-row items-center justify-between">
-                        <Text className="font-interSemiBold text-base leading-5 text-gray-900">
+                        <Text className="font-interMedium text-base leading-5 text-gray-900">
                           {option.name}
                         </Text>
                       </View>
