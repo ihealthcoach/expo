@@ -1,7 +1,7 @@
 import { Image } from "expo-image";
 import { View, Text } from "react-native";
-import useExerciseStore from "@/store/exercisesStore"; // Adjust the path as necessary
-import type { Exercise } from "@/store/exercisesStore"; // Adjust the path as necessary
+import useExerciseStore from "@/store/exercisesStore";
+import type { Exercise } from "@/store/exercisesStore";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import Button from "@/components/Button/Button";
 import PlusSmallIcon from "@/assets/icons/plus-small-outline";
