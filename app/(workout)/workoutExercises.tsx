@@ -17,6 +17,24 @@ import XMarkIcon from "@/assets/icons/x-mark-mini";
 
 // TODO: The custom styles for the swiped cards are missing.
 
+interface Set {
+  id: number;
+  set_number: number;
+  type: string;
+  weight: number;
+  weight_unit: string;
+  reps: number;
+  completed: boolean;
+}
+
+interface ExerciseTrackingStore {
+  sets: Set[];
+  setSets: (sets: Set[]) => void;
+  addSet: (newSet: Set) => void;
+  deleteSet: (set_number: number) => void;
+  updateSetCompletion: (set_number: number, completed: boolean) => void;
+}
+
 const WorkoutExercises = () => {
   const { exercises, deleteExercise } = useExerciseStore();
 
