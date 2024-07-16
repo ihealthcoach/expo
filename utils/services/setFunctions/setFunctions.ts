@@ -3,23 +3,16 @@ import { Set } from "@/types/exercise-tracking";
 
 // Function to validate and convert raw data to Set type
 const validateSet = (data: any): Set | null => {
-  if (
-    typeof data === "object" &&
-    data !== null &&
-    typeof data.id === "string" &&
-    typeof data.exercise_details_id === "string" &&
-    Array.isArray(data.weight) &&
-    typeof data.type === "string" &&
-    Array.isArray(data.reps) &&
-    data.created_at instanceof Date &&
-    data.updated_at instanceof Date
-  ) {
+  console.log(data.type);
+  console.log(typeof data === "object" && data !== null);
+  if (typeof data === "object" && data !== null) {
     return {
       id: data.id,
       exercise_details_id: data.exercise_details_id,
       weight: data.weight,
       type: data.type,
       reps: data.reps,
+      completed: data.completed,
       created_at: new Date(data.created_at),
       updated_at: new Date(data.updated_at),
     };
@@ -29,7 +22,10 @@ const validateSet = (data: any): Set | null => {
 
 // Fetch all sets
 export const fetchSets = async (): Promise<Set[]> => {
-  const { data, error } = await supabase.from("sets").select("*");
+  const { data, error } = await supabase
+    .from("sets")
+    .select("*")
+    .order("created_at", { ascending: true });
   if (error) throw error;
   return (data as any[])
     .map(validateSet)
@@ -37,13 +33,21 @@ export const fetchSets = async (): Promise<Set[]> => {
 };
 
 // Fetch sets by exercise
-export const fetchSetByExercise = async (workoutId: string): Promise<Set[]> => {
+export const fetchSetByExercise = async (
+  exerciseId: string,
+): Promise<Set[]> => {
   const { data, error } = await supabase
     .from("sets")
     .select("*")
-    .eq("workout_exercise_details_id", workoutId);
+    .eq("workout_exercise_details_id", exerciseId)
+    .order("created_at", { ascending: true });
 
   if (error) throw error;
+  console.log(
+    "datasfs",
+    (data as any[]).map(validateSet).filter((set): set is Set => set !== null),
+  );
+
   return (data as any[])
     .map(validateSet)
     .filter((set): set is Set => set !== null);

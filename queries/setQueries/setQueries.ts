@@ -18,7 +18,7 @@ export const useAllSetsQuery = () => {
 
 export const useSetByExerciseDetailsQuery = (exerciseDetailsId: string) => {
   return useQuery({
-    queryKey: ["exercisesByWorkout", exerciseDetailsId],
+    queryKey: ["setByExercise", exerciseDetailsId],
     queryFn: () => fetchSetByExercise(exerciseDetailsId),
   });
 };
@@ -36,6 +36,10 @@ export const useCreateSetMutation = () => {
     mutationFn: createSet,
     onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["set", variables.id] });
+      queryClient.invalidateQueries({
+        queryKey: ["setByExercise", variables.exercise_details_id],
+      });
+
       queryClient.invalidateQueries({ queryKey: ["sets"] });
     },
   });
@@ -48,6 +52,9 @@ export const useUpdateSetMutation = () => {
       updateSet(params.id, params.updates),
     onSuccess: (data, variables) => {
       queryClient.invalidateQueries({ queryKey: ["set", variables.id] });
+      queryClient.invalidateQueries({
+        queryKey: ["setByExercise"],
+      });
       queryClient.invalidateQueries({ queryKey: ["sets"] });
     },
   });

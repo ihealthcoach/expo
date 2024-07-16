@@ -8,8 +8,6 @@ const validateWorkout = (data: any): Workout | null => {
     data !== null &&
     typeof data.id === "string" &&
     typeof data.user_id === "string" &&
-    data.created_at instanceof Date &&
-    data.updated_at instanceof Date &&
     typeof data.status === "string"
   ) {
     return {

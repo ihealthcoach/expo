@@ -8,9 +8,7 @@ const validateExerciseDetails = (data: any): ExerciseDetails | null => {
     data !== null &&
     typeof data.id === "string" &&
     typeof data.workout_id === "string" &&
-    typeof data.exercise_id === "string" &&
-    data.created_at instanceof Date &&
-    data.updated_at instanceof Date
+    typeof data.exercise_id === "string"
   ) {
     return {
       id: data.id,
@@ -59,6 +57,7 @@ export const fetchExerciseDetailById = async (
     .eq("id", id)
     .single();
   if (error) throw error;
+  console.log(validateExerciseDetails(data));
   return validateExerciseDetails(data);
 };
 

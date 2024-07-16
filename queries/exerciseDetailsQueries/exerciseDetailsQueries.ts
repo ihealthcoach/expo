@@ -1,4 +1,7 @@
-import { ExerciseDetails } from "@/types/exercise-tracking";
+import {
+  ExerciseDetails,
+  ExerciseDetailsWithSets,
+} from "@/types/exercise-tracking";
 import { fetchExerciseById } from "@/utils/fetchExercises/fetchExercises";
 import {
   createExerciseDetail,

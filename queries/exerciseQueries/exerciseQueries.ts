@@ -26,5 +26,4 @@ const useGetExerciseByIdQuery = (exerciseId: string) => {
     },
   });
 };
-
 export { useAllExerciseQuery, useGetExerciseByIdQuery };
