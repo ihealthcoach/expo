@@ -23,9 +23,7 @@ const overview = () => {
         </Text>
       </Pressable>
       <Pressable
-        onPress={() =>
-          router.push("/(workout-history)/choose-workout/choose-workout")
-        }
+        onPress={() => router.push("/choose-workout")}
         className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
       >
         <Text className="text-center font-interMedium text-sm text-white">
@@ -34,7 +32,7 @@ const overview = () => {
       </Pressable>
       <Pressable
         onPress={
-          () => router.push("/workout-history/workout-history")
+          () => router.push("/workout-history")
           // app/(workout-history)/(workout-history)/workout-history/workout-history
         }
         className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"

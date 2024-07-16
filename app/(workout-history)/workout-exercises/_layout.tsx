@@ -6,6 +6,7 @@ import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBack
 import Badge from "@/components/Badge/Badge";
 import PlusSmallIcon from "@/assets/icons/plus-small-outline";
 import SortIcon from "@/assets/icons/vuesax-sort-linear";
+import EllipsisHorizontalIcon from "@/assets/icons/ellipsis-horizontal-outline";
 
 export default function Layout() {
   const { fontsLoaded, fontError } = loadFonts();
@@ -22,33 +23,20 @@ export default function Layout() {
     <SafeAreaView className="flex-1 bg-gray-100" edges={["top"]}>
       <View className="relative flex-1 px-4">
         <HeaderWithBackArrow>
-          <View className="flex-row items-center">
-            <View className="mr-3">
-              <Badge
-                text="New workout"
-                iconAfter={<PlusSmallIcon stroke="none" fill="#FCFEFE" />}
-                isDark
-              />
-            </View>
-          </View>
+          <EllipsisHorizontalIcon />
         </HeaderWithBackArrow>
         <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
           <View className="mb-6">
             <Text className="font-interBold text-4xl leading-[54px] text-gray-900">
-              Workout history
+              Workout
             </Text>
             <Text className="font-interRegular text-sm text-gray-400">
-              {/* TODO: Refactor number of workouts to be dynamic */}
-              Choose from 157 previous completed workouts
+              {/* TODO: Refactor number of exercises to be dynamic */}6
+              exercises added to your workout
             </Text>
           </View>
           <Slot />
         </ScrollView>
-        <View className="absolute bottom-8 right-8">
-          <Pressable onPress={handleOpenPanel}>
-            <Badge className="w-full" isDark icon={<SortIcon />} />
-          </Pressable>
-        </View>
       </View>
     </SafeAreaView>
   );
