@@ -355,7 +355,7 @@ const ExerciseTracking = () => {
         )}
       </KeyboardAvoidingView>
 
-      <View className="flex-1">
+      <View className="mx-4 flex-1">
         <HeaderWithBackArrow>
           <Text className="font-interRegular text-base text-gray-400">
             Exercise{" "}
@@ -367,7 +367,7 @@ const ExerciseTracking = () => {
             <EllipsisHorizontalIcon />
           </TouchableOpacity>
         </HeaderWithBackArrow>
-        <View className="mx-4 mb-12">
+        <View className="mb-12">
           <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
             Arnold press
           </Text>

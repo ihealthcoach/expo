@@ -3,6 +3,7 @@ import React from "react";
 
 interface BadgeProps {
   text?: string;
+  icon?: React.ReactNode;
   iconBefore?: React.ReactNode;
   iconAfter?: React.ReactNode;
   hasBorder?: boolean;
@@ -15,6 +16,7 @@ interface BadgeProps {
 const Badge = ({
   className,
   text,
+  icon,
   iconBefore,
   iconAfter,
   hasBorder,
@@ -34,11 +36,32 @@ const Badge = ({
   ${isLight ? "text-gray-900" : ""} 
   ${isWhite ? "text-gray-600" : ""}`;
 
+  if (icon) {
+    return <View className={badgeClassName.trim()}>{icon}</View>;
+  }
+
+  if (iconBefore) {
+    return (
+      <View className={badgeClassName.trim()}>
+        {iconBefore && <View className="mr-1">{iconBefore}</View>}
+        <Text className={textClassName.trim()}>{text}</Text>
+      </View>
+    );
+  }
+
+  if (iconAfter) {
+    return (
+      <View className={badgeClassName.trim()}>
+        <Text className={textClassName.trim()}>{text}</Text>
+        {iconAfter && <View className="ml-1">{iconAfter}</View>}
+      </View>
+    );
+  }
+
+  // If only text is passed
   return (
     <View className={badgeClassName.trim()}>
-      {iconBefore && <View className="mr-1">{iconBefore}</View>}
       <Text className={textClassName.trim()}>{text}</Text>
-      {iconAfter && <View className="ml-1">{iconAfter}</View>}
     </View>
   );
 };

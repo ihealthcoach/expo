@@ -11,7 +11,7 @@ interface HeaderWithBackArrowProps {
 const HeaderWithBackArrow = ({ children, path }: HeaderWithBackArrowProps) => {
   const router = useRouter();
   return (
-    <View className="mb-6 mt-4 flex-row items-center justify-between px-4">
+    <View className="mb-6 mt-4 flex-row items-center justify-between">
       {path ? (
         <Pressable onPress={() => router.push(path)}>
           <ArrowLeftIcon />

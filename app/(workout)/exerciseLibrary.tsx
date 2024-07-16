@@ -1,7 +1,7 @@
 import { View, Text, ImageBackground, Pressable } from "react-native";
 import React, { useMemo, useRef, useState } from "react";
 import HeaderExerciseLibrary from "@/components/HeaderExerciseLibrary";
-import BadgesExerciseLibrary from "@/components/BadgesExerciseLibrary/BadgesExerciseLibrary";
+import BadgesWithHorizontalScroll from "@/components/BadgesWithHorizontalScroll/BadgesWithHorizontalScroll";
 import ExercisesScreen from "@/components/ExercisesScreen/ExercisesScreen";
 import Badge from "@/components/Badge/Badge";
 import SortIcon from "@/assets/icons/vuesax-sort-linear";
@@ -15,6 +15,10 @@ import { TextInput } from "react-native-gesture-handler";
 import MagnifyingGlassIcon from "@/assets/icons/magnifying-glass-mini";
 import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
 import { Link } from "expo-router";
+import BarsArrowDownIcon from "@/assets/icons/bars-arrow-down-outline";
+import ClockOutline24Icon from "@/assets/icons/clock-outline-24";
+import HeartIcon from "@/assets/icons/heart-outline";
+import ClipboardIcon from "@/assets/icons/clipboard-outline";
 
 const ExerciseLibrary = () => {
   const [openBackDrop, setOpenBackDrop] = useState<boolean>(false);
@@ -44,7 +48,24 @@ const ExerciseLibrary = () => {
             Add exercises to your workout
           </Text>
         </View>
-        <BadgesExerciseLibrary />
+        <BadgesWithHorizontalScroll>
+          <Badge isDark iconBefore={<BarsArrowDownIcon />} text="A-Z" />
+          <Badge
+            isWhite
+            iconBefore={<ClockOutline24Icon stroke="#4B5563" />}
+            text="Recent"
+          />
+          <Badge
+            isWhite
+            iconBefore={<HeartIcon stroke={"#4B5563"} />}
+            text="Favorites"
+          />
+          <Badge
+            isWhite
+            iconBefore={<ClipboardIcon stroke={"#4B5563"} />}
+            text="My workouts"
+          />
+        </BadgesWithHorizontalScroll>
         <View className="flex-1">
           <ExercisesScreen />
         </View>

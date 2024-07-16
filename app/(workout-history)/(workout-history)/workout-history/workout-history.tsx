@@ -12,97 +12,165 @@ import CreditCardOutlineIcon from "@/assets/icons/credit-card-outline";
 import FaceIdIcon from "@/assets/icons/faceid";
 import Card from "./components/card/Card";
 import Cancel from "./components/cancel/Cancel";
+import BadgesWithHorizontalScroll from "@/components/BadgesWithHorizontalScroll/BadgesWithHorizontalScroll";
+import Badge from "@/components/Badge/Badge";
+import Bars3BottomLeftIcon from "@/assets/icons/bars-3-bottom-left";
+import BarsArrowDownIcon from "@/assets/icons/bars-arrow-down-outline";
+import HeartIcon from "@/assets/icons/heart-outline";
+import CalendarDaysOutlineIcon from "@/assets/icons/calendar-days-outline/calendar-days-outline";
+import StarOutlineIcon from "@/assets/icons/star-outline";
 
-interface Option {
+interface Workout {
   id: number;
-  title: string;
-  path?: string;
-  icon: React.ReactNode;
-  value?: string;
-  iconInTheEnd?: string;
+  workout_name: string;
+  date: string;
+  time: string;
+  duration: string;
+  weight_lifted: number;
+  cardio: string;
+  rating: string;
 }
 
-const optionsAccount = [
+const workouts1: Workout[] = [
   {
     id: 1,
-    title: "Profile",
-    icon: <UserIcon className="mr-2" />,
-    iconInTheEnd: "chevronRight",
+    workout_name: "Custom workout name #1",
+    date: "May 28, 2023",
+    time: "08.20 - 09.30",
+    duration: "1h 10m",
+    weight_lifted: 7.9,
+    cardio: "24m",
+    rating: "7/10",
   },
   {
     id: 2,
-    title: "Questionnaire",
-    path: "/(profile)/questionnaire",
-    icon: <ClipboardDocumentListOutline className="mr-2" />,
-    iconInTheEnd: "chevronRight",
+    workout_name: "Custom workout name #1",
+    date: "May 28, 2023",
+    time: "08.20 - 09.30",
+    duration: "1h 10m",
+    weight_lifted: 7.9,
+    cardio: "24m",
+    rating: "7/10",
   },
   {
     id: 3,
-    title: "Password",
-    icon: <LockClosedOutlineIcon className="mr-2" />,
-    iconInTheEnd: "chevronRight",
+    workout_name: "Custom workout name #2",
+    date: "May 27, 2023",
+    time: "07.53 - 08.49",
+    duration: "56m",
+    weight_lifted: 12.818,
+    cardio: "24m",
+    rating: "5/10",
   },
   {
     id: 4,
-    title: "Language",
-    icon: <GlobeAltOutlineIcon className="mr-2" />,
-    value: "English",
-    iconInTheEnd: "chevronRight",
+    workout_name: "May 26, 2023",
+    date: "May 26, 2023",
+    time: "05.33 - 06.56",
+    duration: "1h 23m",
+    weight_lifted: 6.347,
+    cardio: "24m",
+    rating: "10/10",
   },
   {
     id: 5,
-    title: "Notifications",
-    icon: <BellOutlineIcon className="mr-2" />,
-    iconInTheEnd: "chevronRight",
-  },
-  {
-    id: 6,
-    title: "Subscription",
-    icon: <CheckBadgeOutlineIcon className="mr-2" />,
-    value: "Free",
-    iconInTheEnd: "chevronRight",
-  },
-  {
-    id: 7,
-    title: "Payment method",
-    icon: <CreditCardOutlineIcon className="mr-2" />,
-    value: "Credit card",
-    iconInTheEnd: "chevronRight",
-  },
-  {
-    id: 8,
-    title: "Face ID",
-    icon: <FaceIdIcon className="mr-2" />,
-    iconInTheEnd: "switch",
+    workout_name: "May 25, 2023",
+    date: "May 25, 2023",
+    time: "05.42 - 06.47",
+    duration: "1h 05m",
+    weight_lifted: 10.165,
+    cardio: "24m",
+    rating: "7/10",
   },
 ];
 
-const Account = () => {
-  const [isEnabled, setIsEnabled] = useState<boolean>(false);
+const WorkoutHistory = () => {
+  // const [isEnabled, setIsEnabled] = useState<boolean>(false);
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const toggleSwitch = () => {
-    console.log("Switched");
-    setIsEnabled((previousState) => !previousState);
-    console.log(isEnabled);
+  // const toggleSwitch = () => {
+  //   console.log("Switched");
+  //   setIsEnabled((previousState) => !previousState);
+  //   console.log(isEnabled);
+  // };
+
+  const handleOpenPanel = () => {
+    console.log("Open panel");
   };
 
   return (
-    <View>
-      <Card
-        title="Using a saved template"
-        description="Follow a workout template from your saved workout templates"
-      />
-      <Card title="Without a template" description="Add exercises as you go" />
-      <Card
-        title="Using a previous workout"
-        description="Use a workout from a previous completed workout"
-      />
-      <Cancel />
+    <View className="relative">
+      <View className="mb-6">
+        <BadgesWithHorizontalScroll>
+          {/* <Badge isDark iconBefore={<BarsArrowDownIcon />} text="A-Z" /> */}
+          <Badge isDark text="Show all" />
+          <Badge
+            isWhite
+            // iconBefore={<HeartIcon stroke={"#4B5563"} />}
+            iconBefore={<BarsArrowDownIcon stroke={"#4B5563"} />}
+            text="A-Z"
+          />
+          <Badge
+            isWhite
+            iconBefore={<HeartIcon stroke={"#4B5563"} />}
+            text="Favorite"
+          />
+          <Badge
+            isWhite
+            iconBefore={<CalendarDaysOutlineIcon stroke={"#4B5563"} />}
+            text="Date"
+          />
+          <Badge
+            isWhite
+            iconBefore={<StarOutlineIcon stroke={"#4B5563"} />}
+            text="Rating"
+          />
+        </BadgesWithHorizontalScroll>
+      </View>
+      <View className="mb-6">
+        <View>
+          {/* TODO: Render dynamically */}
+          <Text className="mb-2 font-interSemiBold text-2xl leading-[30px] text-gray-900">
+            Week 22
+          </Text>
+        </View>
+        {workouts1.map((workout) => (
+          <Pressable key={workout.id}>
+            <Card
+              title={workout.workout_name}
+              date={workout.date}
+              time={workout.time}
+              duration={workout.duration}
+              weight_lifted={workout.weight_lifted}
+              cardio={workout.cardio}
+              rating={workout.rating}
+            />
+          </Pressable>
+        ))}
+      </View>
+      {/* TODO: Render dynamically */}
+      <View className="mb-24">
+        <Text className="mb-2 font-interSemiBold text-2xl leading-[30px] text-gray-900">
+          Week 21
+        </Text>
+        {workouts1.map((workout) => (
+          <Pressable key={workout.id}>
+            <Card
+              title={workout.workout_name}
+              date={workout.date}
+              time={workout.time}
+              duration={workout.duration}
+              weight_lifted={workout.weight_lifted}
+              cardio={workout.cardio}
+              rating={workout.rating}
+            />
+          </Pressable>
+        ))}
+      </View>
       {/* TODO: Add bottom navigation bar */}
     </View>
   );
 };
 
-export default Account;
+export default WorkoutHistory;

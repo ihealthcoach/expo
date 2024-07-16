@@ -69,7 +69,7 @@ const WorkoutExercises = () => {
   };
 
   return (
-    <View>
+    <View className="mx-4">
       <HeaderWithBackArrow>
         <View className="flex-row items-center">
           <View className="mr-3">
@@ -82,7 +82,7 @@ const WorkoutExercises = () => {
           <EllipsisHorizontalIcon />
         </View>
       </HeaderWithBackArrow>
-      <View className="mx-4 mb-6">
+      <View className="mb-6">
         <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
           Workout
         </Text>
@@ -91,7 +91,7 @@ const WorkoutExercises = () => {
         </Text>
       </View>
 
-      <View className="mx-4 mb-6">
+      <View className="mb-6">
         <SwipeListView
           data={exercises}
           renderItem={renderItem}
@@ -101,7 +101,7 @@ const WorkoutExercises = () => {
         />
       </View>
 
-      <View className="mx-4">
+      <View>
         <Button text="Start workout" bgColor="bg-indigo-600" />
         <Button
           text="Add exercise"
