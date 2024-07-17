@@ -1,7 +1,7 @@
+import React, { useMemo, useState, useRef } from "react";
 import Greeting from "./landingpage/components/greeting/Greeting";
 import Header from "@/app/(dashboard)/landingpage/components/header/Header";
 import TodayGoals from "@/components/TodayGoals";
-import React, { useMemo, useState, useRef } from "react";
 import { ScrollView, View, Text, Pressable, Switch } from "react-native";
 import Button from "@/components/Button/Button";
 import ArrowRightIcon from "@/assets/icons/arrow-right-mini";
@@ -9,7 +9,7 @@ import TodayActivities from "@/components/TodayActivities";
 import AddWidget from "@/components/AddWidget/AddWidget";
 
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Link, useRouter } from "expo-router";
+import { Link } from "expo-router";
 // import PlusCircleIcon from "@/assets/icons/plus-circle-outline";
 import PlusIcon from "@/assets/icons/plus-mini-20";
 import {
@@ -17,7 +17,6 @@ import {
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 import BottomNavigation from "@/components/BottomNavigation/BottomNavigation";
-import HomeIcon from "@/assets/icons/vuesax-linear-home";
 import Chart2Icon from "@/assets/icons/vuesax-chart-2-outline";
 import ChartBarIcon from "@/assets/icons/chart-bar-outline";
 import BottomNavigationAllIcons from "@/components/BottomNavigationAllIcons/BottomNavigationAllIcons";
@@ -82,8 +81,6 @@ const landingpage = () => {
   const snapPoints = useMemo(() => [snapPointsState], [snapPointsState]);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
-  const router = useRouter();
-
   // const handleOpenPanel = (modal, snapPoints) => {
   const handleOpenPanel = (modal: string, snapPoints: string) => {
     setSnapPointsState(snapPoints);
@@ -100,8 +97,11 @@ const landingpage = () => {
 
   const toggleSwitch = () => {
     console.log("Switched");
-    setIsEnabled((previousState) => !previousState);
-    console.log(isEnabled);
+    console.log("Previous state:", isEnabled);
+    setIsEnabled((previousState) => {
+      console.log("New state:", !previousState);
+      return !previousState;
+    });
   };
 
   return (
