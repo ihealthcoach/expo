@@ -1,4 +1,4 @@
-import Greeting from "@/components/Greeting/Greeting";
+import Greeting from "./landingpage/components/greeting/Greeting";
 import Header from "@/app/(dashboard)/landingpage/components/header/Header";
 import TodayGoals from "@/components/TodayGoals";
 import React, { useMemo, useState, useRef } from "react";
@@ -9,7 +9,7 @@ import TodayActivities from "@/components/TodayActivities";
 import AddWidget from "@/components/AddWidget/AddWidget";
 
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
 // import PlusCircleIcon from "@/assets/icons/plus-circle-outline";
 import PlusIcon from "@/assets/icons/plus-mini-20";
 import {
@@ -82,6 +82,8 @@ const landingpage = () => {
   const snapPoints = useMemo(() => [snapPointsState], [snapPointsState]);
   const bottomSheetRef = useRef<BottomSheetModal>(null);
 
+  const router = useRouter();
+
   // const handleOpenPanel = (modal, snapPoints) => {
   const handleOpenPanel = (modal: string, snapPoints: string) => {
     setSnapPointsState(snapPoints);
@@ -105,11 +107,10 @@ const landingpage = () => {
   return (
     <BottomSheetModalProvider>
       <View className="mx-4 flex-1">
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false} className="flex-1">
           <Header />
           <Greeting />
           <TodayGoals />
-
           <Button
             text="Start a workout"
             bgColor="bg-gray-900"
@@ -157,16 +158,24 @@ const landingpage = () => {
                       <XMarkIcon fill="#374151" width={24} height={24} />
                     </Pressable>
                   </View>
-
+                  {/* TODO: Refactor for consistency. Here, we are using 'Link' w.
+                  Button - but in other places we are using 'Pressable' or 'TouchableOpacity' w.
+                  'onPress' prop. */}
                   <View className="flex items-center justify-between ">
-                    <Link href="#" asChild>
+                    <Link
+                      href="/(workout-history)/choose-workout/choose-workout"
+                      asChild
+                    >
                       <Button
                         text="Track a workout"
                         textColor="text-gray-700"
                         bgColor="bg-gray-50 border border-gray-200"
                       />
                     </Link>
-                    <Link href="#" asChild>
+                    <Link
+                      href="/(workout-history)/workout-history/workout-history"
+                      asChild
+                    >
                       <Button
                         text="Workout history"
                         textColor="text-gray-700"

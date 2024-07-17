@@ -20,7 +20,11 @@ const Header = () => {
       <View className="flex flex-row items-center gap-4">
         <BellOutlineIcon />
         <ChatBubbleOvalLeftEllipsisOutlineIcon />
-        <Image source={imageUrl} className="h-12 w-12 rounded-full" />
+        <Pressable
+          onPress={() => router.push("/(profile)/(settings)/(account)/account")}
+        >
+          <Image source={imageUrl} className="h-12 w-12 rounded-full" />
+        </Pressable>
       </View>
     </View>
   );
