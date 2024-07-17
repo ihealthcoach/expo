@@ -21,11 +21,11 @@ const Modals = () => {
   }, []);
 
   return (
-    <View className="flex-1">
+    <View className="mx-4 flex-1">
       <HeaderWithBackArrow path="/(dev)/workout/overview">
         <Text>List of modals</Text>
       </HeaderWithBackArrow>
-      <View className="mx-4 flex-1">
+      <View className="flex-1">
         <ScrollView
           className="flex-1 gap-4"
           contentContainerStyle={{

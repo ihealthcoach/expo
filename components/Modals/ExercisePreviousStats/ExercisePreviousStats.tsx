@@ -111,6 +111,7 @@ const ExercisePreviousStats = () => {
   return (
     <BottomSheetModalProvider>
       <View>
+        {/* TODO: Check if -mx-4 is needed here */}
         <View className="mx-4">
           <Button
             text="Open modal"

@@ -25,7 +25,7 @@ const ExerciseDescription = ({
   const { data: gif } = useGetGifByExerciseQuery(id);
   if (!exercise) return null;
   return (
-    <View className="relative flex-1">
+    <View className="relative mx-4 flex-1">
       <HeaderWithBackArrow>
         <View className="flex-row items-center">
           <HeartIcon width={24} height={24} className="mr-3" />
@@ -33,7 +33,7 @@ const ExerciseDescription = ({
         </View>
       </HeaderWithBackArrow>
       <ScrollView>
-        <View className="mx-4 mb-6">
+        <View className="mb-6">
           <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
             {exercise.name}
           </Text>
@@ -43,7 +43,7 @@ const ExerciseDescription = ({
             <Text className="font-interSemiBold text-gray-900">Read more</Text>
           </Text>
         </View>
-        <View className="mx-4 mb-6 flex-row rounded-lg bg-white p-3">
+        <View className="mb-6 flex-row rounded-lg bg-white p-3">
           <View className="flex-1">
             <View>
               <View className="mb-3 items-center">
@@ -102,7 +102,7 @@ const ExerciseDescription = ({
             />
           </View>
         </View>
-        <View className="mx-4 mb-6">
+        <View className=" mb-6">
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             How to
           </Text>
@@ -117,7 +117,7 @@ const ExerciseDescription = ({
             </View>
           ))}
         </View>
-        <View className="mx-4 mb-6">
+        <View className=" mb-6">
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             Your stats
           </Text>
@@ -148,7 +148,7 @@ const ExerciseDescription = ({
             <Text className="font-interMedium text-sm text-gray-600">720</Text>
           </View>
         </View>
-        <View className="mx-4 mb-6">
+        <View className=" mb-6">
           <Text className="mb-2 font-interSemiBold text-2xl leading-8 text-gray-900">
             Benefits
           </Text>
@@ -163,7 +163,7 @@ const ExerciseDescription = ({
             </View>
           ))}
         </View>
-        <View className="mx-4 mb-6">
+        <View className=" mb-6">
           <Text className="mb-3 font-interSemiBold text-2xl leading-8 text-gray-900">
             Exercise variations
           </Text>
@@ -214,7 +214,7 @@ const ExerciseDescription = ({
             <ChevronRightIcon />
           </View>
         </View>
-        <View className="mx-4">
+        <View className="">
           <Button
             text="Add exercise to workout"
             bgColor="bg-indigo-600"

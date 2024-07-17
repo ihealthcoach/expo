@@ -10,15 +10,27 @@ interface Set {
   completed: boolean;
 }
 
-interface ExerciseTrackingStore {
-  sets: Set[];
-  setSets: (sets: Set[]) => void;
-  addSet: (newSet: Set) => void;
-  deleteSet: (set_number: number) => void;
-  updateSetCompletion: (set_number: number, completed: boolean) => void;
+export interface Exercise {
+  id: number;
+  name: string;
+  sets_completed: number;
+  total_sets: number;
+  status: string;
+  gif_path: string;
 }
 
-const useExerciseStore = create<any>((set) => ({
+interface ExerciseTrackingStore {
+  // sets: Set[];
+  exercises: Exercise[];
+  // setSets: (sets: Set[]) => void;
+  // addSet: (newSet: Set) => void;
+  // deleteSet: (set_number: number) => void;
+  // updateSetCompletion: (set_number: number, completed: boolean) => void;
+  setExercises: (exercises: Exercise[]) => void;
+  deleteExercise: (id: number) => void;
+}
+
+const useExerciseStore = create<ExerciseTrackingStore>((set) => ({
   exercises: [
     {
       id: 1,

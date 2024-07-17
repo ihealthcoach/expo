@@ -15,19 +15,47 @@ const overview = () => {
         </Text>
       </Pressable>
       <Pressable
-        onPress={() => router.push("/(dev)/workout/overview")}
-        className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
-      >
-        <Text className="text-center font-interMedium text-sm text-white">
-          Workout - screens
-        </Text>
-      </Pressable>
-      <Pressable
         onPress={() => router.push("/(profile)/(settings)/account")}
         className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
       >
         <Text className="text-center font-interMedium text-sm text-white">
           Profile - screens
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push("/choose-workout")}
+        className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+      >
+        <Text className="text-center font-interMedium text-sm text-white">
+          Workout history - Choose workout
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={
+          () => router.push("/workout-history")
+          // app/(workout-history)/(workout-history)/workout-history/workout-history
+        }
+        className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+      >
+        <Text className="text-center font-interMedium text-sm text-white">
+          Workout history - Workout history
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push("/workout-exercises")}
+        // app/(workout-history)/(workout-exercises)/workout-exercises
+        className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+      >
+        <Text className="text-center font-interMedium text-sm text-white">
+          Workout history - Workout exercises
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => router.push("/(dev)/workout/overview")}
+        className="mb-4 rounded-md bg-primary-800 px-6 py-5 font-interMedium text-base text-white-ih hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-700"
+      >
+        <Text className="text-center font-interMedium text-sm text-white">
+          Workout - screens
         </Text>
       </Pressable>
       <Pressable
@@ -41,10 +69,5 @@ const overview = () => {
     </View>
   );
 };
-
-// router.push("/(workout)/exerciseLibrary");
-// router.push("/(dashboard)/landingpage");
-// router.push("/(questionnaire)/bodytype");
-// router.push("/(getStarted)/mealsAndDiet");
 
 export default overview;

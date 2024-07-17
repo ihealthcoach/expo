@@ -43,6 +43,7 @@ const ExerciseDescription = () => {
           backgroundStyle={{ borderRadius: 20, backgroundColor: "#FCFEFE" }}
           handleIndicatorStyle={{ backgroundColor: "#D1D5DB" }}
         >
+          {/* TODO: Check if -mx-4 is needed here */}
           <View className="mx-4 mt-2 flex-1">
             <View className="mb-6 w-full flex-row items-center justify-between">
               <Text className="font-interBold text-2xl text-gray-900">
