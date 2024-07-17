@@ -3,8 +3,6 @@ import { Set } from "@/types/exercise-tracking";
 
 // Function to validate and convert raw data to Set type
 const validateSet = (data: any): Set | null => {
-  console.log(data.type);
-  console.log(typeof data === "object" && data !== null);
   if (typeof data === "object" && data !== null) {
     return {
       id: data.id,
@@ -43,10 +41,6 @@ export const fetchSetByExercise = async (
     .order("created_at", { ascending: true });
 
   if (error) throw error;
-  console.log(
-    "datasfs",
-    (data as any[]).map(validateSet).filter((set): set is Set => set !== null),
-  );
 
   return (data as any[])
     .map(validateSet)

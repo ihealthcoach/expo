@@ -23,7 +23,7 @@ import {
 
 import { useExerciseDetailByIdQuery } from "@/queries/exerciseDetailsQueries/exerciseDetailsQueries";
 import { ExercisePreviousStats } from "@/components/ExercisePreviousStats/ExercisePreviousStats";
-import { ExerciseName } from "@/components/ExerciseName/ExerciseName";
+import ExerciseName from "@/components/ExerciseName/ExerciseName";
 import { Sets } from "@/components/Sets/Sets";
 import { OneRepMax } from "@/components/OneRepMax/OneRepMax";
 import { WorkoutSettings } from "@/components/WorkoutSettings/WorkoutSettings";
@@ -95,7 +95,10 @@ const ExerciseTracking = ({
           </TouchableOpacity>
         </HeaderWithBackArrow>
         <View className="mx-4 mb-12">
-          <ExerciseName exerciseId={workoutExerciseDetails.exercise_id} />
+          <ExerciseName
+            exerciseId={workoutExerciseDetails.exercise_id}
+            classNames={"mb-1 font-interBold text-4xl leading-[54px]"}
+          />
           <View className="mb-2 flex-row items-center gap-2">
             <Text className="font-interRegular text-sm leading-[17.5px] text-gray-400">
               4 of 5 sets completed
