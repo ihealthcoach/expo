@@ -12,44 +12,18 @@ import {
 import React, { useMemo, useRef, useState, useEffect } from "react";
 import HeaderWithBackArrow from "@/components/HeaderWithBackArrow/HeaderWithBackArrow";
 import EllipsisHorizontalIcon from "@/assets/icons/ellipsis-horizontal-outline";
-import Badge from "@/components/Badge/Badge";
-import Button from "@/components/Button/Button";
-import PlusIcon from "@/assets/icons/plus-mini-20";
 import InformationCircleIcon from "@/assets/icons/information-circle-outline";
-import ActivityOutlineIcon from "@/assets/icons/activity-outline";
 import Chart2Icon from "@/assets/icons/vuesax-chart-2-outline";
-import NoteAddIcon from "@/assets/icons/vuesax-note-add-outline";
 import Note2Outline from "@/assets/icons/NoteTwoOutline";
 import ActivityOutlineVuesax from "@/assets/icons/ActivityOutlineVuesax";
-import type { Set } from "@/types/exercise-tracking";
-import useExerciseTrackingStore from "@/store/exerciseTrackingStore";
-import CheckMiniIcon from "@/assets/icons/check-mini";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import ChevronRightIcon from "@/assets/icons/chevron-right-mini";
-import XMarkIcon from "@/assets/icons/x-mark-mini";
-import ReorderIcon from "@/assets/icons/reorder-exercises";
-import TimerIcon from "@/assets/icons/timer-outline";
-import CalculatorOutline from "@/assets/icons/calculator-outline";
-import LogoutIcon from "@/assets/icons/logout-outline";
-import { Image } from "expo-image";
-import ChevronDownIcon from "@/assets/icons/chevron-down-mini";
-import { useGetGifByExerciseQuery } from "@/queries/gifQueries/gifQueries";
-import {
-  useSetByExerciseDetailsQuery,
-  useUpdateSetMutation,
-} from "@/queries/setQueries/setQueries";
-import { getAllExerciseRelatedDetailsById } from "@/utils/services/exerciseDetailsFunctions/exerciseDetailsFunctions";
-import {
-  useExerciseDetailByIdQuery,
-  useExerciseDetailWithSetsQuery,
-} from "@/queries/exerciseDetailsQueries/exerciseDetailsQueries";
-import { useGetExerciseByIdQuery } from "@/queries/exerciseQueries/exerciseQueries";
-import { CustomKeyboardView } from "@/components/CustomKeyboardView/CustomKeyboardView";
+
+import { useExerciseDetailByIdQuery } from "@/queries/exerciseDetailsQueries/exerciseDetailsQueries";
 import { ExercisePreviousStats } from "@/components/ExercisePreviousStats/ExercisePreviousStats";
-import { ExerciseName } from "@/components/ExerciseName/ExerciseName";
+import ExerciseName from "@/components/ExerciseName/ExerciseName";
 import { Sets } from "@/components/Sets/Sets";
 import { OneRepMax } from "@/components/OneRepMax/OneRepMax";
 import { WorkoutSettings } from "@/components/WorkoutSettings/WorkoutSettings";
@@ -121,7 +95,10 @@ const ExerciseTracking = ({
           </TouchableOpacity>
         </HeaderWithBackArrow>
         <View className="mx-4 mb-12">
-          <ExerciseName exerciseId={workoutExerciseDetails.exercise_id} />
+          <ExerciseName
+            exerciseId={workoutExerciseDetails.exercise_id}
+            classNames={"mb-1 font-interBold text-4xl leading-[54px]"}
+          />
           <View className="mb-2 flex-row items-center gap-2">
             <Text className="font-interRegular text-sm leading-[17.5px] text-gray-400">
               4 of 5 sets completed
