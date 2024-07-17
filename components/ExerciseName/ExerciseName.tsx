@@ -1,16 +1,15 @@
 import { useGetExerciseByIdQuery } from "@/queries/exerciseQueries/exerciseQueries";
-import { Text } from "react-native-elements";
-
+import { Text } from "react-native";
 type ExerciseNameProps = {
   exerciseId: string;
+  classNames?: string;
 };
 
-export const ExerciseName = ({ exerciseId }: ExerciseNameProps) => {
+const ExerciseName = ({ exerciseId, classNames = "" }: ExerciseNameProps) => {
   const { data: exercise } = useGetExerciseByIdQuery(exerciseId);
   if (!exercise) return null;
-  return (
-    <Text className="mb-1 font-interBold text-4xl leading-[54px] text-gray-900">
-      {exercise.name}
-    </Text>
-  );
+
+  return <Text className={`text-gray-900 ${classNames}`}>{exercise.name}</Text>;
 };
+
+export default ExerciseName;
