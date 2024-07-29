@@ -24,6 +24,7 @@ const optionsAccount = [
   {
     id: 1,
     title: "Profile",
+    path: "/(profile)/account",
     icon: <UserIcon className="mr-2" />,
     iconInTheEnd: "chevronRight",
   },
@@ -37,12 +38,14 @@ const optionsAccount = [
   {
     id: 3,
     title: "Password",
+    path: "/(profile)/account",
     icon: <LockClosedOutlineIcon className="mr-2" />,
     iconInTheEnd: "chevronRight",
   },
   {
     id: 4,
     title: "Language",
+    path: "/(profile)/account",
     icon: <GlobeAltOutlineIcon className="mr-2" />,
     value: "English",
     iconInTheEnd: "chevronRight",
@@ -50,12 +53,14 @@ const optionsAccount = [
   {
     id: 5,
     title: "Notifications",
+    path: "/(profile)/account",
     icon: <BellOutlineIcon className="mr-2" />,
     iconInTheEnd: "chevronRight",
   },
   {
     id: 6,
     title: "Subscription",
+    path: "/(profile)/account",
     icon: <CheckBadgeOutlineIcon className="mr-2" />,
     value: "Free",
     iconInTheEnd: "chevronRight",
@@ -63,6 +68,7 @@ const optionsAccount = [
   {
     id: 7,
     title: "Payment method",
+    path: "/(profile)/account",
     icon: <CreditCardOutlineIcon className="mr-2" />,
     value: "Credit card",
     iconInTheEnd: "chevronRight",
@@ -70,6 +76,7 @@ const optionsAccount = [
   {
     id: 8,
     title: "Face ID",
+    path: "/(profile)/account",
     icon: <FaceIdIcon className="mr-2" />,
     iconInTheEnd: "switch",
   },
