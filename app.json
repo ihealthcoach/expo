@@ -42,6 +42,7 @@
       "typedRoutes": true,
       "tsconfigPaths": true
     },
+    "newArchEnabled": true,
     "extra": {
       "router": {
         "origin": false
