@@ -7,13 +7,16 @@
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "sdkVersion": "52.0.0",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#66eed2"
     },
     "entryPoint": "./index.js",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "backgroundColor": "#66eed2",
@@ -30,7 +33,11 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "plugins": ["expo-router", "expo-font"],
+    "plugins": [
+      "expo-router",
+      "expo-font",
+      "expo-asset"
+    ],
     "experiments": {
       "typedRoutes": true,
       "tsconfigPaths": true

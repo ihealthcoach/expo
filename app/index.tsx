@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 import { Dimensions, ImageBackground, Text, View } from "react-native";
 import Svg, { G, Path } from "react-native-svg";
-
 import { useRouter } from "expo-router";
 
 export default function Page() {
   const router = useRouter();
   const { width, height } = Dimensions.get("window");
-
   // const { width, height } = Dimensions.get("window");
-
+  
   useEffect(() => {
     const timeout = setTimeout(() => {
       // Temporarily changed the route to /dashboard/landingpage
@@ -24,7 +22,7 @@ export default function Page() {
       clearTimeout(timeout);
     };
   }, []);
-
+  
   return (
     <ImageBackground
       className="h-full w-full flex-1"
