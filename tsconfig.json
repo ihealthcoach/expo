@@ -1,5 +1,9 @@
 {
-  "compilerOptions": { "paths": { "@/*": ["./*"] } },
+  "compilerOptions": {
+    "paths": { "@/*": ["./*"] },
+    "typeRoots": ["./types", "./node_modules/@types"],
+    "baseUrl": "."
+  },
   "extends": "expo/tsconfig.base",
   "exclude": ["**/App.js", "**/app/(getStarted)/index.tsx"],
   "include": [
@@ -8,6 +12,7 @@
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "app/mealsAndDiet.tsx.backup",
-    "app/(questionnaire)/_layout.tsx"
+    "app/(questionnaire)/_layout.tsx",
+    "types/**/*.d.ts"
   ]
 }
